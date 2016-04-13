@@ -3,7 +3,15 @@ var mongoose = require('mongoose');
 
 // Define our beer schema
 var ProjectSchema = new mongoose.Schema({
-	
+	name: {type: String, required: true},
+	description: {type: String},
+	deadline: {type: Date},
+	visible: {type: Boolean, default: true},
+	skills: {type: [String], default: []},
+	categories: {type: [String], required: true},
+	creator: {type: String, required: true},
+	pendingMembers: {type: [String], default: []},
+	approvedMembers: {type: [String], default: []}
 });
 
 // Export the Mongoose model
