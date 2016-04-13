@@ -26,9 +26,10 @@ var allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 
 // Use the body-parser package in our application
-app.use(bodyParser.urlencoded({
+/*app.use(bodyParser.urlencoded({
 	extended: true
-}));
+}));*/
+app.use(bodyParser.json());
 
 // All our routes will start with /api
 app.use('/api', router);
@@ -51,12 +52,29 @@ userRoute.get(function(req, res) {
 		limit(req.query.limit).
 		exec(function(err, ret) {
 			if (err) {
-				res.status(404).send({message: "Error", data: {}});
+				res.status(404).send({message: "Error", data: []});
 			}
 			else {
 				res.status(200).send({message: "OK", data: ret});
 			}
 		});
+});
+
+userRoute.post(function(req, res) {
+	var ret = new User();
+	ret.name = req.body.name;
+	ret.email = req.body.email;
+	ret.skills = req.body.skills;
+	ret.myProjects = req.body.myProjects;
+	ret.joinedProjects = req.body.joinedProjects;
+	ret.save(function(err) {
+		if (err) {
+			res.status(500).send({message: "Error", data: []});
+		}
+		else {
+			res.status(201).send({message: "OK", data: ret});
+		}
+	});
 });
 
 // Project route
@@ -70,12 +88,33 @@ projectRoute.get(function(req, res) {
 		limit(req.query.limit).
 		exec(function(err, ret) {
 			if (err) {
-				res.status(404).send({message: "Error", data: {}});
+				res.status(404).send({message: "Error", data: []});
 			}
 			else {
 				res.status(200).send({message: "OK", data: ret});
 			}
 		});
+});
+
+projectRoute.post(function(req, res) {
+	var ret = new Project();
+	ret.name = req.body.name;
+	ret.description = req.body.description;
+	ret.deadline = req.body.deadline;
+	ret.visible = req.body.visible;
+	ret.skills = req.body.skills;
+	ret.categories = req.body.categories;
+	ret.creator = req.body.creator;
+	ret.pendingMembers = req.body.pendingMembers;
+	ret.approvedMembers = req.body.approvedMembers;
+	ret.save(function(err) {
+		if (err) {
+			res.status(500).send({message: "Error", data: []});
+		}
+		else {
+			res.status(201).send({message: "OK", data: ret});
+		}
+	});
 });
 
 // Skill route
@@ -89,12 +128,25 @@ skillRoute.get(function(req, res) {
 		limit(req.query.limit).
 		exec(function(err, ret) {
 			if (err) {
-				res.status(404).send({message: "Error", data: {}});
+				res.status(404).send({message: "Error", data: []});
 			}
 			else {
 				res.status(200).send({message: "OK", data: ret});
 			}
 		});
+});
+
+skillRoute.post(function(req, res) {
+	var ret = new Skill();
+	ret.name = req.body.name;
+	ret.save(function(err) {
+		if (err) {
+			res.status(500).send({message: "Error", data: []});
+		}
+		else {
+			res.status(201).send({message: "OK", data: ret});
+		}
+	});
 });
 
 // Category route
@@ -108,12 +160,25 @@ categoryRoute.get(function(req, res) {
 		limit(req.query.limit).
 		exec(function(err, ret) {
 			if (err) {
-				res.status(404).send({message: "Error", data: {}});
+				res.status(404).send({message: "Error", data: []});
 			}
 			else {
 				res.status(200).send({message: "OK", data: ret});
 			}
 		});
+});
+
+categoryRoute.post(function(req, res) {
+	var ret = new Category();
+	ret.name = req.body.name;
+	ret.save(function(err) {
+		if (err) {
+			res.status(500).send({message: "Error", data: []});
+		}
+		else {
+			res.status(201).send({message: "OK", data: ret});
+		}
+	});
 });
 
 // Start the server
