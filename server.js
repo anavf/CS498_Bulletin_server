@@ -181,6 +181,163 @@ categoryRoute.post(function(req, res) {
 	});
 });
 
+// Single user route
+var singleUserRoute = router.route('/users/:id');
+
+singleUserRoute.get(function(req, res) {
+	User.findById(req.params.id, function(err, ret) {
+		if (err) {
+			res.status(404).send({message: "Error", data: []});
+		}
+		else {
+			res.status(200).send({message: "OK", data: ret});
+		}
+	});
+});
+
+singleUserRoute.put(function(req, res) {
+	User.findById(req.params.id, function(err, ret) {
+		if (err) {
+			res.status(404).send({message: "Error", data: []});
+		}
+		else {
+			ret.name = req.body.name;
+			ret.email = req.body.email;
+			ret.skills = req.body.skills;
+			ret.myProjects = req.body.myProjects;
+			ret.joinedProjects = req.body.joinedProjects;
+			ret.save(function (err) {
+				if (err) {
+					res.status(500).send({message: "Error", data: []});
+				}
+				else {
+					res.status(201).send({message: "OK", data: ret});
+				}
+			});
+		}
+	});
+});
+
+singleUserRoute.delete(function(req, res) {
+	User.findById(req.params.id, function(err, ret) {
+		ret.remove(function(err) {
+			if (err) {
+				res.status(404).send({message: "Error", data: []});
+			}
+			else {
+				res.status(200).send({message: "OK", data: ret});
+			}
+		});
+	});
+});
+
+// Single project route
+var singleProjectRoute = router.route('/projects/:id');
+
+singleProjectRoute.get(function(req, res) {
+	Project.findById(req.params.id, function(err, ret) {
+		if (err) {
+			res.status(404).send({message: "Error", data: []});
+		}
+		else {
+			res.status(200).send({message: "OK", data: ret});
+		}
+	});
+});
+
+singleProjectRoute.put(function(req, res) {
+	Project.findById(req.params.id, function(err, ret) {
+		if (err) {
+			res.status(404).send({message: "Error", data: []});
+		}
+		else {
+			ret.name = req.body.name;
+			ret.description = req.body.description;
+			ret.deadline = req.body.deadline;
+			ret.visible = req.body.visible;
+			ret.skills = req.body.skills;
+			ret.categories = req.body.categories;
+			ret.pendingMembers = req.body.pendingMembers;
+			ret.approvedMembers = req.body.approvedMembers;
+			ret.save(function (err) {
+				if (err) {
+					res.status(500).send({message: "Error", data: []});
+				}
+				else {
+					res.status(201).send({message: "OK", data: ret});
+				}
+			});
+		}
+	});
+});
+
+singleProjectRoute.delete(function(req, res) {
+	Project.findById(req.params.id, function(err, ret) {
+		ret.remove(function(err) {
+			if (err) {
+				res.status(404).send({message: "Error", data: []});
+			}
+			else {
+				res.status(200).send({message: "OK", data: ret});
+			}
+		});
+	});
+});
+
+// Single skill route
+var singleSkillRoute = router.route('/skills/:id');
+
+singleSkillRoute.get(function(req, res) {
+	Skill.findById(req.params.id, function(err, ret) {
+		if (err) {
+			res.status(404).send({message: "Error", data: []});
+		}
+		else {
+			res.status(200).send({message: "OK", data: ret});
+		}
+	});
+});
+
+singleSkillRoute.delete(function(req, res) {
+	Skill.findById(req.params.id, function(err, ret) {
+		ret.remove(function(err) {
+			if (err) {
+				res.status(404).send({message: "Error", data: []});
+			}
+			else {
+				res.status(200).send({message: "OK", data: ret});
+			}
+		});
+	});
+});
+
+// Single category route
+var singleCategoryRoute = router.route('/categories/:id');
+
+singleCategoryRoute.get(function(req, res) {
+	Category.findById(req.params.id, function(err, ret) {
+		if (err) {
+			res.status(404).send({message: "Error", data: []});
+		}
+		else {
+			res.status(200).send({message: "OK", data: ret});
+		}
+	});
+});
+
+singleCategoryRoute.delete(function(req, res) {
+	Category.findById(req.params.id, function(err, ret) {
+		ret.remove(function(err) {
+			if (err) {
+				res.status(404).send({message: "Error", data: []});
+			}
+			else {
+				res.status(200).send({message: "OK", data: ret});
+			}
+		});
+	});
+});
+
 // Start the server
 app.listen(port);
 console.log('Server running on port ' + port);
