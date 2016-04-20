@@ -13,7 +13,8 @@ var ProjectSchema = new mongoose.Schema({
 	creator: {type: String, required: true},
 	pendingMembers: {type: [String], default: []},
 	approvedMembers: {type: [String], default: []},
-	dateCreated: {type: Date, default: Date.now}
+	dateCreated: {type: Date, default: Date.now},
+	imageURL: {type: String}
 });
 
 // Export the Mongoose model

@@ -9,7 +9,8 @@ var UserSchema = new mongoose.Schema({
 	skills: {type: [String], default: []},
 	myProjects: {type: [String], default: []},
 	joinedProjects: {type: [String], default: []},
-	dateCreated: {type: Date, default: Date.now}
+	dateCreated: {type: Date, default: Date.now},
+	imageURL: {type: String}
 });
 
 // Export the Mongoose model
