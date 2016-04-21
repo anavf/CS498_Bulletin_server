@@ -65,9 +65,11 @@ userRoute.post(function(req, res) {
 	var ret = new User();
 	ret.name = req.body.name;
 	ret.email = req.body.email;
+	ret.password = req.body.password;
 	ret.skills = req.body.skills;
 	ret.myProjects = req.body.myProjects;
 	ret.joinedProjects = req.body.joinedProjects;
+	ret.imageURL = req.body.imageURL;
 	ret.save(function(err) {
 		if (err) {
 			res.status(500).send({message: "Error", data: []});
@@ -105,9 +107,11 @@ projectRoute.post(function(req, res) {
 	ret.visible = req.body.visible;
 	ret.skills = req.body.skills;
 	ret.categories = req.body.categories;
+	ret.tags = req.body.tags;
 	ret.creator = req.body.creator;
 	ret.pendingMembers = req.body.pendingMembers;
 	ret.approvedMembers = req.body.approvedMembers;
+	ret.imageURL = req.body.imageURL;
 	ret.save(function(err) {
 		if (err) {
 			res.status(500).send({message: "Error", data: []});
@@ -204,9 +208,11 @@ singleUserRoute.put(function(req, res) {
 		else {
 			ret.name = req.body.name;
 			ret.email = req.body.email;
+			ret.password = req.body.password;
 			ret.skills = req.body.skills;
 			ret.myProjects = req.body.myProjects;
 			ret.joinedProjects = req.body.joinedProjects;
+			ret.imageURL = req.body.imageURL;
 			ret.save(function (err) {
 				if (err) {
 					res.status(500).send({message: "Error", data: []});
@@ -258,8 +264,10 @@ singleProjectRoute.put(function(req, res) {
 			ret.visible = req.body.visible;
 			ret.skills = req.body.skills;
 			ret.categories = req.body.categories;
+			ret.tags = req.body.tags;
 			ret.pendingMembers = req.body.pendingMembers;
 			ret.approvedMembers = req.body.approvedMembers;
+			ret.imageURL = req.body.imageURL;
 			ret.save(function (err) {
 				if (err) {
 					res.status(500).send({message: "Error", data: []});

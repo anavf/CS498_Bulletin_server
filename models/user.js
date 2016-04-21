@@ -10,7 +10,7 @@ var UserSchema = new mongoose.Schema({
 	myProjects: {type: [String], default: []},
 	joinedProjects: {type: [String], default: []},
 	dateCreated: {type: Date, default: Date.now},
-	imageURL: {type: String}
+	imageURL: {type: String, default: "./data/images/profile.jpg"}
 });
 
 // Export the Mongoose model
