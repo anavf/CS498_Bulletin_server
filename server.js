@@ -27,9 +27,9 @@ var allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 
 // Use the body-parser package in our application
-/*app.use(bodyParser.urlencoded({
+app.use(bodyParser.urlencoded({
 	extended: true
-}));*/
+}));
 app.use(bodyParser.json());
 
 // All our routes will start with /api
