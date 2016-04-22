@@ -27,9 +27,9 @@ var allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 
 // Use the body-parser package in our application
-/*app.use(bodyParser.urlencoded({
+app.use(bodyParser.urlencoded({
 	extended: true
-}));*/
+}));
 app.use(bodyParser.json());
 
 // All our routes will start with /api
@@ -113,8 +113,9 @@ projectRoute.post(function(req, res) {
 	ret.approvedMembers = req.body.approvedMembers;
 	ret.imageURL = req.body.imageURL;
 	ret.save(function(err) {
+		console.log(err);
 		if (err) {
-			res.status(500).send({message: "Error", data: []});
+			res.status(500).send({message: "Error", data: ret});
 		}
 		else {
 			res.status(201).send({message: "OK", data: ret});

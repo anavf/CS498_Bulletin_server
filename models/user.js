@@ -8,7 +8,7 @@ var UserSchema = new mongoose.Schema({
 	password: {type: String, required: true},
 	skills: {type: [String], default: []},
 	myProjects: {type: [String], default: []},
-	joinedProjects: {type: [String], default: []},
+	joinedProjects: {type: [{projectID: String, accepted: Boolean}], default: []},
 	dateCreated: {type: Date, default: Date.now},
 	imageURL: {type: String, default: "./data/images/profile.jpg"}
 });
