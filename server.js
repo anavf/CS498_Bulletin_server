@@ -68,6 +68,7 @@ userRoute.post(function(req, res) {
 	ret.password = req.body.password;
 	ret.skills = req.body.skills;
 	ret.myProjects = req.body.myProjects;
+	ret.pendingProjects = req.body.pendingProjects;
 	ret.joinedProjects = req.body.joinedProjects;
 	ret.imageURL = req.body.imageURL;
 	ret.save(function(err) {
@@ -212,6 +213,7 @@ singleUserRoute.put(function(req, res) {
 			ret.password = req.body.password;
 			ret.skills = req.body.skills;
 			ret.myProjects = req.body.myProjects;
+			ret.pendingProjects = req.body.pendingProjects;
 			ret.joinedProjects = req.body.joinedProjects;
 			ret.imageURL = req.body.imageURL;
 			ret.save(function (err) {
