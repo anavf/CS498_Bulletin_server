@@ -85,19 +85,23 @@ userRoute.post(function(req, res) {
 var projectRoute = router.route('/projects');
 
 projectRoute.get(function(req, res) {
-	Project.find(eval("(" + req.query.where + ")")).
-		sort(eval("(" + req.query.sort + ")")).
-		select(eval("(" + req.query.select + ")")).
-		skip(req.query.skip).
-		limit(req.query.limit).
-		exec(function(err, ret) {
-			if (err) {
-				res.status(404).send({message: "Error", data: []});
-			}
-			else {
-				res.status(200).send({message: "OK", data: ret});
-			}
-		});
+	var sort = eval("("+req.query.sort+")");
+	var where = eval("("+req.query.where+")");
+	var select = eval("("+req.query.select+")");
+	var skip = eval("("+req.query.skip+")");
+	var limit = eval("("+req.query.limit+")");
+	var query = Project.find(where).sort(sort).select(select).skip(skip).limit(limit);
+	if(req.query.count && req.query.count.toLowerCase() == 'true'){
+	query = query.count();
+	}
+	query.exec(function(err, ret) {
+		if (err) {
+			res.status(404).send({message: "Error", data: []});
+		}
+		else {
+			res.status(200).send({message: "OK", data: ret});
+		}
+	});
 });
 
 projectRoute.post(function(req, res) {
@@ -114,7 +118,6 @@ projectRoute.post(function(req, res) {
 	ret.approvedMembers = req.body.approvedMembers;
 	ret.imageURL = req.body.imageURL;
 	ret.save(function(err) {
-		console.log(err);
 		if (err) {
 			res.status(500).send({message: "Error", data: ret});
 		}
