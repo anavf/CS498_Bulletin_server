@@ -114,6 +114,7 @@ projectRoute.post(function(req, res) {
 	ret.categories = req.body.categories;
 	ret.tags = req.body.tags;
 	ret.creator = req.body.creator;
+	ret.creatorName = req.body.creatorName;
 	ret.pendingMembers = req.body.pendingMembers;
 	ret.approvedMembers = req.body.approvedMembers;
 	ret.imageURL = req.body.imageURL;

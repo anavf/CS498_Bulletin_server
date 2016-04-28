@@ -11,6 +11,7 @@ var ProjectSchema = new mongoose.Schema({
 	categories: {type: [String], required: true},
 	tags: {type: [String], default: []},
 	creator: {type: String, required: true},
+	creatorName: {type: String, required: true},
 	pendingMembers: {type: [String], default: []},
 	approvedMembers: {type: [String], default: []},
 	dateCreated: {type: Date, default: Date.now},
