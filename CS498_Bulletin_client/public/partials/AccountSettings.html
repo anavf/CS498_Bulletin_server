@@ -20,14 +20,14 @@
 		<h6 class="RC-h6">Name</h6>
 		<input type="text" name="name" value="{{user.name}}" required/>
 		<h6 class="RC-h6">E-mail</h6>
-		<input type="email" name="email" value="{{user.email}}" required/>
+		<input type="email" name="email" value="{{user.local.email}}" required/>
 		<h6 class="RC-h6">Password</h6>
 		<input type="password" name="password1"/>
 		<h6 class="RC-h6">Confirm Password</h6>
 		<input type="password" name="password2"/>
 
 		<div id="RC_accountInfoButtons">
-			<a class="alert button">Cancel</a>
+			<a href = "#/MyProfilePage" class="alert button">Cancel</a>
 			<input type="submit" class="button" value="Submit"/>
 		</div>
 	</form>

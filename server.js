@@ -53,7 +53,8 @@ function isLoggedIn(req, res, next) {
 		return next();
 
 	res.json({
-		error: "User not logged in"
+		message: "User not logged in",
+		data: null
 	});
 }
 
@@ -87,7 +88,7 @@ userRoute.get(function(req, res) {
 });
 
 userRoute.post(passport.authenticate('local-signup'), function (req, res) {
-	console.log(req.body);
+	//console.log(req.body);
 	//res.json({message: "OK", data: req.body});
 	//res.redirect('/#/MyProfilePage');
 
@@ -102,6 +103,20 @@ loginRoute.post(passport.authenticate('local-login'), function (req, res) {
 	res.redirect('/#/MyProfilePage');
 });
 
+// User logout route
+var logoutRoute = router.route('/logout');
+
+logoutRoute.get(function(req, res) {
+	req.logout();
+	res.redirect('/#/HomePage');
+});
+
+// User profile route
+var userProfileRoute = router.route('/MyProfilePage');
+
+userProfileRoute.get(isLoggedIn, function(req, res) {
+	res.status(200).json({message: "OK", data: req.user});
+});
 
 // Project route
 var projectRoute = router.route('/projects');
@@ -217,8 +232,8 @@ categoryRoute.post(function(req, res) {
 // Single user route
 var singleUserRoute = router.route('/users/:id');
 
-singleUserRoute.get(isLoggedIn, function (req, res) {
-	User.findById(req.user._id, function(err, ret) {
+singleUserRoute.get(function (req, res) {
+	User.findById(req.params.id, function(err, ret) {
 		if (err) {
 			res.status(404).send({message: "Error", data: []});
 		}

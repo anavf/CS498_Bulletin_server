@@ -38,6 +38,9 @@ BulletinServices.factory('Data', function($http, $window) {
         login : function() {
         	return $http.post('http://localhost:4000/api/login');
         },
+        getProfile: function() {
+        	return $http.get('http://localhost:4000/api/MyProfilePage');
+        },
 		createUser : function(user) {
 			return $http.post('http://localhost:4000/api/users', user);
 		},

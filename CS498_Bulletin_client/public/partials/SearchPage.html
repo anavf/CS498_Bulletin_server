@@ -30,21 +30,37 @@
             <a ng-click="sendSearch(searchInput)"><i class="fa fa-search" aria-hidden="true" id="searchLogo"></i></a>
             <div id="searchBox"><input type="text" id="right-label" placeholder="Search" href="#/Search" ng-model="basicQuery"></div>
         </div>
-        <div class="small-3 large-2 large-offset-2 column">
-            <a><p id="navName">Hello, {{thisUser.name}}!</p></a>
+
+        <div ng-show = "isLoggedIn" ng-hide = "!isLoggedIn">
+          <div class="small-3 large-2 large-offset-2 column">
+              <a><p id="navName">Hello, {{thisUser.name}}!</p></a>
+          </div>
+          <div class="small-4 large-2 column">
+             <a ng-click="showSettingsMenu()"><i class="fa fa-cog fa-3x" id="gear"></i></a>
+          </div>
         </div>
-        <div class="small-4 large-2 column">
-           <a ng-click="showSettingsMenu()"><i class="fa fa-cog fa-3x" id="gear"></i></a>
-       </div>
+
+
+        <div ng-hide = "isLoggedIn" ng-show = "!isLoggedIn">
+          <div class="small-3 large-1 large-offset-3 column">
+              <p id="logIn"><a data-open="logInModal4" id="modalButton">Log In</a></p>
+            </div>
+
+          <div class="small-4 large-2 column">
+              <p class="signUp">New?</p>
+              <a href="#/SignUp"><p class="signUp"> Sign Up</p></a>
+          </div>
+        </div>
 </nav>
 
 <div id="settingsMenu">
-    <p style="padding-top: 20px;"><a href="#/{{thisUser._id}}/AccountSettings/{{thisUser._id}}">Account Settings</a></p>
+    <p style="padding-top: 20px;"><a href="#/AccountSettings">Account Settings</a></p>
     <div class="line3"></div>
-    <p><a href="#/{{thisUser._id}}/MyProfilePage/{{thisUser._id}}">Profile</a></p>
+    <p><a href="#/MyProfilePage">Profile</a></p>
     <div class="line3"></div>
-    <p id="LogOut"><a href="#/HomePage">Log Out</a></p>
+    <p id="LogOut"><a ng-click = "logOut()">Log Out</a></p>
 </div>
+
 
 </div>
 
@@ -107,8 +123,12 @@
         </form>
     </div>
 
-    <div class="large-2 medium-4 small-4 columns">
+    <div ng-show = "isLoggedIn" ng-hide = "!isLoggedIn"class="large-2 medium-4 small-4 columns">
         <input type="checkbox" id="checkboxM1" ng-model="matchSkillOption"><label><p style="color: $dark-gray; font-family:'Source Sans Pro'; font-size: 18px;">Match My Skills</p></label></input>
+    </div>
+
+    <div ng-show = "!isLoggedIn" ng-hide = "isLoggedIn" class="large-2 medium-4 small-4 columns" id="checkboxMM1">
+        Log in to find projects matching your skills!
     </div>
 
 
@@ -135,7 +155,7 @@
                 <p style="color: #f2f2f2; padding-left: 20px;">{{project.pendingMembers.length}} users want to join this project. 
                 And ?{{project.approvedMembers.length}} are already enrolled!</p> 
 <!--                 <p style="color: #f2f2f2">Go on to view details>></p>
- -->          <a href="#/:userLoggedIn/ProfilePage/{{project.creator}}" style="font-family: 'Source Sans Pro'; color: #a6a6a6; padding-left: 20px;">ABOUT THE CREATOR</a>
+ -->          <a href="#/ProfilePage/{{project.creator}}" style="font-family: 'Source Sans Pro'; color: #a6a6a6; padding-left: 20px;">ABOUT THE CREATOR</a>
         </div>
         <div  class="modalViewProject" ng-show="showM[$index]>0">
             <span class="closeModalViewProject" ng-click="removeModal($index)">×</span>
@@ -192,7 +212,21 @@
 </div>
 </div>
 </div> -->
+<div id="logInModal4" class="reveal" data-reveal>
+        <h3 style="padding-top: 0px;">LOG IN</h3>
+        <form action="http://localhost:4000/api/login" method="post">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
 
+            <input class = "button" type="submit">Login</button>
+        </form>
+</div>
 
 
 </div>

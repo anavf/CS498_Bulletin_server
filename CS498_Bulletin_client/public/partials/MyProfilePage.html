@@ -2,7 +2,7 @@
 <div> 
  <nav class="row text-center" class="partialNav">
         <div class="small-3 large-2 columns">
-            <a href="#/HomePage"><p id="logo">Bulletin</p></a>
+            <a href="#/HomePageLoggedIn"><p id="logo">Bulletin</p></a>
         </div>
 <!--         <div class="large-1 columns">
             <i class="fa fa-search" aria-hidden="true"></i>
@@ -24,7 +24,7 @@
     <div class="line3"></div>
     <p><a href="#/MyProfilePage">Profile</a></p>
     <div class="line3"></div>
-    <p id="LogOut"><a href="">Log Out</a></p>
+    <p id="LogOut"><a ng-click = "logOut()">Log Out</a></p>
 </div>
 
 <div class="row" id="profileBar">
@@ -50,7 +50,7 @@
         <h3>My Projects</h3>
     </div>
     <div class="large-3 large-offset-4 columns">
-        <a href="#/:userLoggedIn/CreateProject"><div id="createButton">
+        <a href="#/CreateProject"><div id="createButton">
             <p>Create Project</p>
         </div></a>
     </div>
@@ -69,7 +69,7 @@
         <h4>{{project.name}}</h4>
         <p>by you</p>
         <div class="editProject">
-            <a href="#/:userLoggedIn/EditProject/{{project._id}}"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+            <a href="#/EditProject/{{project._id}}"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
         </div>
         <div class="viewProject">
             <a data-open="detailedProjectModal" ng-click="loadDetails(project._id)"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></a>
@@ -207,7 +207,7 @@ ng-repeat="joinedProject in joinedProjectsAll"
   </div>
 
     <div class="large-2 columns">
-      <a data-dismiss="detailedProjectModal" href="#/:userLoggedIn/EditProject/{{projectY._id}}"><button class="button EDIT">EDIT</button></a>
+      <a data-dismiss="detailedProjectModal" href="#/EditProject/{{projectY._id}}"><button class="button EDIT">EDIT</button></a>
       <button class="close-button" data-close aria-label="Close modal" type="button">
         <span aria-hidden="true" style="color: $dark-gray;">&times;</span>
       </button>

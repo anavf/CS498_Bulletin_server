@@ -1,4 +1,7 @@
 TODO:
 
-1) Fix sign up
-2) Fix links to each page
+1) Fix SIGN UP and ACCOUNT SETTINGS!
+2) Make all the separate partials for logged in, one partial!
+	a) HomePage  -- DONE
+	b) Search Page -- DONE
+3) Fix profilepage.html join functionality -- DONE

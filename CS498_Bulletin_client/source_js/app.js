@@ -10,14 +10,6 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/SearchPage.html',
     controller: 'SearchController'
   }).
-    when('/HomePage', {
-    templateUrl: 'partials/HomePage.html',
-    controller: 'HomeController'
-  }).
-  when('/Search', {
-    templateUrl: 'partials/SearchPageWithoutLogIn.html',
-    controller: 'SearchWithoutLogInController'
-  }).
   when('/AccountSettings', {
     templateUrl: 'partials/AccountSettings.html',
     controller: 'AccountSettingsController'
@@ -26,7 +18,7 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/MyProfilePage.html',
     controller: 'MyProfileController'
   }).
-  when('/ProfilePage', {
+  when('/ProfilePage/:userid', {
     templateUrl: 'partials/ProfilePage.html',
     controller: 'ProfileController'
   }).
@@ -34,7 +26,7 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/SignUp.html',
     controller: 'SignUpController'
   }).
-  when('/EditProject', {
+  when('/EditProject/:projectid', {
     templateUrl: 'partials/EditProject.html',
     controller: 'EditProjectController'
   }).

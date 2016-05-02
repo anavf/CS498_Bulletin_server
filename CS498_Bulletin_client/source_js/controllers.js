@@ -74,36 +74,39 @@ BulletinControllers.controller('SettingsController', ['$scope' , '$window' , fun
 }]);
 
 BulletinControllers.controller('AccountSettingsController', ['$scope', '$routeParams', 'Data', function($scope, $routeParams, Data) {
-	$scope.id = $routeParams.userLoggedIn;
 	
-	Data.getUser($scope.id).success(function(data) {
+	Data.getProfile().success(function(data) {
 		$scope.user = data.data;
+    $scope.id = $scope.user._id;
+
+    $scope.saveAccountSettings = function() {
+      Data.getUser($scope.id).success(function(data) {
+        var password = $scope.user.password;
+        if ($('input[name="password1"]').val() == $('input[name="password2"]').val() &&
+          $('input[name="password1"]').val() != "") {
+          password = $('input[name="password1"]').val();
+        }
+        var imageURL = $('input[name="imageURL"]').val();
+        if ($('input[name="imageURL"]').val() == "") {
+          imageURL = "./data/images/profile.jpg";
+        }
+        var newUser = {
+          name: $('input[name="name"]').val(),
+          email: $('input[name="email"]').val(),
+          password: password,
+          skills: $scope.user.skills,
+          myProjects: $scope.user.myProjects,
+          pendingProjects: $scope.user.pendingProjects,
+          joinedProjects: $scope.user.joinedProjects,
+          imageURL: imageURL
+        };
+        Data.editUser($scope.id, newUser);
+      });
+    };
+
 	});
 	
-	$scope.saveAccountSettings = function() {
-		Data.getUser($scope.id).success(function(data) {
-			var password = $scope.user.password;
-			if ($('input[name="password1"]').val() == $('input[name="password2"]').val() &&
-				$('input[name="password1"]').val() != "") {
-				password = $('input[name="password1"]').val();
-			}
-			var imageURL = $('input[name="imageURL"]').val();
-			if ($('input[name="imageURL"]').val() == "") {
-				imageURL = "./data/images/profile.jpg";
-			}
-			var newUser = {
-				name: $('input[name="name"]').val(),
-				email: $('input[name="email"]').val(),
-				password: password,
-				skills: $scope.user.skills,
-				myProjects: $scope.user.myProjects,
-				pendingProjects: $scope.user.pendingProjects,
-				joinedProjects: $scope.user.joinedProjects,
-				imageURL: imageURL
-			};
-			Data.editUser($scope.id, newUser);
-		});
-	};
+	
 }]);
 
 BulletinControllers.controller('SignUpController', ['$scope', 'Data', function($scope, Data) {
@@ -134,9 +137,35 @@ BulletinControllers.controller('HomeController', ['$scope', '$http', 'Data', '$w
 
   $scope.username = '';
   $scope.password = '';
+  $scope.isLoggedIn = false;
+
+  Data.getProfile().success(function(data) {
+    console.log(data.data);
+    if (data.data != null) {
+      $scope.isLoggedIn = true;
+      $scope.thisUser = data.data;
+    }
+  })
+
+  $scope.showSettingsMenu = function(){
+       $("#settingsMenu").toggle();
+  };
+
+  $scope.logOut = function() {
+    $http.get('http://localhost:4000/api/logout').success(function(data) {
+      location.reload();
+    });
+  };
+
+  $scope.goToCreatePage = function() {
+    window.location = "#/CreateProject";
+  }
 
 
 }]);
+
+
+
 
 BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', '$window' , 'Data', '$http', '$route', '$routeParams', function($scope, $rootScope, $window, Data, $http, $route, $routeParams) {
 
@@ -156,21 +185,26 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
        $("#settingsMenu").toggle();
   };
 
+  $scope.logOut = function() {
+    $http.get('http://localhost:4000/api/logout').success(function(data) {
+      $window.location.href = '#/HomePage';
+    });
+  };
+
   $scope.username = '';
   $scope.skills = [];
   $scope.myProjects = [];
   $scope.joinedProjects = [];
   $scope.pendingProjects = [];
-  $scope.userid = $routeParams.userid;
-  $scope.userLoggedIn = $routeParams.userLoggedIn;
   $scope.skillNames = [];
   $scope.newSkill = '';
-
-  Data.getUser($scope.userid).success(function(data){
+  Data.getProfile().success(function(data){
     $scope.userX = data.data;
+    $scope.userid = data.data._id;
     $scope.username = data.data.name;
     $scope.skills = data.data.skills;
     $scope.myProjects = data.data.myProjects;
+    console.log($scope.userX);
     $scope.joinedProjects = data.data.joinedProjects;
     $scope.pendingProjects = data.data.pendingProjects;
     $scope.image = data.data.imageURL;
@@ -223,485 +257,487 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
       }).error(function(data){console.log('Error: '+data)});
     }
 
-  }).error(function(data){console.log('Error: '+data)});
-
-  $http({
-    url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&count=true',
-    method: 'GET'
-  }).success(function(data){
-      $scope.count = data.data;
-      console.log("Count: " + $scope.count);
-      if($scope.high >= $scope.count) {
-        $scope.endOfList = true;
-      } else {
-        $scope.endOfList = false;
-      }
-    }).error(function(data){console.log('Error: '+data)});
-
     $http({
-      url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
+      url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&count=true',
       method: 'GET'
     }).success(function(data){
-      $scope.projects = data.data;
+        $scope.count = data.data;
+        console.log("Count: " + $scope.count);
+        if($scope.high >= $scope.count) {
+          $scope.endOfList = true;
+        } else {
+          $scope.endOfList = false;
+        }
+      }).error(function(data){console.log('Error: '+data)});
 
-      // var inMyProjects = false;
-      // for(var j=0; j<$scope.projects.length; j++){
-      //   if($scope.projects[i]._id==$scope.myProjects[i]){
-      //     inMyProjects = true;
-      //   }
-      // }
-      // if (inMyProjects == false){
+      $http({
+        url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
+        method: 'GET'
+      }).success(function(data){
+        $scope.projects = data.data;
 
+        // var inMyProjects = false;
+        // for(var j=0; j<$scope.projects.length; j++){
+        //   if($scope.projects[i]._id==$scope.myProjects[i]){
+        //     inMyProjects = true;
+        //   }
+        // }
+        // if (inMyProjects == false){
+
+        // }
+
+        // for (var i=0; i < $scope.projects.length; i++){
+        //  Data.getUser($scope.projects[i].creator).success(function(data){
+        //     $scope.creatorName = data.data.name;
+        //   }).error(function(data){console.log('Error: ' + data)});
+        // }
+
+      }).error(function(data){console.log('Error: '+data)});
+
+      $http({
+          url: 'http://localhost:4000/api/projects?where={"approvedMembers":"'+$scope.userid+'"}',
+          method: 'GET'
+      // }).success(function(data){
+        // Data.getProjectsWithQuery({
+        //   where: {
+        //     approvedMembers: $scope.userid
+        //   }
+        }).success(function(data){
+        $scope.joinedProjectsAM = data.data;
+        console.log($scope.joinedProjectsAll);
+
+        $scope.pendingAM = [];
+          for(var i=0; i<$scope.joinedProjectsAM.length; i++){
+            $scope.pendingAM[i] = 'Accepted';
+          }
+
+
+        $http({
+          url: 'http://localhost:4000/api/projects?where={"pendingMembers":"'+$scope.userid+'"}',
+          method: 'GET'
+        }).success(function(data){
+          $scope.joinedProjectsPM = data.data;
+
+          $scope.joinedProjectsAll = $scope.joinedProjectsAM.concat($scope.joinedProjectsPM);
+          console.log($scope.joinedProjectsAll);
+
+          $scope.countJP = $scope.joinedProjectsAll.length;
+
+          if($scope.highJP >= $scope.countJP) {
+            $scope.endOfJPList = true;
+          } else {
+            $scope.endOfJPList = false;
+          }
+
+          $scope.pendingPM = [];
+          for(var i=0; i<$scope.joinedProjectsPM.length; i++){
+            $scope.pendingPM[i] = 'Pending';
+          }
+
+          $scope.pending = $scope.pendingAM.concat($scope.pendingPM);
+          console.log($scope.pending);
+
+          $scope.repeatData = $scope.joinedProjectsAll.map(function(value, index){
+            return {
+              data: value,
+              value: $scope.pending[index]
+            }
+          });
+
+          console.log('Repeat Data: '+$scope.repeatData);
+
+        }).error(function(data){console.log('Error: '+data)});
+
+      }).error(function(data){console.log('Error: '+data)});
+
+
+      // $scope.joinedProjectsInfo = [];
+      // for(var i=0; i<$scope.joinedProjects.length; i++){
+      //   Data.getProject($scope.joinedProjects[i]).success(function(data){
+      //     console.log('Got joined projects');
+      //     $scope.joinedProjectX = data.data;
+      //     $scope.joinedProjectsInfo.push($scope.joinedProjectX);
+
+      //     console.log($scope.joinedProjectsInfo)
+      //   }).error(function(data){console.log('Error: '+data)});
       // }
 
-      // for (var i=0; i < $scope.projects.length; i++){
-      //  Data.getUser($scope.projects[i].creator).success(function(data){
-      //     $scope.creatorName = data.data.name;
-      //   }).error(function(data){console.log('Error: ' + data)});
-      // }
+    //get all skills and put them into an array
+    //filter that array based on skill typing input
+    //on selection of skill - 
+    $scope.allSkillsNames = [];
+    Data.getSkills().success(function(data){
+      $scope.allSkills = data.data;
+      console.log('got all skills');
+
+      for (var i=0; i < $scope.allSkills.length; i++){
+         Data.getSkill($scope.allSkills[i]._id).success(function(data){
+            $scope.oneSkillName = data.data.name;
+            $scope.allSkillsNames.push($scope.oneSkillName);
+          }).error(function(data){console.log('Error: ' + data)});
+        }
 
     }).error(function(data){console.log('Error: '+data)});
 
-    $http({
-        url: 'http://localhost:4000/api/projects?where={"approvedMembers":"'+$scope.userid+'"}',
-        method: 'GET'
-    // }).success(function(data){
-      // Data.getProjectsWithQuery({
-      //   where: {
-      //     approvedMembers: $scope.userid
-      //   }
-      }).success(function(data){
-      $scope.joinedProjectsAM = data.data;
-      console.log($scope.joinedProjectsAll);
+    $scope.setSkillInput = function(name){
+      $scope.newSkill = name;
+    }
 
-      $scope.pendingAM = [];
-        for(var i=0; i<$scope.joinedProjectsAM.length; i++){
-          $scope.pendingAM[i] = 'Accepted';
-        }
+  $scope.loadDetails = function(id) {
+    Data.getProject(id).success(function(data){
+      $scope.projectY = data.data;
+    }).error(function(data){console.log('Error: '+data)});
+  }
 
+  //NEED TO:
+  //get Count of Projects
+  //get limited selection of projects - limit 3, offset whatever
+
+  $scope.nextPage = function(){
+      $scope.low = $scope.high;
+      $scope.high += 3;
+      $scope.startOfList = false;
+      console.log("Count: " + $scope.count + " Low, High: " + $scope.low + ", " + $scope.high);
 
       $http({
-        url: 'http://localhost:4000/api/projects?where={"pendingMembers":"'+$scope.userid+'"}',
+        url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
         method: 'GET'
       }).success(function(data){
-        $scope.joinedProjectsPM = data.data;
+        $scope.projects = data.data;
+        //$route.reload();
 
-        $scope.joinedProjectsAll = $scope.joinedProjectsAM.concat($scope.joinedProjectsPM);
-        console.log($scope.joinedProjectsAll);
+        if($scope.high >= $scope.count) {
+          $scope.high = $scope.count;
+          $scope.endOfList = true;
+        } else {
+          $scope.endOfList = false;
+        }
 
-        $scope.countJP = $scope.joinedProjectsAll.length;
+      }).error(function(data){console.log('Error: ' + data.data)});
+    };
+
+
+  $scope.nextPageJP = function(){
+      $scope.lowJP = $scope.highJP;
+      $scope.highJP += 3;
+      $scope.startOfJPList = false;
+      console.log("Count: " + $scope.countJP + " Low, High: " + $scope.lowJP + ", " + $scope.highJP);
+
+  //get next JP from array
 
         if($scope.highJP >= $scope.countJP) {
+          $scope.highJP = $scope.countJP;
           $scope.endOfJPList = true;
         } else {
           $scope.endOfJPList = false;
         }
 
-        $scope.pendingPM = [];
-        for(var i=0; i<$scope.joinedProjectsPM.length; i++){
-          $scope.pendingPM[i] = 'Pending';
+    };
+
+    $scope.prevPage = function(){
+      $scope.high = $scope.low;
+      $scope.low = $scope.low-3;
+      $scope.endOfList = false;
+      console.log($scope.low + ", " + $scope.high);
+
+      $http({
+        url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
+        method: 'GET'
+      }).success(function(data){
+        $scope.projects = data.data;
+
+        if($scope.low <= 0) {
+          $scope.startOfList = true;
+        } else {
+          $scope.startOfList = false;
         }
 
-        $scope.pending = $scope.pendingAM.concat($scope.pendingPM);
-        console.log($scope.pending);
+      }).error(function(data){console.log('Error: ' + data.data)});
+    };
 
-        $scope.repeatData = $scope.joinedProjectsAll.map(function(value, index){
-          return {
-            data: value,
-            value: $scope.pending[index]
+      $scope.prevPageJP = function(){
+      $scope.highJP = $scope.lowJP;
+      $scope.lowJP = $scope.lowJP-3;
+      $scope.endOfJPList = false;
+      console.log($scope.lowJP + ", " + $scope.highJP);
+
+      //get previous items from array
+
+
+        if($scope.lowJP <= 0) {
+          $scope.startOfJPList = true;
+        } else {
+          $scope.startOfJPList = false;
+        }
+
+    };
+
+    //$scope.loggedInUser = $routeParams.userLoggedIn;
+    $scope.sendSearch = function(value) {
+      $rootScope.basicQuery = value; //allow access to search value using $rootScope variable
+      window.location.href = '#/Search'; //redirect to Search page
+    };
+
+    $scope.leaveProject = function(id) {
+
+      var projectIDtoDelete = id; 
+
+      for(var i=0; i<$scope.joinedProjects.length; i++){
+        if($scope.joinedProjects[i] == projectIDtoDelete){
+          $scope.joinedProjects.splice(i,1);
+          break;
+        }
+      }
+
+      for(var i=0; $scope.pendingProjects.length; i++){
+        if($scope.pendingProjects[i] == projectIDtoDelete){
+          $scope.pendingProjects.splice(i,1);
+          break;
+        }
+      }
+
+      Data.getProject(projectIDtoDelete).success(function(data){
+        $scope.projectToUpdate = data.data;
+        $scope.approvedMembersToUpdate = data.data.approvedMembers;
+        $scope.pendingMembersToUpdate = data.data.pendingMembers;
+
+
+          for(var i=0; i<$scope.approvedMembersToUpdate.length; i++){
+            if($scope.approvedMembersToUpdate[i] == $scope.userid){
+              $scope.approvedMembersToUpdate.splice(i,1);
+              break;
+            }
           }
-        });
 
-        console.log('Repeat Data: '+$scope.repeatData);
+          for(var i=0; $scope.pendingMembersToUpdate.length; i++){
+            if($scope.pendingMembersToUpdate[i] == $scope.userid){
+              $scope.pendingMembersToUpdate.splice(i,1);
+              break;
+            }
+          }
+
+          var updatedProject = {
+              name: $scope.projectToUpdate.name,
+              description: $scope.projectToUpdate.description,
+              deadline: $scope.projectToUpdate.deadline,
+              visible: $scope.projectToUpdate.visible,
+              skills: $scope.projectToUpdate.skills,
+              categories: $scope.projectToUpdate.categories,
+              tags: $scope.projectToUpdate.tags,
+              creator: $scope.projectToUpdate.creator,
+              pendingMembers: $scope.pendingMembersToUpdate,
+              approvedMembers: $scope.approvedMembersToUpdate,
+              dateCreated: $scope.projectToUpdate.dateCreated,
+              imageURL: $scope.projectToUpdate.imageURL
+          }
+
+          $http({
+            url: 'http://localhost:4000/api/projects/'+projectIDtoDelete,
+            data: updatedProject,
+            method: 'PUT'
+          }).success(function(data){
+            console.log('Project updated');
+
+            location.reload();
+          }).error(function(data){console.log('Error: '+data)});
+
+
 
       }).error(function(data){console.log('Error: '+data)});
 
-    }).error(function(data){console.log('Error: '+data)});
+    };
 
+    $scope.deleteSkill = function(name) {
+      $scope.key = 'name';
+      $scope.skillName = name;
+      console.log($scope.skillName);
+      $http({
+        url: 'http://localhost:4000/api/skills?where={"name":"'+$scope.skillName+'"}',
+        method: 'GET'
+      }).success(function(data){
+        console.log('Made it '+data.data[0]);
+        $scope.skillX = data.data[0];
+        $scope.skillID = data.data[0]._id;
+        console.log($scope.skillID);
 
-    // $scope.joinedProjectsInfo = [];
-    // for(var i=0; i<$scope.joinedProjects.length; i++){
-    //   Data.getProject($scope.joinedProjects[i]).success(function(data){
-    //     console.log('Got joined projects');
-    //     $scope.joinedProjectX = data.data;
-    //     $scope.joinedProjectsInfo.push($scope.joinedProjectX);
+        // Data.deleteSkill($scope.skillID).success(function(data){
 
-    //     console.log($scope.joinedProjectsInfo)
-    //   }).error(function(data){console.log('Error: '+data)});
-    // }
-
-  //get all skills and put them into an array
-  //filter that array based on skill typing input
-  //on selection of skill - 
-  $scope.allSkillsNames = [];
-  Data.getSkills().success(function(data){
-    $scope.allSkills = data.data;
-    console.log('got all skills');
-
-    for (var i=0; i < $scope.allSkills.length; i++){
-       Data.getSkill($scope.allSkills[i]._id).success(function(data){
-          $scope.oneSkillName = data.data.name;
-          $scope.allSkillsNames.push($scope.oneSkillName);
-        }).error(function(data){console.log('Error: ' + data)});
-      }
-
-  }).error(function(data){console.log('Error: '+data)});
-
-  $scope.setSkillInput = function(name){
-    $scope.newSkill = name;
-  }
-
-$scope.loadDetails = function(id) {
-  Data.getProject(id).success(function(data){
-    $scope.projectY = data.data;
-  }).error(function(data){console.log('Error: '+data)});
-}
-
-//NEED TO:
-//get Count of Projects
-//get limited selection of projects - limit 3, offset whatever
-
-$scope.nextPage = function(){
-    $scope.low = $scope.high;
-    $scope.high += 3;
-    $scope.startOfList = false;
-    console.log("Count: " + $scope.count + " Low, High: " + $scope.low + ", " + $scope.high);
-
-    $http({
-      url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
-      method: 'GET'
-    }).success(function(data){
-      $scope.projects = data.data;
-      //$route.reload();
-
-      if($scope.high >= $scope.count) {
-        $scope.high = $scope.count;
-        $scope.endOfList = true;
-      } else {
-        $scope.endOfList = false;
-      }
-
-    }).error(function(data){console.log('Error: ' + data.data)});
-  };
-
-
-$scope.nextPageJP = function(){
-    $scope.lowJP = $scope.highJP;
-    $scope.highJP += 3;
-    $scope.startOfJPList = false;
-    console.log("Count: " + $scope.countJP + " Low, High: " + $scope.lowJP + ", " + $scope.highJP);
-
-//get next JP from array
-
-      if($scope.highJP >= $scope.countJP) {
-        $scope.highJP = $scope.countJP;
-        $scope.endOfJPList = true;
-      } else {
-        $scope.endOfJPList = false;
-      }
-
-  };
-
-  $scope.prevPage = function(){
-    $scope.high = $scope.low;
-    $scope.low = $scope.low-3;
-    $scope.endOfList = false;
-    console.log($scope.low + ", " + $scope.high);
-
-    $http({
-      url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
-      method: 'GET'
-    }).success(function(data){
-      $scope.projects = data.data;
-
-      if($scope.low <= 0) {
-        $scope.startOfList = true;
-      } else {
-        $scope.startOfList = false;
-      }
-
-    }).error(function(data){console.log('Error: ' + data.data)});
-  };
-
-    $scope.prevPageJP = function(){
-    $scope.highJP = $scope.lowJP;
-    $scope.lowJP = $scope.lowJP-3;
-    $scope.endOfJPList = false;
-    console.log($scope.lowJP + ", " + $scope.highJP);
-
-    //get previous items from array
-
-
-      if($scope.lowJP <= 0) {
-        $scope.startOfJPList = true;
-      } else {
-        $scope.startOfJPList = false;
-      }
-
-  };
-
-  $scope.loggedInUser = $routeParams.userLoggedIn;
-  $scope.sendSearch = function(value) {
-    $rootScope.basicQuery = value; //allow access to search value using $rootScope variable
-    window.location = '#/'+$scope.loggedInUser+'/Search'; //redirect to Search page
-  };
-
-  $scope.leaveProject = function(id) {
-
-    var projectIDtoDelete = id; 
-
-    for(var i=0; i<$scope.joinedProjects.length; i++){
-      if($scope.joinedProjects[i] == projectIDtoDelete){
-        $scope.joinedProjects.splice(i,1);
-        break;
-      }
-    }
-
-    for(var i=0; $scope.pendingProjects.length; i++){
-      if($scope.pendingProjects[i] == projectIDtoDelete){
-        $scope.pendingProjects.splice(i,1);
-        break;
-      }
-    }
-
-    Data.getProject(projectIDtoDelete).success(function(data){
-      $scope.projectToUpdate = data.data;
-      $scope.approvedMembersToUpdate = data.data.approvedMembers;
-      $scope.pendingMembersToUpdate = data.data.pendingMembers;
-
-
-        for(var i=0; i<$scope.approvedMembersToUpdate.length; i++){
-          if($scope.approvedMembersToUpdate[i] == $scope.userid){
-            $scope.approvedMembersToUpdate.splice(i,1);
-            break;
+          for(var i=0; i<$scope.skills.length; i++){
+            if($scope.skills[i] == $scope.skillID){
+              $scope.skills.splice(i, 1);
+            }
           }
-        }
 
-        for(var i=0; $scope.pendingMembersToUpdate.length; i++){
-          if($scope.pendingMembersToUpdate[i] == $scope.userid){
-            $scope.pendingMembersToUpdate.splice(i,1);
-            break;
+          for(var i=0; i<$scope.skillNames.length; i++){
+            if($scope.skillNames[i] == $scope.skillName){
+              $scope.skillNames.splice(i, 1);
+            }
           }
-        }
 
-        var updatedProject = {
-            name: $scope.projectToUpdate.name,
-            description: $scope.projectToUpdate.description,
-            deadline: $scope.projectToUpdate.deadline,
-            visible: $scope.projectToUpdate.visible,
-            skills: $scope.projectToUpdate.skills,
-            categories: $scope.projectToUpdate.categories,
-            tags: $scope.projectToUpdate.tags,
-            creator: $scope.projectToUpdate.creator,
-            pendingMembers: $scope.pendingMembersToUpdate,
-            approvedMembers: $scope.approvedMembersToUpdate,
-            dateCreated: $scope.projectToUpdate.dateCreated,
-            imageURL: $scope.projectToUpdate.imageURL
-        }
+          var updatedUser = {
+            name: $scope.username,
+            email: $scope.userX.email,
+            password: $scope.userX.password,
+            skills: $scope.skills,
+            myProjects: $scope.myProjects,
+            joinedProjects: $scope.joinedProjects,
+            dateCreated: $scope.userX.dateCreated
+          };
 
-        $http({
-          url: 'http://localhost:4000/api/projects/'+projectIDtoDelete,
-          data: updatedProject,
-          method: 'PUT'
-        }).success(function(data){
-          console.log('Project updated');
+           $http({
+            url: 'http://localhost:4000/api/users/'+$scope.userid,
+            data: updatedUser,
+            method: 'PUT'
+          }).success(function(data){
+            console.log('User updated');
+          }).error(function(data){console.log('Error: '+data)});
 
-          location.reload();
-        }).error(function(data){console.log('Error: '+data)});
-
-
-
-    }).error(function(data){console.log('Error: '+data)});
-
-  };
-
-  $scope.deleteSkill = function(name) {
-    $scope.key = 'name';
-    $scope.skillName = name;
-    console.log($scope.skillName);
-    $http({
-      url: 'http://localhost:4000/api/skills?where={"name":"'+$scope.skillName+'"}',
-      method: 'GET'
-    }).success(function(data){
-      console.log('Made it '+data.data[0]);
-      $scope.skillX = data.data[0];
-      $scope.skillID = data.data[0]._id;
-      console.log($scope.skillID);
-
-      // Data.deleteSkill($scope.skillID).success(function(data){
-
-        for(var i=0; i<$scope.skills.length; i++){
-          if($scope.skills[i] == $scope.skillID){
-            $scope.skills.splice(i, 1);
-          }
-        }
-
-        for(var i=0; i<$scope.skillNames.length; i++){
-          if($scope.skillNames[i] == $scope.skillName){
-            $scope.skillNames.splice(i, 1);
-          }
-        }
-
-        var updatedUser = {
-          name: $scope.username,
-          email: $scope.userX.email,
-          password: $scope.userX.password,
-          skills: $scope.skills,
-          myProjects: $scope.myProjects,
-          joinedProjects: $scope.joinedProjects,
-          dateCreated: $scope.userX.dateCreated
-        };
-
-         $http({
-          url: 'http://localhost:4000/api/users/'+$scope.userid,
-          data: updatedUser,
-          method: 'PUT'
-        }).success(function(data){
-          console.log('User updated');
-        }).error(function(data){console.log('Error: '+data)});
-
-      //}).error(function(data){console.log('Error: '+data)});
-    }).error(function(data){console.log('Error: '+data)});
-    //get skill by name 
-    //delete skill with that ID
-    //splice skill from user's skill array
-    //push changes to user
-  };
-
-  $scope.inList = false;
-
-  $scope.updateSkills = function(skill) {
+        //}).error(function(data){console.log('Error: '+data)});
+      }).error(function(data){console.log('Error: '+data)});
+      //get skill by name 
+      //delete skill with that ID
+      //splice skill from user's skill array
+      //push changes to user
+    };
 
     $scope.inList = false;
-    var flag = false;
-    var skillIsNew = true; 
-    console.log($scope.flag);
-    $scope.enteredSkill = skill;
 
-    for(var i=0; i<$scope.skills.length; i++){
-      // console.log("I'm removing null skills");
-      if($scope.skills[i]==null | $scope.skills[i]==undefined){
-        $scope.skills.splice(i, 1);
-        console.log($scope.skills);
-        i = i-1;
+    $scope.updateSkills = function(skill) {
+
+      $scope.inList = false;
+      var flag = false;
+      var skillIsNew = true; 
+      console.log($scope.flag);
+      $scope.enteredSkill = skill;
+
+      for(var i=0; i<$scope.skills.length; i++){
+        // console.log("I'm removing null skills");
+        if($scope.skills[i]==null | $scope.skills[i]==undefined){
+          $scope.skills.splice(i, 1);
+          console.log($scope.skills);
+          i = i-1;
+        }
       }
-    }
 
-    for (var i=0; i<$scope.skillNames.length; i++){
-      // console.log("I'm in the checking for skills in your list area");
-      // console.log(flag);
-      if($scope.skillNames[i] == null | $scope.skillNames[i] == undefined){
-        $scope.skillNames.splice(i, 1);
+      for (var i=0; i<$scope.skillNames.length; i++){
+        // console.log("I'm in the checking for skills in your list area");
+        // console.log(flag);
+        if($scope.skillNames[i] == null | $scope.skillNames[i] == undefined){
+          $scope.skillNames.splice(i, 1);
+        }
+        if($scope.enteredSkill == $scope.skillNames[i]){ //if skill already exists in user skill array
+              //alert here 
+              console.log('already in your list!');
+              $scope.inList = true;
+              skillIsNew = false;
+              flag = true;
+        }
       }
-      if($scope.enteredSkill == $scope.skillNames[i]){ //if skill already exists in user skill array
-            //alert here 
-            console.log('already in your list!');
-            $scope.inList = true;
-            skillIsNew = false;
-            flag = true;
-      }
-    }
 
-    for (var i=0; i<$scope.allSkillsNames.length; i++){
-      // console.log("I'm in the checking the whole database area");
-      // console.log(flag);
-      if($scope.allSkillsNames[i] == null | $scope.allSkillsNames[i] == undefined){
-        $scope.allSkillsNames.splice(i, 1);
-      }
-      if(($scope.enteredSkill == $scope.allSkillsNames[i]) && flag == false ){ //if skill exists in database
-              flag = true; 
-              skillIsNew = false;                                    
-              $http({
-                url: 'http://localhost:4000/api/skills?where={"name":"'+$scope.enteredSkill+'"}',
-                method: 'GET'
-              }).success(function(data){
-                    console.log('Made it '+data.data[0].name);
-                    $scope.skillXupdate = data.data[0];
-                    $scope.skillIDupdate = data.data[0]._id;
-                    console.log($scope.skillIDupdate);
+      for (var i=0; i<$scope.allSkillsNames.length; i++){
+        // console.log("I'm in the checking the whole database area");
+        // console.log(flag);
+        if($scope.allSkillsNames[i] == null | $scope.allSkillsNames[i] == undefined){
+          $scope.allSkillsNames.splice(i, 1);
+        }
+        if(($scope.enteredSkill == $scope.allSkillsNames[i]) && flag == false ){ //if skill exists in database
+                flag = true; 
+                skillIsNew = false;                                    
+                $http({
+                  url: 'http://localhost:4000/api/skills?where={"name":"'+$scope.enteredSkill+'"}',
+                  method: 'GET'
+                }).success(function(data){
+                      console.log('Made it '+data.data[0].name);
+                      $scope.skillXupdate = data.data[0];
+                      $scope.skillIDupdate = data.data[0]._id;
+                      console.log($scope.skillIDupdate);
 
-                    $scope.skills.push($scope.skillIDupdate);  
-                    $scope.skillNames.push($scope.enteredSkill);
+                      $scope.skills.push($scope.skillIDupdate);  
+                      $scope.skillNames.push($scope.enteredSkill);
 
-                    var updatedUser = {
-                    name: $scope.username,
-                    email: $scope.userX.email,
-                    password: $scope.userX.password,
-                    skills: $scope.skills,
-                    myProjects: $scope.myProjects,
-                    joinedProjects: $scope.joinedProjects,
-                    dateCreated: $scope.userX.dateCreated
-                  };
+                      var updatedUser = {
+                      name: $scope.username,
+                      email: $scope.userX.email,
+                      password: $scope.userX.password,
+                      skills: $scope.skills,
+                      myProjects: $scope.myProjects,
+                      joinedProjects: $scope.joinedProjects,
+                      dateCreated: $scope.userX.dateCreated
+                    };
 
-                  console.log('Updated User: '+ updatedUser);
+                    console.log('Updated User: '+ updatedUser);
 
-                  $http({
-                    url: 'http://localhost:4000/api/users/'+$scope.userid,
-                    data: updatedUser,
-                    method: 'PUT',
-                  })
-                  .success(function(data){
-                    console.log('New Skill updated to User');
-                    console.log(data);
+                    $http({
+                      url: 'http://localhost:4000/api/users/'+$scope.userid,
+                      data: updatedUser,
+                      method: 'PUT',
+                    })
+                    .success(function(data){
+                      console.log('New Skill updated to User');
+                      console.log(data);
+                    }).error(function(data){console.log('Error: '+data)});
+                    
                   }).error(function(data){console.log('Error: '+data)});
-                  
-                }).error(function(data){console.log('Error: '+data)});
-      } 
-    }
-
-    //if skill is already in database, just add to user skill array and update 
-    //if skill matches skill already in array, do nothing
-    //if skill is not already in the database - do everything below
-
-    if (flag == false && skillIsNew == true){
-    console.log("I'm in the new skill area");
-    $scope.newSkillName = $scope.enteredSkill;
-    console.log($scope.newSkillName);
-
-      var newSkill = {
-        name: $scope.newSkillName
+        } 
       }
 
-      console.log(newSkill);
+      //if skill is already in database, just add to user skill array and update 
+      //if skill matches skill already in array, do nothing
+      //if skill is not already in the database - do everything below
 
-      Data.createSkill(newSkill).success(function(data){
-        console.log('Skill created');
-        $scope.skillX = data.data;
-        $scope.skillXName = data.data.name;
-        $scope.skillID = data.data._id;
+      if (flag == false && skillIsNew == true){
+      console.log("I'm in the new skill area");
+      $scope.newSkillName = $scope.enteredSkill;
+      console.log($scope.newSkillName);
 
-        $scope.skills.push($scope.skillID);
-        $scope.skillNames.push($scope.skillXName);
+        var newSkill = {
+          name: $scope.newSkillName
+        }
 
-        var updatedUser = {
-          name: $scope.username,
-          email: $scope.userX.email,
-          password: $scope.userX.password,
-          skills: $scope.skills,
-          myProjects: $scope.myProjects,
-          joinedProjects: $scope.joinedProjects,
-          dateCreated: $scope.userX.dateCreated
-        };
+        console.log(newSkill);
 
-        console.log(updatedUser);
+        Data.createSkill(newSkill).success(function(data){
+          console.log('Skill created');
+          $scope.skillX = data.data;
+          $scope.skillXName = data.data.name;
+          $scope.skillID = data.data._id;
 
-        $http({
-          url: 'http://localhost:4000/api/users/'+$scope.userid,
-          data: updatedUser,
-          method: 'PUT',
-        })
-        .success(function(data){
-          console.log('New Skill updated to User');
-        }).error(function(data){console.log('Error: '+data)});
+          $scope.skills.push($scope.skillID);
+          $scope.skillNames.push($scope.skillXName);
 
-      }).error(function(data){console.log("Error: "+data)});
-      //post new skill to skills
-      //push to skill array
-      //put changes to user
+          var updatedUser = {
+            name: $scope.username,
+            email: $scope.userX.email,
+            password: $scope.userX.password,
+            skills: $scope.skills,
+            myProjects: $scope.myProjects,
+            joinedProjects: $scope.joinedProjects,
+            dateCreated: $scope.userX.dateCreated
+          };
 
+          console.log(updatedUser);
+
+          $http({
+            url: 'http://localhost:4000/api/users/'+$scope.userid,
+            data: updatedUser,
+            method: 'PUT',
+          })
+          .success(function(data){
+            console.log('New Skill updated to User');
+          }).error(function(data){console.log('Error: '+data)});
+
+        }).error(function(data){console.log("Error: "+data)});
+        //post new skill to skills
+        //push to skill array
+        //put changes to user
+
+      };
+       
     };
-     
-  };
+
+  }).error(function(data){console.log('Error: '+data)});
+
+  
 
 }]);
 
@@ -723,9 +759,24 @@ BulletinControllers.controller('ProfileController', ['$scope' , '$rootScope', '$
   $scope.startOfJPList = true;
   $scope.shown = 3;
 
+  $scope.isLoggedIn = false;
+  Data.getProfile().success(function(data) {
+    console.log(data.data);
+    if (data.data != null) {
+      $scope.isLoggedIn = true;
+      $scope.thisUser = data.data;
+    }
+  });
+
   $scope.showSettingsMenu = function(){
        $("#settingsMenu").toggle();
   };
+
+  $scope.logOut = function() {
+    $http.get('http://localhost:4000/api/logout').success(function(data) {
+      location.reload();
+    });
+  }
 
   $scope.username = '';
   $scope.skills = [];
@@ -733,7 +784,6 @@ BulletinControllers.controller('ProfileController', ['$scope' , '$rootScope', '$
   $scope.joinedProjects = [];
   $scope.pendingProjects = [];
   $scope.userid = $routeParams.userid;
-  $scope.userLoggedIn = $routeParams.userLoggedIn;
   $scope.skillNames = [];
   $scope.newSkill = '';
 
@@ -962,68 +1012,82 @@ $scope.nextPageJP = function(){
 
   $scope.sendSearch = function(value) {
     $rootScope.searchValue = value; //allow access to search value using $rootScope variable
-    window.location = '#/Search'; //redirect to Search page
+    window.location.href = '#/Search'; //redirect to Search page
   };
 
 
   $scope.joinProject = function(id) {
 
     //if not logged in, prompt log in
+    Data.getProfile().success(function(data){
+      if (data.data != null) {
+        var projectIDtoJoin = id; 
+        var alreadyJoined = false;
 
-    var projectIDtoJoin = id; 
-    var alreadyJoined = false;
-
-    for(var i=0; $scope.pendingProjects.length; i++){
-      if($scope.pendingProjects[i] == projectIDtoJoin){
-        alreadyJoined = true;
-        break;
-      }
-    }
-
-    if(alreadyJoined == true){
-      //alert that you've already joined
-    }
-
-    if(alreadyJoined == false){
-      $scope.pendingProjects.push(projectIDtoJoin);
-    
-
-
-    Data.getProject(projectIDtoJoin).success(function(data){
-      $scope.projectToUpdate2 = data.data;
-      $scope.pendingMembersToUpdate2 = data.data.pendingMembers;
-
-      $scope.pendingMembersToUpdate2.push($scope.userLoggedIn);
-
-        var updatedProject = {
-            name: $scope.projectToUpdate2.name,
-            description: $scope.projectToUpdate2.description,
-            deadline: $scope.projectToUpdate2.deadline,
-            visible: $scope.projectToUpdate2.visible,
-            skills: $scope.projectToUpdate2.skills,
-            categories: $scope.projectToUpdate2.categories,
-            tags: $scope.projectToUpdate2.tags,
-            creator: $scope.projectToUpdate2.creator,
-            pendingMembers: $scope.pendingMembersToUpdate2,
-            approvedMembers: $scope.projectToUpdate2.approvedMembers,
-            dateCreated: $scope.projectToUpdate2.dateCreated,
-            imageURL: $scope.projectToUpdate2.imageURL
+        for(var i=0; $scope.pendingProjects.length; i++){
+          if($scope.pendingProjects[i] == projectIDtoJoin){
+            alreadyJoined = true;
+            break;
+          }
         }
 
-        $http({
-          url: 'http://localhost:4000/api/projects/'+projectIDtoJoin,
-          data: updatedProject,
-          method: 'PUT'
-        }).success(function(data){
-          console.log('Project joined and updated!');
+        if(alreadyJoined == true){
+          //alert that you've already joined
+        }
 
-          location.reload();
-        }).error(function(data){console.log('Error: '+data)});
+        if(alreadyJoined == false){
+          $scope.pendingProjects.push(projectIDtoJoin);
+        
 
 
+          Data.getProject(projectIDtoJoin).success(function(data){
+            $scope.projectToUpdate2 = data.data;
+            $scope.pendingMembersToUpdate2 = data.data.pendingMembers;
+            Data.getProfile().success(function(data) {
+              // Adding project to logged in user's pendingProjects
+              $scope.currentUser = data.data;
+              $scope.currentUser.pendingProjects.push($scope.projectToUpdate2._id);
+              Data.editUser($scope.currentUser._id, $scope.currentUser);
 
-    }).error(function(data){console.log('Error: '+data)});
-    }
+
+              $scope.pendingMembersToUpdate2.push($scope.currentUser._id);
+
+              var updatedProject = {
+                  name: $scope.projectToUpdate2.name,
+                  description: $scope.projectToUpdate2.description,
+                  deadline: $scope.projectToUpdate2.deadline,
+                  visible: $scope.projectToUpdate2.visible,
+                  skills: $scope.projectToUpdate2.skills,
+                  categories: $scope.projectToUpdate2.categories,
+                  tags: $scope.projectToUpdate2.tags,
+                  creator: $scope.projectToUpdate2.creator,
+                  pendingMembers: $scope.pendingMembersToUpdate2,
+                  approvedMembers: $scope.projectToUpdate2.approvedMembers,
+                  dateCreated: $scope.projectToUpdate2.dateCreated,
+                  imageURL: $scope.projectToUpdate2.imageURL
+              }
+
+              $http({
+                url: 'http://localhost:4000/api/projects/'+projectIDtoJoin,
+                data: updatedProject,
+                method: 'PUT'
+              }).success(function(data){
+                console.log('Project joined and updated!');
+
+                location.reload();
+              }).error(function(data){console.log('Error: '+data)});
+            });
+
+          }).error(function(data){console.log('Error: '+data)});
+        }
+      }
+      else {
+        console.log("NOT LOGGED IN!");
+      }
+      
+    });
+
+    
 
   };
 
@@ -1040,24 +1104,36 @@ BulletinControllers.controller('SearchController', [
   function($scope, $routeParams, $rootScope, $http, $window, Data) {
     $window.sessionStorage.baseUrl = "http://localhost:4000";
     $scope.advFilter=[];
-    Data.getUser($routeParams.id).success(function (data) {
-      $scope.thisUser=data.data;
+    $scope.isLoggedIn = false;
 
-    if($rootScope.basicQuery != null && $rootScope.basicQuery != ''){
-      $scope.basicQuery = $rootScope.basicQuery;
-    }
+    Data.getProfile().success(function (data) {
+      if (data.data != null) {
+        $scope.thisUser=data.data;
+        $scope.thisUserId = $scope.thisUser._id;
+        $scope.isLoggedIn = true;
+        if($rootScope.basicQuery != null && $rootScope.basicQuery != ''){
+          $scope.basicQuery = $rootScope.basicQuery;
+        }
 
-    $scope.thisUserSkills=data.data.skills;
-      for (var i=0;i<$scope.thisUserSkills.length;i++){
-        $scope.thisUserSkills[i]="'"+$scope.thisUserSkills[i]+"'";
+        $scope.thisUserSkills=data.data.skills;
+          for (var i=0;i<$scope.thisUserSkills.length;i++){
+            $scope.thisUserSkills[i]="'"+$scope.thisUserSkills[i]+"'";
 
+          }
+
+          $scope.whereQuery="{}";
+        $scope.matchSkillOption=false;
       }
+      
 
-      $scope.whereQuery="{}";
-    $scope.matchSkillOption=false;
+    
 
 
-
+    $scope.logOut = function() {
+      $http.get('http://localhost:4000/api/logout').success(function(data) {
+        location.reload();
+      });
+    }
 
   function getProjects() {
     $scope.usernames=[];
@@ -1130,16 +1206,28 @@ BulletinControllers.controller('SearchController', [
         $scope.showM[index] = -1;
         $scope.joinM[index] = 1;
 
-        if ($scope.projects[index].pendingMembers.indexOf($routeParams.id)<0) {
-          $scope.projects[index].pendingMembers.push($routeParams.id);
-          Data.editProject($scope.projects[index]._id, $scope.projects[index]);
+        Data.getProfile().success(function(data) {
+          // Logged in
+          if (data.data != null) {
+            if ($scope.projects[index].pendingMembers.indexOf($scope.thisUserId)<0) {
+              $scope.projects[index].pendingMembers.push($scope.thisUserId);
+              Data.editProject($scope.projects[index]._id, $scope.projects[index]);
 
-          $scope.thisUser.pendingProjects.push($scope.projects[index]._id);
-          Data.editUser($routeParams.id, $scope.thisUser);
-          $scope.joinInfo="We have added you to the waiting list!";
-        }else{
-          $scope.joinInfo="You are already in the pending list!";
-        }
+              $scope.thisUser.pendingProjects.push($scope.projects[index]._id);
+              Data.editUser($scope.thisUserId, $scope.thisUser);
+              $scope.joinInfo="We have added you to the waiting list!";
+            }else{
+              $scope.joinInfo="You are already in the pending list!";
+            }
+          }
+
+          // Not logged in
+          else {
+            $scope.joinInfo="You need to sign in to join this project!";
+          }
+        });
+
+        
 
 
 
@@ -1551,7 +1639,7 @@ BulletinControllers.controller('SearchController', [
 //  }
 //]);
 
-BulletinControllers.controller('SearchWithoutLogInController', [
+/*BulletinControllers.controller('SearchWithoutLogInController', [
   '$scope',
   '$routeParams',
   '$rootScope',
@@ -1682,7 +1770,7 @@ BulletinControllers.controller('SearchWithoutLogInController', [
 
 
   }
-]);
+]);*/
 
 BulletinControllers.controller('EditProjectController', ['$scope', '$http', '$window', 'Data', '$routeParams', function($scope, $http, $window, Data, $routeParams) {
   $scope.projectId = $routeParams.projectid;
@@ -2128,7 +2216,7 @@ BulletinControllers.controller('EditProjectController', ['$scope', '$http', '$wi
       Data.editProject($scope.projectId, $scope.thisProject).success(function(data) {
         console.log(data);
         $scope.hideSubmitModal();
-        $window.location.href = '#/' + $scope.thisProject.creator + '/Search';
+        $window.location.href = '#/MyProfilePage';
       }).error(function(data) {
         console.log(data);
         $scope.hideSubmitModal();
@@ -2162,7 +2250,7 @@ BulletinControllers.controller('EditProjectController', ['$scope', '$http', '$wi
           Data.deleteProject($scope.projectId).success(function(data) {
             console.log(data);
             $scope.hideDeleteModal();
-            $window.location.href = '#/' + $scope.thisProject.creator + '/Search';
+            $window.location.href = '#/MyProfilePage';
           }).error(function(data) {
             $scope.hideDeleteModal();
             $('#SUdeleteModalError').show();
@@ -2175,8 +2263,6 @@ BulletinControllers.controller('EditProjectController', ['$scope', '$http', '$wi
 }]);
 
 BulletinControllers.controller('CreateProjectController', ['$scope', '$http', '$window', '$routeParams', 'Data', function($scope, $http, $window, $routeParams, Data) {
-
-  $scope.userId = $routeParams.userid;
 
   // Setting up search bar for skills
   $('#SUskillsInput').focusin(function() {
@@ -2442,30 +2528,30 @@ BulletinControllers.controller('CreateProjectController', ['$scope', '$http', '$
     if ($scope.tags != undefined) {
       var tags = $scope.tags.split(",");
     }
-    $scope.currentProject.creator = $scope.userId;
-    $scope.currentProject.tags = tags;
-	Data.getUser($scope.userId).success(function(user) {
-	  $scope.currentProject.creatorName = user.data.name;
-	  console.log($scope.currentProject.creatorName);
+    Data.getProfile().success(function(data) {
+      $scope.currentUser = data.data;
+      $scope.userid = data.data._id;
+      $scope.currentProject.creator = $scope.userid;
+      $scope.currentProject.tags = tags;
+      $scope.currentProject.creatorName = $scope.currentUser.name;
+      console.log($scope.currentProject.creator);
       Data.createProject($scope.currentProject).success(function(data) {
         $scope.projectId = data.data._id;
         //Add project to user's myProjects field
-        Data.getUser($scope.userId).success(function(data) {
-          $scope.currentUser = data.data;
-          console.log($scope.currentUser);
-          $scope.currentUser.myProjects.push($scope.projectId);
-          Data.editUser($scope.userId, $scope.currentUser).success(function(data) {
-            console.log(data);
-            $scope.hideSubmitModal();
-            $window.location.href = '#/' + $scope.currentProject.creator + '/Search';
-          });
+        //console.log($scope.currentUser);
+        $scope.currentUser.myProjects.push($scope.projectId);
+        Data.editUser($scope.userid, $scope.currentUser).success(function(data) {
+          console.log(data);
+          $scope.hideSubmitModal();
+          $window.location.href = '#/MyProfilePage';
         });
       }).error(function(data) {
         console.log(data);
         $scope.hideSubmitModal();
         $('#SUsubmitModalError').show();
       });
-	});
+      
+    });
   }
 
 
