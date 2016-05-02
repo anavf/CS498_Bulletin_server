@@ -1,0 +1,1403 @@
+#RCbackground {
+	background-image: url('../data/Triangles-Muted-Warm.png');
+	background-repeat: none;
+	background-size: cover;
+	background-attachment: fixed;
+	overflow: hidden;
+}
+
+#RC-AS-background {
+	@extend #RCbackground;
+	height: 3000px;
+	width: 100%;
+	background-image: url('../data/Triangles-Blue-Sea.png');
+}
+
+#RC-ul{
+	background-color: #f2f2f2;
+}
+
+#RC_loginBanner {
+	background-color: black;
+	color: white;
+	font-weight: bold;
+	height: 45px;
+}
+
+#RC_loginDetails {
+	float: right;
+	margin: 10px 20px 0px 0px;
+	a {
+		color: white;
+	}
+}
+
+#RC_h1 {
+	text-align: center;
+	font-family: 'Source Sans Pro';
+	color: #f2f2f2;
+	font-weight: 300;
+}
+
+.RC-h6 {
+	font-family: 'Source Sans Pro';
+	color: #f2f2f2;
+}
+
+#RC_accountInfo, #RC_signUp {
+	margin-left: 35%;
+	width: 30%;
+}
+
+#RC_accountInfoImage, #RC_signUpImage {
+	display: inline-block;
+	background:  #1a1a1a;
+	margin: 0% 25% 0% 25%;
+	position: relative;
+}
+
+#RC_accountInfoImage i, #RC_signUpImage i {
+	color: white;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	margin-left: 40%;
+}
+
+#RC_accountInfoImage img, #RC_signUpImage img {
+	display: block;
+	width: 200px;
+	height: 200px;
+	position: relative;
+	-webkit-transition: all 0.5s linear;
+	-moz-transition: all 0.5s linear;
+	-ms-transition: all 0.5s linear;
+	-o-transition: all 0.5s linear;
+	transition: all 0.5s linear;
+}
+
+#RC_accountInfoImage img:hover, #RC_signUpImage img:hover {
+	opacity: 0.7;
+	cursor: pointer;
+}
+
+#RC_accountInfoButtons, #RC_signUpButtons {
+	float: right;
+	margin: 20px;
+	font-family: 'Source Sans Pro';
+}
+
+#RC_accountInfo ul, #RC_signUp ul {
+	list-style-type: none;
+	background-color: #f2f2f2;
+	height: 200px;
+	overflow: auto;
+	padding: 4px;
+}
+
+#RC_accountInfo ul li, #RC_signUp ul li .SKILL {
+	display: inline;
+	float: left;
+	margin: 5px;
+	font-family: 'Source Sans Pro';
+}
+
+.RC_modal-bg {
+	background: black;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	display: none;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	left: 0;
+	top: 0;
+}
+
+.RC_modal {
+	background-color: white;
+	display: none;
+	position: fixed;
+	padding: 10px;
+	border-radius: 6px;
+	width: 30%;
+	height: auto;
+	z-index: 2;
+    top: 145px;
+    
+}
+
+.RC_modal a {			
+	float: right;
+}
+
+.RC_close-modal:hover {
+	cursor: pointer;
+}
+
+// Add any custom Sass & CSS here
+.AVF {
+
+
+.background {
+
+	height: 100%;
+	width: 100%;
+}
+
+h3{
+	font-weight: 300;
+}
+
+row {
+	width: 100%;
+	max-width: 100%;
+}
+
+.line {
+	height: 1px;
+	width: 80%;
+	max-width: 80%;
+	background-color: $dark-gray;
+	margin: 10px;
+	margin-left: 150px;
+}
+
+#grad {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+
+    background-image: url('../data/Triangles-Purple-Green.png');
+	background-repeat: none;
+	background-size: cover;
+	background-attachment: fixed;
+	overflow: hidden;
+}
+
+
+nav {
+	z-index: 10;
+	height: 80px;
+	width: 100%;
+	max-width: 100% !important;
+	background-color: $dark-gray;
+	position: fixed;
+	overflow: hidden;
+
+	p{
+		color: white;
+		padding: 3px;
+	}
+
+	#logIn {
+		margin-top: 15px;
+		padding: 10px;
+		border: 1px solid #00ff99;
+	}
+
+	#logIn:hover {
+		transition: all 0.3s ease-in-out;
+		background-color:  #00b359;
+	}
+
+}
+
+i {
+	color: white;
+}
+
+.darkIcon{
+	color: $dark-gray;
+	padding-top: 180px;
+}
+
+.buttonStyle {
+	margin-top: 15px;
+	padding: 10px;
+	border: 1px solid #00ff99;
+}
+
+#gear {
+	color: #8c8c8c;
+	float: left;
+	padding-top: 15px;
+}
+
+#gearSettings {
+	position: relative;
+}
+
+#searchBox {
+	width: 90%;
+	display: inline-block;
+	padding-top: 20px;
+}
+
+#searchLogo {
+	color: #f2f2f2;
+	padding-top: 30px;
+	padding-right: 20px;
+	display: inline-block;
+}
+
+#right-label {
+	background-color:  #f2f2f2;
+}
+
+#logo {
+	float: right;
+	padding-top: 12px;
+	font-family: 'Fredericka the Great';
+	font-size: 32px;
+}
+
+#logoSpan {
+	font-family: 'Fredericka the Great';
+	font-size: 60px;
+	color: white;
+}
+
+.signUp {
+	padding-top: 28px;
+	float: left; 
+	font-size: 13px;
+	color: #00ff99;
+}
+
+#navName {
+	@extend .signUp;
+	float: right;
+}
+
+a:hover {
+	transition: all 0.3s ease-in-out;
+	color:  #f2f2f2 !important;
+}
+
+#HomePageContent{
+	padding-top: 200px;
+
+	h1{
+		color: white;
+		font-family: 'Source Sans Pro';
+		font-weight: 300;
+		font-size: 60px;
+	}
+}
+
+#searchHomeBox {
+	float: right;
+}
+
+#createHomeBox {
+	float: left;
+}
+
+.grayBox {
+
+	overflow: hidden;
+	height: 350px;
+	width: 350px;
+	background-color: rgba(0, 26, 13, 0.6);
+	border: 2px solid $dark-gray;
+	text-align: center;
+
+}
+
+.grayBox:hover {
+	transition: all 0.3s ease-in-out;
+	background-color: rgba(0, 26, 13, 0.8);
+}
+
+	h2 {
+		font-family: 'Source Sans Pro';
+		font-weight: 300;
+		padding-top: 110px;
+		color: white;
+		opacity: 1;
+		margin: 0 auto;
+	}
+
+#profileBar {
+	width: 100%;
+	max-width: 100%;
+	padding-top: 80px;
+	height: 220px;
+	background-image: url('../data/Triangle-pattern.png');
+	background-repeat: none;
+	background-size: cover;
+	background-attachment: fixed;
+	overflow: hidden;
+
+	h2{
+		color: white;
+		font-weight: 300; 
+		padding-top: 40px;
+		float: left;
+	}
+
+	button {
+		margin-top: 50px;
+	}
+
+	#skillsButton {
+		margin-top: 45px;
+		padding: 10px;
+		height: 50px;
+		width: 130px;
+		background-color:  #00b359;
+
+		p {
+			padding-left: 15px;
+			padding-top: 2px;
+			color: white;
+		}
+
+	}
+
+	#skillsButton:hover {
+		transition: all 0.3s ease-in-out;
+		background-color:  #00994d;
+	}
+
+}
+
+.projectSection {
+	padding-top: 50px;
+	width: 80%;
+	max-width: 80%;
+}
+
+.projectList {
+	height: 400px;	
+	width: 80%;
+	max-width: 80%;
+}
+
+.circle {
+	float: right;
+	margin-top: 35px;
+	background-color:  #e6e6e6;
+	border-radius: 100%;
+	height: 70px;
+	width: 70px;
+	text-align: center;
+
+	i{
+		padding-top: 18px;
+		color: $dark-gray;
+	}
+}
+
+#createButton {
+		margin-right: 35px;
+		float: right;
+		padding: 10px;
+		height: 50px;
+		width: 170px;
+		background-color:  #00b359;
+
+		p {
+			padding-left: 15px;
+			padding-top: 2px;
+			color: white;
+		}
+
+	}
+
+#createButton:hover {
+		transition: all 0.3s ease-in-out;
+		background-color:  #00994d;
+	}
+
+#logInModal {
+	text-align: center;
+	background-color: $dark-gray;
+
+	h3{
+		color: #f2f2f2;
+	}
+
+	label {
+		color: #f2f2f2;
+	}
+
+	.OK {
+		border: 1px solid #00ff99;
+	}
+}
+
+.myProjectA {
+	margin-left: 9px;
+	margin-right: 74px;
+	position: relative;
+	text-align: center;
+	margin-top: 90px;
+	height: 250px;
+	width: 250px;
+	background-color: $dark-gray;
+
+	h4{
+		padding-top: 30px;
+		font-family: 'Source Sans Pro';
+		color: #f2f2f2;
+		font-weight: 300;
+	}
+
+	p {
+		padding-top: 10px;
+		color: #f2f2f2;
+	}
+
+	i {
+		color: #f2f2f2;
+	}
+
+	.editProject {
+		position: absolute;
+		background-color:  #262626;
+		bottom: 0;
+		left: 0;
+		display: inline-block;
+		float: left;
+		width: 125px;
+		height: 80px;
+		padding-top: 22px;
+		border: 1px solid #8c8c8c;
+	}
+
+	.viewProject {
+		position: absolute;
+		background-color:  #262626;
+		bottom: 0;
+		right: 0;
+		display: inline-block;
+		float: right;
+		width: 125px;
+		height: 80px;
+		padding-top: 22px;
+		border: 1px solid #8c8c8c;
+	}
+
+	.joinedProjectStatus {
+		@extend .editProject;
+		padding-top: 16px;
+	}
+
+		.Accepted {
+			p { color: #1aff8c; }
+		}
+
+		.Pending {
+			p { color: #999999; }
+		}
+
+		.Declined {
+			p { color:  #ff4d4d; }		
+		}
+
+	.editProject:hover, .viewProject:hover, .joinedProjectStatus:hover {
+		transition: all 0.3s ease-in-out;
+		background-color:  #1a1a1a;
+	}
+
+}
+
+#settingsMenu {
+	transition: all 0.3s ease-in-out;
+	display: none;
+	text-align: center;
+	background-color: #262626;
+	margin-top: 80px;
+	position: fixed;
+	right: 130px;
+	z-index: 20;
+	height: 215px;
+	width: 200px;
+
+	p{
+		font-family: 'Source Sans Pro';
+		padding: 10px;
+		color: #f2f2f2;
+	}
+
+	.line3 {
+		background-color:  #cccccc;
+		height: 1px;
+		margin-top: 5px;
+		margin-bottom: 10px;
+	}
+
+}
+
+#LogOut {
+	color: #ff4d4d;
+
+	a { color: #ff4d4d;}
+}
+
+.displaySettingsMenu {
+	@extend #settingsMenu;
+	display: inline-block;
+}
+
+#skillsModal {
+	text-align: center;
+	background-color: $dark-gray;
+
+	h3{
+		color: #f2f2f2;
+	}
+
+	p, label {
+		color: #f2f2f2;
+	}
+
+	label {
+		font-family: 'Source Sans Pro';
+		font-weight: 300;
+		font-size: 31px;
+	}
+
+	.OK {
+		border: 1px solid #00ff99;
+	}
+}
+
+#skillsModal2 {
+	@extend #skillsModal;
+}
+
+#detailedProjectModal {
+	background-color: $dark-gray;
+
+	h3{
+		color: white;
+	}
+
+	h6 {
+		color:  #8c8c8c;
+	}
+
+	p, label {
+
+		color: #f2f2f2;
+	}
+
+	.EDIT {
+		@extend .OK;
+		margin-top: 120px;
+		border: 1px solid #00ff99;
+		float: right;
+	}
+
+	#projectImage {
+
+		padding: 40px;
+		height: 150px;
+		width: 150px;
+		background-color: gray;
+		background-image: url('../data/Triangles-soft-with-sunburst.png');
+		background-repeat: none;
+		background-size: cover;
+	}
+
+	.line2 {
+		height: 1px;
+		background-color: #737373;
+		margin: 5px;
+		margin-bottom: 7px;
+		margin-left: 0px;
+		width: 90%;
+	}
+
+	h3 span {
+		font-family: 'Source Sans Pro';
+		font-weight: 300;
+		font-size: 22px;
+		color:  #c4ff4d;
+	}
+
+	.AVFgreen {
+		font-family: 'Source Sans Pro';
+		color:  #c4ff4d;
+		font-size: 18px;
+	}
+}
+
+#detailedJoinedProjectModal {
+	@extend #detailedProjectModal;
+}
+
+#detailedProjectModal2, 
+#detailedJoinedProjectModal2 {
+	@extend #detailedProjectModal;
+}
+
+#AVFskillsSearch {
+
+	p {
+		font-family: 'Source Sans Pro';
+		font-size: 14px;
+	}
+
+	a:hover {
+		color: white;
+	}
+}
+
+}
+
+
+
+.WEI {
+
+  i {
+	color: white;
+  }
+
+  .buttonStyle {
+	margin-top: 15px;
+	padding: 10px;
+	border: 1px solid #00ff99;
+  }
+
+  #gear {
+	color: #8c8c8c;
+	float: left;
+	padding-top: 15px;
+  }
+
+  #gearSettings {
+	position: relative;
+  }
+
+  #searchBox {
+	padding-top: 20px;
+  }
+
+  #logo {
+	float: right;
+	padding-top: 12px;
+	font-family: 'Fredericka the Great';
+	font-size: 32px;
+  }
+
+  span {
+	font-family: 'Fredericka the Great';
+	font-size: 60px;
+	color: white;
+  }
+
+  nav {
+	z-index: 10;
+	height: 80px;
+	width: 100%;
+	max-width: 100% !important;
+	background-color: $dark-gray;
+	position: fixed;
+	overflow: hidden;
+
+	p {
+	  color: white;
+	  padding: 3px;
+	}
+
+	#logIn {
+	  margin-top: 15px;
+	  padding: 10px;
+	  border: 1px solid #00ff99;
+	}
+
+	#logIn:hover {
+	  transition: all 0.3s ease-in-out;
+	  background-color: #00b359;
+	}
+
+  }
+
+  #weishi_photoGraphy, #weishi_database, #weishi_mobile, #weishi_globe, #weishi_lock, #weishi_android, #weishi_linux, #weishi_bug {
+	color: #8c8c8c;
+
+  }
+
+  #Graphics, #Database, #IOS, #Network, #Security, #Android, #Linux, #Debug {
+	position: relative;
+
+	float: top;
+
+  }
+  #checkboxM1, #checkboxM2 {
+	position: relative;
+	margin-top: 70px;
+  }
+
+  #searchIcon {
+	float: right;
+	position: relative;
+	padding-top: 15px;
+  }
+
+  #settingsMenu{
+  		transition: all 0.3s ease-in-out;
+	display: none;
+	text-align: center;
+	background-color: #262626;
+	margin-top: 80px;
+	position: fixed;
+	right: 130px;
+	z-index: 20;
+	height: 215px;
+	width: 200px;
+
+	p{
+		font-family: 'Source Sans Pro';
+		padding: 10px;
+		color: #f2f2f2;
+	}
+
+	.line3 {
+		height: 1px;
+		background-color:  #cccccc;
+		margin-top: 5px;
+		margin-bottom: 10px;
+	}
+  }
+
+  .displaySettingsMenu {
+	@extend #settingsMenu;
+	display: inline-block;
+	}
+
+#logInModal {
+	text-align: center;
+	background-color: $dark-gray;
+
+	h3 {
+		color: #f2f2f2;
+	}
+
+	label {
+		color: #f2f2f2;
+	}
+
+	.OK {
+		border: 1px solid #00ff99;
+	}
+}
+
+#logInModal4 {
+	@extend #logInModal;
+}
+
+#detailedProjectModal {
+	background-color: $dark-gray;
+
+	h3{
+		color: white;
+	}
+
+	h6 {
+		color:  #8c8c8c;
+	}
+
+	p, label {
+
+		color: #f2f2f2;
+	}
+
+	.EDIT {
+		@extend .OK;
+		margin-top: 120px;
+		border: 1px solid #00ff99;
+		float: right;
+	}
+
+	#projectImage {
+
+		padding: 40px;
+		height: 150px;
+		width: 150px;
+		background-color: gray;
+		background-image: url('../data/Triangles-soft-with-sunburst.png');
+		background-repeat: none;
+		background-size: cover;
+	}
+
+	.line {
+		height: 1px;
+		background-color: #737373;
+		width: 90%;
+	}
+
+	h3 span {
+		font-family: 'Source Sans Pro';
+		font-weight: 300;
+		font-size: 22px;
+		color:  #c4ff4d;
+	}
+
+	.AVFgreen {
+		font-family: 'Source Sans Pro';
+		color:  #c4ff4d;
+		font-size: 18px;
+	}
+}
+
+#detailedJoinedProjectModal {
+	@extend #detailedProjectModal;
+}
+
+  #searchFilters {
+	padding-top: 80px;
+	height: 230px;
+	background-image: url('../data/Triangles-Muted-Warm.png');
+	background-repeat: none;
+	background-size: cover;
+	background-attachment: fixed;
+  }
+
+  #displayProject, #displayProject2 {
+	padding-top: 0px;
+  }
+
+  @media all and (max-width: 50em) {
+	#card {
+	  position: relative;
+	  height: 200px;
+	  width: 48%; /* for IE 6 */
+	  background: $dark-gray;
+
+	  margin-top: 10px;
+	  margin-left: 0.66%;
+	  margin-right: 0.5%;
+	  cursor: pointer;
+	  transition: 0.3s;
+
+	}
+  }
+  @media all and (min-width: 50em) and (max-width: 60em) {
+	#card {
+	  position: relative;
+	  height: 200px;
+	  width: 32%; /* for IE 6 */
+	  background: $dark-gray;
+
+	  margin-top: 10px;
+	  margin-left: 0.5%;
+	  margin-right: 0.5%;
+	  cursor: pointer;
+	  transition: 0.3s;
+	}
+  }
+
+  @media all and (min-width: 60em) {
+	#card {
+	  position: relative;
+	  height: 200px;
+	  width: 24%; /* for IE 6 */
+	  background: $dark-gray;
+
+	  margin-top: 10px;
+
+	  margin-left: 0.5%;
+	  margin-right: 0.5%;
+	  cursor: pointer;
+	  transition: 0.3s;
+
+	}
+  }
+  h4 {
+	/*position: absolute;
+	font-family: 'Source Sans Pro';
+	top: 20%;
+	left: 10%;
+	width: 80%;
+	color: #c4ff4d;
+	font-weight: 300;*/
+
+	font-family: 'Source Sans Pro';
+	color: #c4ff4d;
+	font-weight: 300;
+	padding-top: 25px;
+	padding-left: 20px;
+  }
+
+  h3{
+  	font-family: 'Source Sans Pro';
+  	font-weight: 300;
+  	padding-top: 50px;
+  }
+
+  .FiltNav {
+  	margin-top: 30px;
+  }
+
+  #WS-byline {
+  	/*position: absolute;
+  	bottom: 25%;
+  	left: 10%;*/
+  	color: gray;
+  	padding-left: 20px;
+  }
+
+  #card:hover {
+	opacity: 0.7;
+  }
+  #checkboxMM1 {
+	position: relative;
+	margin-top: 50px;
+	font-family: 'Source Sans Pro';
+  }
+
+  .modalViewProject {
+	display: block; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 10000; /* Sit on top */
+
+	margin-left: 20%;
+	width: 60%; /* Full width */
+	height: 45%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: $dark-gray; /* Fallback color */
+	background-color:  #262626; /* Black w/ opacity */
+	border: 1px solid #black;
+
+  }
+
+  #green {
+  	color: #c4ff4d;
+  	font-family: 'Source Sans Pro';
+  	font-weight: 300;
+  	font-size: 22px;
+  }
+
+  /*.WSline{
+  	width: 100%;
+  	background-color: #4d4d4d;
+  	margin: 10px;
+  }*/
+
+  	.AVFgreen {
+		font-family: 'Source Sans Pro';
+		color:  #c4ff4d;
+		font-size: 18px;
+	}
+
+  /* Modal Content (image) */
+  .modalViewProject-content {
+	margin: auto;
+	display: block;
+	width: 80%;
+
+  }
+
+  /* Add Animation */
+  .modalViewProject-content {
+	-webkit-animation-name: zoom;
+	-webkit-animation-duration: 0.6s;
+	animation-name: zoom;
+	animation-duration: 0.6s;
+  }
+
+  @-webkit-keyframes zoom {
+	from {
+	  -webkit-transform: scale(0)
+	}
+	to {
+	  -webkit-transform: scale(1)
+	}
+  }
+
+  @keyframes zoom {
+	from {
+	  transform: scale(0)
+	}
+	to {
+	  transform: scale(1)
+	}
+  }
+
+  /* The Close Button */
+  .closeModalViewProject {
+	position: absolute;
+	top: 15px;
+	right: 35px;
+	color: #f1f1f1;
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
+  }
+
+  .closeModalViewProject:hover,
+  .closeModalViewProject:focus {
+	color: #bbb;
+	text-decoration: none;
+	cursor: pointer;
+  }
+
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px) {
+	.modalViewProject-content {
+	  width: 100%;
+
+	}
+  }
+  h5 {
+	text-align: center;
+	color: lightgrey;
+	font-size: 200%;
+	margin-top: 5%;
+
+  }
+  HR {
+	width: 100%;
+	color: #4d4d4d;
+	background:  #4d4d4d;
+	border-color:  #4d4d4d;
+
+  }
+
+  .modalDescription {
+	text-align: left;
+	color: lightgrey;;
+	font-size: 100%;
+	margin-top: 1%;
+
+  }
+
+  #joinButton {
+	position: relative;
+
+	color: #f2f2f2;
+	margin-left: 90%;
+	border: 1px solid #00ff99;
+
+	transition: 0.3s;
+	width: 100%;
+	text-align: center;
+	font-size: 100%;
+	font-family: 'Source Sans Pro';
+	padding: 10px 20px 10px 20px;
+
+  }
+
+
+  #joinButton:hover,
+  #joinButton:focus {
+	background-color:  #1a1a1a;
+	text-decoration: none;
+	cursor: pointer;
+  }
+
+  .modalJoin {
+	display: block; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 10000; /* Sit on top */
+
+	margin-left: 30%;
+	width: 40%; /* Full width */
+	height: 20%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: #262626; /* Fallback color */
+	background-color: #262626; /* Black w/ opacity */
+	border: 1px solid black;
+
+  }
+
+  /* Modal Content (image) */
+  .modalJoin-content {
+	margin: auto;
+	display: block;
+	width: 80%;
+	font-family: 'Source Sans Pro';
+	font-weight: 300;
+	font-size: 24px;
+
+  }
+
+  /* Add Animation */
+  .modalJoin-content {
+	-webkit-animation-name: zoom;
+	-webkit-animation-duration: 0.6s;
+	animation-name: zoom;
+	animation-duration: 0.6s;
+  }
+
+  @-webkit-keyframes zoom {
+	from {
+	  -webkit-transform: scale(0)
+	}
+	to {
+	  -webkit-transform: scale(1)
+	}
+  }
+
+  @keyframes zoom {
+	from {
+	  transform: scale(0)
+	}
+	to {
+	  transform: scale(1)
+	}
+  }
+
+  /* The Close Button */
+  .closeModalJoin {
+	position: absolute;
+	top: 15px;
+	right: 35px;
+	color: #f1f1f1;
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
+  }
+
+  .closeModalViewProject:hover,
+  .closeModalViewProject:focus {
+	color: #bbb;
+	text-decoration: none;
+	cursor: pointer;
+  }
+  .modalJoin > h5 {
+	margin-top: 10%;
+  }
+
+}
+
+
+
+/*SAKETH's CSS*/
+
+.SUpage-title {
+	background-image: url('../data/Triangles-Muted-Warm.png');
+	background-repeat: none;
+	background-size: cover;
+	background-attachment: fixed;
+	height: 150px;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+
+	h2 {
+		color: #f2f2f2;
+		font-family: 'Source Sans Pro';
+		font-weight: 300;
+		padding-top: 40px;
+	}
+}
+
+.SUtitle-title {
+	margin-top: 6px;
+	font-family: 'Source Sans Pro';
+	width: 10%;
+}
+.SUtitle-data {
+	width: 90%;
+}
+.SUsectionone-wrapper {
+	position: relative;
+}
+.SUsectionone {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.row {
+	max-width: 100%;
+}
+ul {
+	margin: 0px;
+}
+li {
+	list-style-type: none;
+}
+.SUdelete-project-container {
+	position: absolute;
+	right: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+	a {
+		margin: 0px;
+	}
+}
+#SUcloseSubmitModalError,
+#SUcloseDeleteModalError {
+	float: right;
+	cursor: pointer;
+}
+#SUsubmitModalError,
+#SUdeleteModalError {
+	p {
+		float: left;
+	}
+}
+.SUmodal {
+	background-color: $dark-gray;
+	display: none;
+	position: fixed;
+	padding: 10px;
+	border-radius: 6px;
+	width: 25%;
+	height: 200px;
+	z-index: 2;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid black;
+    h5 {
+    	margin-top: 50px;
+    	color: #f2f2f2;
+    }
+}
+.SUyesnocontainer {
+	width: 50%;
+	margin: 0 auto;
+}
+#SU-top-section{
+	background-color: #f2f2f2;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+.SU-HR{
+	height: 1px;
+	background-color:  #d9d9d9;
+	width: 100%;
+}
+
+.SUform-title,
+.SUform-data {
+	font-family: 'Source Sans Pro';
+	float: left;
+}
+.SUcategory-title, .SUimage-title, .SUdescription-title, .SUskills-title, .SU-PC, .SU-AC{
+	font-family: 'Source Sans Pro';
+}
+.SUcategory-title {
+	padding-top: 30px;
+}
+.SUtag-title {
+	width: 10%;
+	font-family: 'Source Sans Pro';
+	margin-top: 6px;
+}
+.SUtag-data {
+	width: 90%;
+}
+.SUdeadline-title {
+	width: 25%;
+	font-family: 'Source Sans Pro';
+	margin-top: 6px;
+}
+.SUdeadline-data {
+	width: 75%;
+}
+.SUpublic-data {
+	margin-top: 12px;
+}
+.SUproject-image {
+	background-color: $dark-gray;
+	height: 200px;
+	width: 200px;
+	color: white;
+	padding: 50px;
+	float: right;
+	border-radius: 10px;
+	cursor: pointer;
+}
+.SUcategory { 
+	cursor: pointer;
+}
+.SUcategory:hover {
+	transition: all 0.3s ease-in-out;
+	background-color: #f2f2f2;
+	color:  #595959;
+}
+.SUcategoriesProject {
+	overflow: auto;
+}
+.SUskillswrapperbox {
+	height: 148px;
+	padding: 10px;
+	border: 1px solid #cacaca;
+	border-bottom: none;
+	overflow: scroll;
+	li {
+		float: left;
+		border: 1px solid black;
+		padding: 5px;
+		margin-right: 5px;
+		margin-bottom: 5px;
+	}
+}
+.SUcategory-icon {
+	width: 70px;
+	display: block;
+	margin: 0 auto;
+}
+.SUskillsearch {
+	position: relative;
+}
+#SUskillsInput {
+	float: left;
+}
+.SUsearchresultsbar {
+	margin-top: 0px;
+}
+.SUskillsresults {
+	display: none;
+	position: absolute;
+	top: 110%;
+	height: 190px;
+	overflow: hidden;
+	background-color: white;
+	width: 100%;
+	border: 1px solid black;
+	border-top: white;
+	li {
+		cursor: pointer;
+	}
+}
+#SUskillssubmit {
+	width: 100px;
+	height: 38px;
+	background: $dark-gray;
+	font-family: 'Source Sans Pro';
+	color: white;
+	border: 0;
+	margin-left: -101px;
+}
+.SUpublish-button {
+	font-family: 'Source Sans Pro';
+	background-color:  #00995c;
+	margin-top: 60px;
+	float: right;
+}
+.SUpublish-button:hover {
+	font-family: 'Source Sans Pro';
+	background-color:   #00663d;
+	margin-top: 60px;
+	float: right;
+}
+.SUcancel-button {
+	font-family: 'Source Sans Pro';
+	margin-top: 60px;
+	float: right;
+}
+.SUconfirm-create {
+	background-color: #f2f2f2;
+	height: 200px;
+	width: 100%;
+}
+.SU-PC-area{
+	a{
+		color: $dark-gray;
+	}
+	#SU-decline{
+		color: red;
+	}
+}

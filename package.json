@@ -1,5 +1,6 @@
 {
   "name": "mp4_server_starter",
+  "main": "server.js",
   "version": "1.0.0",
   "homepage": "https://github.com/uiuc-web-programming/mp4_server_starter",
   "authors": [
@@ -9,6 +10,16 @@
   "dependencies": {
     "body-parser": "^1.12.0",
     "express": "^4.12.2",
-    "mongoose": "*"
+    "mongoose": "*",         
+    "passport" : "~0.1.17",         
+    "passport-local" : "~0.1.6",    
+    "passport-facebook" : "~1.0.2", 
+    "passport-twitter" : "~1.0.2",  
+    "passport-google-oauth" : "~0.1.5",
+    "bcrypt-nodejs" : "latest",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.0",
+    "method-override": "~1.0.0",
+    "express-session": "~1.0.0" 
   }
 }

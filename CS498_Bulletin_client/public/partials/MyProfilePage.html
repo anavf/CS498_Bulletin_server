@@ -1,0 +1,243 @@
+<div class="AVF">
+<div> 
+ <nav class="row text-center" class="partialNav">
+        <div class="small-3 large-2 columns">
+            <a href="#/HomePage"><p id="logo">Bulletin</p></a>
+        </div>
+<!--         <div class="large-1 columns">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </div> -->
+        <div class="large-4 columns">
+            <a ng-click="sendSearch(searchInput)"><i class="fa fa-search" aria-hidden="true" id="searchLogo"></i></a>
+            <div id="searchBox"><input type="text" id="right-label" placeholder="Search" href="#/Search" ng-model="searchInput"></div>
+        </div>
+        <div class="small-3 large-2 large-offset-2 column">
+            <a><p id="navName">Hello, {{username}}!</p></a>
+        </div>
+        <div class="small-4 large-2 column">
+           <a ng-click="showSettingsMenu()"><i class="fa fa-cog fa-3x" id="gear"></i></a>
+       </div>
+</nav>
+
+<div id="settingsMenu">
+    <p style="padding-top: 20px;"><a href="#/AccountSettings">Account Settings</a></p>
+    <div class="line3"></div>
+    <p><a href="#/MyProfilePage">Profile</a></p>
+    <div class="line3"></div>
+    <p id="LogOut"><a href="">Log Out</a></p>
+</div>
+
+<div class="row" id="profileBar">
+
+    <div class="large-2 columns">
+        <div class="circle"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
+    </div>
+
+    <div class="large-3 columns">
+        <h2>{{username}}</h2>
+    </div>
+
+    <div class="large-3 large-offset-4 columns">
+        <a data-open="skillsModal"><div id="skillsButton">
+            <p>Edit Skills</p>
+        </div></a>
+    </div>
+
+</div>
+
+<div class="row projectSection">
+    <div class="large-3 columns">
+        <h3>My Projects</h3>
+    </div>
+    <div class="large-3 large-offset-4 columns">
+        <a href="#/:userLoggedIn/CreateProject"><div id="createButton">
+            <p>Create Project</p>
+        </div></a>
+    </div>
+</div>
+
+<div class="row"><div class="line"></div></div>
+
+<div class="row projectList" id="myProjects">
+    <div class="large-1 column">
+        <a ng-click="prevPage()" ng-hide="startOfList"><i class="fa fa-angle-left fa-3x darkIcon" aria-hidden="true"></i></a>
+        <i ng-show="startOfList" class="fa fa-angle-left fa-3x darkIcon" aria-hidden="true" style="color: #d9d9d9
+;"></i>
+    </div>
+
+    <div class="large-3 column myProjectA" ng-repeat="project in projects">
+        <h4>{{project.name}}</h4>
+        <p>by you</p>
+        <div class="editProject">
+            <a href="#/:userLoggedIn/EditProject/{{project._id}}"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+        </div>
+        <div class="viewProject">
+            <a data-open="detailedProjectModal" ng-click="loadDetails(project._id)"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></a>
+        </div>
+
+    </div>
+
+<!--  <div class="large-3 column myProjectA">
+        <h4>Project Name</h4>
+        <p>by User Something</p>
+        <div class="editProject">
+            <a href="#/EditProject/:id"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+        </div>
+        <div class="viewProject">
+            <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+        </div>
+    </div> -->
+<!-- 
+     <div class="large-3 column myProjectA">
+        <h4>Project Name</h4>
+        <p>by User Something</p>
+        <div class="editProject">
+            <a href="#/EditProject/:id"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+        </div>
+        <div class="viewProject">
+            <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+        </div>
+    </div> -->
+
+     <div class="large-1 column">
+        <a ng-click="nextPage()" ng-hide="endOfList"><i class="fa fa-angle-right fa-3x darkIcon" aria-hidden="true"></i></a>
+        <i ng-show="endOfList" class="fa fa-angle-right fa-3x darkIcon" aria-hidden="true" style="color: #d9d9d9;"></i>
+    </div>
+</div>
+
+<div class="row projectSection">
+    <h3 style="padding-left: 20px;">Joined Projects</h3>
+</div>
+
+<div class="row"><div class="line"></div></div>
+
+<div class="row projectList" id="joinedProjects">
+    <div class="large-1 column">
+        <a ng-click="prevPageJP()" ng-hide="startOfJPList"><i class="fa fa-angle-left fa-3x darkIcon" aria-hidden="true"></i></a>
+        <i ng-show="startOfJPList" class="fa fa-angle-left fa-3x darkIcon" aria-hidden="true" style="color: #d9d9d9;"></i></div>
+
+     <div class="large-3 column myProjectA" ng-repeat="data in repeatData | startFrom: lowJP | limitTo: shown" >
+        <h4>{{data.data.name}}</h4>
+        <p>by <a>{{data.data.creatorName}}</a></p>
+        <div class="joinedProjectStatus {{data.value}}">
+            <p>{{data.value}}</p>
+        </div>
+        <div class="viewProject">
+            <a data-open="detailedJoinedProjectModal" ng-click="loadDetails(data.data._id)"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></a>
+        </div>
+    </div>
+
+<!--     <div class="large-3 column myProjectA">
+        <h4>Project Name</h4>
+        <p>by User Something</p>
+        <div class="joinedProjectStatus Accepted">
+            <p>Accepted</p>
+        </div>
+        <div class="viewProject">
+            <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+        </div>
+    </div>
+
+ng-repeat="joinedProject in joinedProjectsAll"
+
+     <div class="large-3 column myProjectA">
+        <h4>Project Name</h4>
+        <p>by User Something</p>
+        <div class="joinedProjectStatus Pending">
+            <p>Pending</p>
+        </div>
+        <div class="viewProject">
+            <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+        </div>
+    </div>
+
+
+     <div class="large-3 column myProjectA">
+        <h4>Project Name</h4>
+        <p>by User Something</p>
+        <div class="joinedProjectStatus Declined">
+            <p>Declined</p>
+        </div>
+        <div class="viewProject">
+            <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+        </div>
+    </div> -->
+
+     <div class="large-1 column">
+        <a ng-click="nextPageJP()" ng-hide="endOfJPList"><i class="fa fa-angle-right fa-3x darkIcon" aria-hidden="true"></i></a>
+        <i ng-show="endOfJPList" class="fa fa-angle-right fa-3x darkIcon" aria-hidden="true" style="color: #d9d9d9;"></i>
+    </div>
+</div>
+
+<div class="reveal" id="skillsModal" data-reveal>
+  <h3>YOUR SKILLS</h3>
+      <div ng-repeat="skillName in skillNames">
+      <p>{{skillName}} |<a style="color: #ff4d4d; font-size: 12px;" ng-click="deleteSkill(skillName)"> DELETE </a></p>
+     </div>
+    <form name="skillForm"> 
+      <div>
+        <label>ADD A SKILL
+          <input type="text" placeholder="Enter Skill Name" class="form-control" ng-model="newSkill">
+        </label>
+      </div>
+    </form>
+
+    <p style="color: #ff4d4d; font-family: 'Source Sans Pro';" ng-show="inList">That skill is already in your list!</p>
+
+    <div id="AVFskillsSearch">
+        <p ng-repeat="oneSkillName in allSkillsNames | filter:newSkill"><a ng-click="setSkillInput(oneSkillName)">{{oneSkillName}}</a></p>
+    </div>
+
+  <button class="button OK" ng-click="updateSkills(newSkill)">Save</button>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true" style="color: $dark-gray;">&times;</span>
+  </button>
+</div>
+
+<div class="large reveal" id="detailedProjectModal" data-reveal>
+<div class="row">
+
+  <div id="projectImage" class="large-4 columns"></div>
+
+  <div class="large-6 columns">
+    <h3>{{projectY.name}} <span>by you<span></h3>
+    <div class="line2"></div>
+    <p><span class="AVFgreen">DEADLINE:</span> {{projectY.deadline | date:'yyyy-MM-dd'}}</p>
+    <p><span class="AVFgreen">DESCRIPTION:</span> {{projectY.description}}</p>
+  </div>
+
+    <div class="large-2 columns">
+      <a data-dismiss="detailedProjectModal" href="#/:userLoggedIn/EditProject/{{projectY._id}}"><button class="button EDIT">EDIT</button></a>
+      <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true" style="color: $dark-gray;">&times;</span>
+      </button>
+    </div>
+
+</div>
+</div>
+
+<div class="large reveal" id="detailedJoinedProjectModal" data-reveal>
+<div class="row">
+
+  <div id="projectImage" class="large-4 columns"></div>
+
+  <div class="large-6 columns">
+    <h3>{{projectY.name}} <span>by <a style="color: #c4ff4d">{{projectY.creatorName}}</a></span></h3>
+    <div class="line2"></div>
+    <p><span class="AVFgreen">DEADLINE:</span> {{projectY.deadline | date:'yyyy-MM-dd'}}</p>
+    <p><span class="AVFgreen">DESCRIPTION:</span> {{projectY.description}}</p>
+  </div>
+
+    <div class="large-2 columns">
+      <a><button class="button EDIT" ng-click="leaveProject(projectY._id)">LEAVE PROJECT</button></a>
+      <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true" style="color: $dark-gray;">&times;</span>
+      </button>
+    </div>
+    
+</div>
+</div>
+</div>
+
+
+</div>

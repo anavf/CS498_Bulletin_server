@@ -1,0 +1,34 @@
+<div ng-controller='AccountSettingsController' id="RC-AS-background">
+	<h1 id="RC_h1">Account Information</h1>
+
+	<div id="RC_imageUpload-bg" onclick="closeModal('#RC_imageUpload')" class="RC_modal-bg"></div>
+	<div id="RC_imageUpload" class="RC_modal">
+		<form ng-submit="saveImage()">
+			<a onclick="closeModal('#RC_imageUpload')" class="RC_close-modal">&#10005;</a>
+			
+			Image URL
+			<input type="url" name="imageURL" value="{{user.imageURL}}"/>
+		</form>
+	</div>
+	
+	<form id="RC_accountInfo" ng-submit="saveAccountSettings()">
+		<div id="RC_accountInfoImage">
+			<i class="fa fa-search fa-3x"></i>
+			<img onclick="openModal('#RC_imageUpload')" src="{{user.imageURL}}"/>
+		</div>
+
+		<h6 class="RC-h6">Name</h6>
+		<input type="text" name="name" value="{{user.name}}" required/>
+		<h6 class="RC-h6">E-mail</h6>
+		<input type="email" name="email" value="{{user.email}}" required/>
+		<h6 class="RC-h6">Password</h6>
+		<input type="password" name="password1"/>
+		<h6 class="RC-h6">Confirm Password</h6>
+		<input type="password" name="password2"/>
+
+		<div id="RC_accountInfoButtons">
+			<a class="alert button">Cancel</a>
+			<input type="submit" class="button" value="Submit"/>
+		</div>
+	</form>
+</div>

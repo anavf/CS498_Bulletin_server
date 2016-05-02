@@ -1,0 +1,173 @@
+<!-- <div class="WEI">
+ --><!-- <nav class="row text-center" class="partialNav">
+    <div class="small-3 large-2 columns">
+        <a href="#/HomePage"><p id="logo">Bulletin</p></a>
+    </div>
+    <div class="small-1 large-1 columns">
+        <i class="fa fa-search fa-3x" aria-hidden="true" id="searchIcon"></i>
+
+    </div>
+
+    <div class="small-3 large-4 columns">
+        <div id="searchBox"><input type="text" ng-model="basicQuery" placeholder="Search With Any Keywords"></div>
+    </div>
+    <div class="small-3 large-3 columns ">
+        <a><p class="buttonStyle">Hello, {{thisUser.name}}!</p></a>
+    </div>
+    <div class="small-2 large-2 columns">
+        <a id="gearSettings"><i class="fa fa-cog fa-3x" aria-hidden="true" id="gear"></i></a>
+    </div>
+</nav> -->
+
+<div class="AVF">
+ <nav class="row text-center" class="partialNav">
+        <div class="small-3 large-2 columns">
+            <a href="#/HomePage"><p id="logo">Bulletin</p></a>
+        </div>
+        <div class="large-4 columns">
+            <a ng-click="sendSearch(searchInput)"><i class="fa fa-search" aria-hidden="true" id="searchLogo"></i></a>
+            <div id="searchBox"><input type="text" id="right-label" placeholder="Search" href="#/Search" ng-model="basicQuery"></div>
+        </div>
+        <div class="small-3 large-1 large-offset-3 column">
+              <p id="logIn"><a data-open="logInModal4" id="modalButton">Log In</a></p>
+        </div>
+        <div class="small-4 large-2 column">
+            <p class="signUp">New?</p>
+            <a href="#/SignUp"><p class="signUp"> Sign Up</p></a>
+        </div>
+</nav>
+</div>
+
+<div class="WEI">
+
+<div id="searchFilters">
+    <div class="large-2 medium-4 small-4 columns">
+        <h3>Advanced Filters</h3>
+    </div>
+
+    <div class="large-1 medium-2 small-2 columns">
+        <form>
+            <button class="button FiltNav" id="Graphics"  ng-click="addFilter('Graphics')"><i class="fa fa-camera fa-3x" aria-hidden="true" id="weishi_photoGraphy"></i></button>
+            <label>Graphics</label>
+        </form>
+
+    </div>
+
+    <div class="large-1 medium-2 small-2 columns">
+        <form>
+            <button class="button FiltNav" id="Database" ng-click="addFilter('Database')"><i class="fa fa-database fa-3x" aria-hidden="true" id="weishi_database"></i></button>
+            <label>Database</label>
+        </form>
+    </div>
+
+    <div class="large-1 medium-2 small-2 columns">
+        <form>
+            <button class="button FiltNav" id="IOS" ng-click="addFilter('IOS')"><i class="fa fa-mobile fa-3x" aria-hidden="true" id="weishi_mobile"></i></button>
+            <label>IOS</label>
+        </form>
+    </div>
+
+    <div class="large-1 medium-2 small-2 columns">
+        <form>
+            <button class="button FiltNav" id="Network" ng-click="addFilter('Network')"><i class="fa fa-globe fa-3x" aria-hidden="true" id="weishi_globe"></i></button>
+            <label>Network</label>
+        </form>
+    </div>
+    <div class="large-1  medium-2 small-2 columns">
+        <form>
+            <button class="button FiltNav" id="Security" ng-click="addFilter('Security')"><i class="fa fa-lock fa-3x" aria-hidden="true" id="weishi_lock"></i></button>
+            <label>Security</label>
+        </form>
+    </div>
+    <div class="large-1 medium-2 small-2 columns">
+        <form>
+            <button class="button FiltNav" id="Android" ng-click="addFilter('Android')"><i class="fa fa-android fa-3x" aria-hidden="true" id="weishi_android"></i></button>
+            <label>Android</label>
+        </form>
+    </div>
+    <div class="large-1 medium-2 small-2 columns">
+        <form>
+            <button class="button FiltNav" id="Linux" ng-click="addFilter('Linux')"><i class="fa fa-linux fa-3x" aria-hidden="true" id="weishi_linux"></i></button>
+            <label>Linux</label>
+        </form>
+    </div>
+    <div class="large-1 medium-2 small-2 columns">
+        <form>
+            <button class="button FiltNav" id="Debug" ng-click="addFilter('Debug')"><i class="fa fa-bug fa-3x" aria-hidden="true" id="weishi_bug"></i></button>
+            <label>Debug</label>
+        </form>
+    </div>
+
+    <div class="large-2 medium-4 small-4 columns" id="checkboxMM1">
+        Log in to find projects matching your skills!
+    </div>
+
+
+
+
+
+
+</div>
+
+<div class="row small-up-2 medium-up-3 large-up-4" id="displayProject2">
+    <div   ng-repeat="project in projects | filter:basicQuery" >
+<!--         <div class="column" id="card" ng-click="showModal($index)">
+            <!--img ng-src="{{project.imageURL}}"-->
+            <!-- <h4>{{project.name}}</h4>
+            <div class="line" style="background-color: gray;"></div>
+            <p id="WS-byline">by <a href="#/ProfilePage/{{project.creator}}">{{usernames[$index]}} </a> </p> -->
+
+
+       <!--  </div> --> 
+       <div class="column" id="card" ng-click="showModal($index)">
+    <!--img ng-src="{{project.imageURL}}"-->
+            <h4>{{project.name}}
+            </h4>
+                <p style="color: #f2f2f2; padding-left: 20px;">{{project.pendingMembers.length}} users want to join this project. 
+                And ?{{project.approvedMembers.length}} are already enrolled!</p> 
+<!--                 <p style="color: #f2f2f2">Go on to view details>></p>
+ -->          <a href="#/:userLoggedIn/ProfilePage/{{project.creator}}" style="font-family: 'Source Sans Pro';  color: #a6a6a6; padding-left: 20px;">ABOUT THE CREATOR</a>
+        </div>
+        <div  class="modalViewProject" ng-show="showM[$index]>0">
+            <span class="closeModalViewProject" ng-click="removeModal($index)">×</span>
+            <div class="modalViewProject-content">
+                <h5 style="font-family: 'Source Sans Pro'; font-weight: 300;">{{project.name}} <span id="green">by {{project.creatorName}}</span></h5>
+                <HR  >
+                <div class="modalDescription">
+                    <span class="AVFgreen">DEADLINE: </span> {{project.deadline | date:'yyyy-MM-dd'}} <br>
+                    <span class="AVFgreen">CATEGORY: </span>{{project.categories}}<br>
+                    <span class="AVFgreen">DESCRIPTION: </span> {{project.description}}<br>
+                    <span class="AVFgreen">LOOKING FOR THESE SKILLS: </span>{{thisSkills}}
+                </div>
+                <span class="Button" id="joinButton" ng-click="joinThis($index)">Join</span>
+            </div>
+
+        </div>
+        <div  class="modalJoin" ng-show="joinM[$index] >0">
+            <span class="closeModalJoin" ng-click="removeJoinModal($index)">×</span>
+            <h5>
+                {{joinInfo}}
+
+            </h5>
+
+        </div>
+    </div>
+</div>
+
+<div id="logInModal4" class="reveal" data-reveal>
+        <h3 style="padding-top: 0px;">LOG IN</h3>
+        <form action="http://localhost:4000/api/login" method="post">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+
+            <input class = "button" type="submit">Login</button>
+        </form>
+</div>
+
+</div>

@@ -6,10 +6,15 @@ var Project = require('./models/project.js');
 var Skill = require('./models/skill.js');
 var Category = require('./models/category.js');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var	morgan = require('morgan');
+var	cookieParser = require('cookie-parser');
+var session = require('express-session');
+var	configDB = require('./config/database.js');
 var router = express.Router();
 
 //replace this with your Mongolab URL
-mongoose.connect('mongodb://racrook2:cs498@ds023570.mlab.com:23570/cs498_bulletin');
+mongoose.connect(configDB.url);
 
 // Create our Express application
 var app = express();
@@ -31,6 +36,26 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.use(bodyParser.json());
+
+// Passport requirements
+require('./config/passport')(passport);
+app.use(morgan('dev'));
+app.use(cookieParser());
+app.use(session({ secret: 'bulletin' }));
+app.use(express.static(__dirname + '/CS498_Bulletin_client/public'));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+//require('./routes.js')(app, passport);
+function isLoggedIn(req, res, next) {
+	if(req.isAuthenticated())
+		return next();
+
+	res.json({
+		error: "User not logged in"
+	});
+}
 
 // All our routes will start with /api
 app.use('/api', router);
@@ -61,25 +86,22 @@ userRoute.get(function(req, res) {
 		});
 });
 
-userRoute.post(function(req, res) {
-	var ret = new User();
-	ret.name = req.body.name;
-	ret.email = req.body.email;
-	ret.password = req.body.password;
-	ret.skills = req.body.skills;
-	ret.myProjects = req.body.myProjects;
-	ret.pendingProjects = req.body.pendingProjects;
-	ret.joinedProjects = req.body.joinedProjects;
-	ret.imageURL = req.body.imageURL;
-	ret.save(function(err) {
-		if (err) {
-			res.status(500).send({message: "Error", data: []});
-		}
-		else {
-			res.status(201).send({message: "OK", data: ret});
-		}
-	});
+userRoute.post(passport.authenticate('local-signup'), function (req, res) {
+	console.log(req.body);
+	//res.json({message: "OK", data: req.body});
+	//res.redirect('/#/MyProfilePage');
+
 });
+
+// User login route
+var loginRoute = router.route('/login');
+
+loginRoute.post(passport.authenticate('local-login'), function (req, res) {
+	//console.log(req.user);
+	//res.json({message: "OK", data: req.user});
+	res.redirect('/#/MyProfilePage');
+});
+
 
 // Project route
 var projectRoute = router.route('/projects');
@@ -195,8 +217,8 @@ categoryRoute.post(function(req, res) {
 // Single user route
 var singleUserRoute = router.route('/users/:id');
 
-singleUserRoute.get(function(req, res) {
-	User.findById(req.params.id, function(err, ret) {
+singleUserRoute.get(isLoggedIn, function (req, res) {
+	User.findById(req.user._id, function(err, ret) {
 		if (err) {
 			res.status(404).send({message: "Error", data: []});
 		}

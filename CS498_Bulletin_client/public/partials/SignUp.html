@@ -1,0 +1,34 @@
+<div ng-controller='SignUpController' id="RCbackground">
+	<h1 id="RC_h1">SIGN UP</h1>
+	
+	<div id="RC_imageUpload-bg" onclick="closeModal('#RC_imageUpload')" class="RC_modal-bg"></div>
+	<div id="RC_imageUpload" class="RC_modal">
+		<form ng-submit="saveImage()">
+			<a onclick="closeModal('#RC_imageUpload')" class="RC_close-modal">&#10005;</a>
+			
+			Image URL
+			<input type="url" name="imageURL"/>
+		</form>
+	</div>
+	
+	<form id="RC_signUp" ng-submit="createAccount()">
+		<div id="RC_signUpImage">
+			<i class="fa fa-search fa-3x"></i>
+			<img onclick="openModal('#RC_imageUpload')" src="./data/images/profile.jpg"/>
+		</div>
+
+		<h6 class="RC-h6">NAME</h6>
+		<input type="text" name="name" required/>
+		<h6 class="RC-h6">EMAIL</h6>
+		<input type="email" name="email" required/>
+		<h6 class="RC-h6">PASSWORD</h6>
+		<input type="password" name="password1" required/>
+		<h6 class="RC-h6">CONFIRM PASSWORD</h6>
+		<input type="password" name="password2" required/>
+
+		<div id="RC_signUpButtons">
+			<a class="alert button">Cancel</a>
+			<input type="submit" class="button" value="Submit"/>
+		</div>
+	</form>
+</div>
