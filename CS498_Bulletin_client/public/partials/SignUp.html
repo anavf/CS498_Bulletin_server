@@ -11,24 +11,24 @@
 		</form>
 	</div>
 	
-	<form id="RC_signUp" ng-submit="createAccount()">
+	<form id="RC_signUp" >
 		<div id="RC_signUpImage">
 			<i class="fa fa-search fa-3x"></i>
 			<img onclick="openModal('#RC_imageUpload')" src="./data/images/profile.jpg"/>
 		</div>
 
 		<h6 class="RC-h6">NAME</h6>
-		<input type="text" name="name" required/>
+		<input type="text" ng-model = "newuser.name"class = "form-control" name="name" required/>
 		<h6 class="RC-h6">EMAIL</h6>
-		<input type="email" name="email" required/>
+		<input type="email" ng-model = "newuser.email"class = "form-control" name="email" required/>
 		<h6 class="RC-h6">PASSWORD</h6>
-		<input type="password" name="password1" required/>
+		<input type="password" ng-model = "newuser.password" class = "form-control" name="password" required/>
 		<h6 class="RC-h6">CONFIRM PASSWORD</h6>
 		<input type="password" name="password2" required/>
 
 		<div id="RC_signUpButtons">
 			<a class="alert button">Cancel</a>
-			<input type="submit" class="button" value="Submit"/>
+			<input type="submit" ng-click="createAccount()" class="button" value="Submit"/>
 		</div>
 	</form>
 </div>

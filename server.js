@@ -89,9 +89,14 @@ userRoute.get(function(req, res) {
 
 userRoute.post(passport.authenticate('local-signup'), function (req, res) {
 	//console.log(req.body);
-	//res.json({message: "OK", data: req.body});
-	//res.redirect('/#/MyProfilePage');
+	res.json({message: "OK", data: req.body});
+});
 
+// User account settings route
+var accountRoute = router.route('/AccountSettings');
+
+accountRoute.put(passport.authenticate('local-account'), function(req, res) {
+	res.json({message: "OK", data: req.body});
 });
 
 // User login route

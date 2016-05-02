@@ -73,7 +73,7 @@ BulletinControllers.controller('SettingsController', ['$scope' , '$window' , fun
 
 }]);
 
-BulletinControllers.controller('AccountSettingsController', ['$scope', '$routeParams', 'Data', function($scope, $routeParams, Data) {
+BulletinControllers.controller('AccountSettingsController', ['$scope', '$routeParams', '$http', 'Data', function($scope, $routeParams, $http, Data) {
 	
 	Data.getProfile().success(function(data) {
 		$scope.user = data.data;
@@ -93,14 +93,12 @@ BulletinControllers.controller('AccountSettingsController', ['$scope', '$routePa
         var newUser = {
           name: $('input[name="name"]').val(),
           email: $('input[name="email"]').val(),
-          password: password,
-          skills: $scope.user.skills,
-          myProjects: $scope.user.myProjects,
-          pendingProjects: $scope.user.pendingProjects,
-          joinedProjects: $scope.user.joinedProjects,
+          password: $('input[name="password1"]').val(),
           imageURL: imageURL
         };
-        Data.editUser($scope.id, newUser);
+        $http.put('http://localhost:4000/api/AccountSettings', newUser).success(function(data) {
+          window.location.href = "#/MyProfilePage";
+        });
       });
     };
 
@@ -112,22 +110,25 @@ BulletinControllers.controller('AccountSettingsController', ['$scope', '$routePa
 BulletinControllers.controller('SignUpController', ['$scope', 'Data', function($scope, Data) {
 
 	$scope.createAccount = function(){
-    console.log("HERE!");
-		if ($('input[name="password1"]').val() != $('input[name="password2"]').val()) {
+		if ($('input[name="password"]').val() != $('input[name="password2"]').val()) {
       return;
 		}
 		var imageURL = $('input[name="imageURL"]').val();
 		if (imageURL == "") {
 			imageURL = "./data/images/profile.jpg";
 		}
-		var user = {
+
+    $scope.newuser.imageURL = imageURL;
+		/*var user = {
 			name: $('input[name="name"]').val(),
 			email: $('input[name="email"]').val(),
-			password: $('input[name="password1"]').val(),
+			password: $('input[name="password"]').val(),
 			imageURL: imageURL
-		};
-		Data.createUser(user).success(function(data){
+		};*/
 
+    console.log($scope.newuser);
+		Data.createUser($scope.newuser).success(function(data){
+      window.location.href = "#/MyProfilePage";
     });
 	};
 }]);
