@@ -5,7 +5,7 @@
         </div>
 
         <div ng-show = "isLoggedIn" ng-hide = "!isLoggedIn">
-          <div class="small-3 large-2 large-offset-2 column">
+          <div class="small-3 large-2 large-offset-6 column">
               <a><p id="navName">Hello, {{thisUser.name}}!</p></a>
           </div>
           <div class="small-4 large-2 column">
@@ -15,11 +15,20 @@
 
 
         <div ng-hide = "isLoggedIn" ng-show = "!isLoggedIn">
-          <div class="small-3 large-1 large-offset-7 column">
+          <div class="small-3 large-1 large-offset-7 column show-for-large">
                 <p id="logIn"><a data-open="logInModal" id="modalButton">Log In</a></p>
           </div>
 
-          <div class="small-4 large-2 column">
+          <div class="medium-2 medium-offset-4 column show-for-medium-only">
+                <p id="logIn"><a data-open="logInModal" id="modalButton">Log In</a></p>
+          </div>
+
+          <div class="small-4 large-2 column show-for-large">
+              <p class="signUp">New?</p>
+              <a href="#/SignUp"><p class="signUp"> Sign Up</p></a>
+          </div>
+
+          <div class="medium-3 column show-for-medium-only">
               <p class="signUp">New?</p>
               <a href="#/SignUp"><p class="signUp"> Sign Up</p></a>
           </div>
@@ -57,7 +66,7 @@
 </div>
 
 
-<div id="logInModal" class="reveal" data-reveal>
+<div id="logInModal" class="reveal" data-reveal style="text-align: center;">
         <h3>LOG IN</h3>
         <form action="http://localhost:4000/api/login" method="post">
             <div class="form-group">
@@ -69,7 +78,7 @@
                 <input type="password" class="form-control" name="password">
             </div>
 
-            <input class = "button" type="submit">Login</button>
+            <input class = "button" type="submit" style="font-family: 'Source Sans Pro'; font-weight: 300; border: 1px solid #00ff99;"></button>
         </form>
 </div>
 

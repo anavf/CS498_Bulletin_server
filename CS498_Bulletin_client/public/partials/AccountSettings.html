@@ -1,8 +1,8 @@
 <div ng-controller='AccountSettingsController' id="RC-AS-background">
 	<h1 id="RC_h1">Account Information</h1>
 
-	<div id="RC_imageUpload-bg" onclick="closeModal('#RC_imageUpload')" class="RC_modal-bg"></div>
-	<div id="RC_imageUpload" class="RC_modal">
+	<div id="RC_imageUpload-bg" onclick="closeModal('#RC_imageUpload')" class="RC_modal-bg" style="display: none;"></div>
+	<div id="RC_imageUpload" class="RC_modal" style="display: none;">
 		<form ng-submit="saveImage()">
 			<a onclick="closeModal('#RC_imageUpload')" class="RC_close-modal">&#10005;</a>
 			
@@ -12,7 +12,7 @@
 	</div>
 	
 	<form id="RC_accountInfo" ng-submit="saveAccountSettings()">
-		<div id="RC_accountInfoImage">
+		<div id="RC_accountInfoImage" style="display: none;">
 			<i class="fa fa-search fa-3x"></i>
 			<img onclick="openModal('#RC_imageUpload')" src="{{user.imageURL}}"/>
 		</div>

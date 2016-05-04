@@ -1,3 +1,18 @@
+#settingsMenuMED {
+	background-color: $dark-gray;
+	text-align: center;
+	p {
+		padding: 20px;
+		color: #f2f2f2;
+		font-family: 'Source Sans Pro';
+		font-weight: 300;
+	}
+}
+
+#settingsMenuSMALL {
+	@extend #settingsMenuMED;
+}
+
 #RCbackground {
 	background-image: url('../data/Triangles-Muted-Warm.png');
 	background-repeat: none;
@@ -197,9 +212,16 @@ nav {
 		border: 1px solid #00ff99;
 	}
 
-	#logIn:hover {
+	#logIn:hover, #logInMED:hover {
 		transition: all 0.3s ease-in-out;
 		background-color:  #00b359;
+	}
+
+	#logInMED {
+		margin-top: 25px;
+		padding: 5px;
+		font-size: 11px;
+		border: 1px solid #00ff99;
 	}
 
 }
@@ -238,6 +260,7 @@ i {
 #searchLogo {
 	color: #f2f2f2;
 	display: inline-block;
+	padding: 8px;
 }
 
 #right-label {
@@ -249,6 +272,20 @@ i {
 	padding-top: 12px;
 	font-family: 'Fredericka the Great';
 	font-size: 32px;
+}
+
+#logoMED {
+	float: right;
+	padding-top: 12px;
+	font-family: 'Fredericka the Great';
+	font-size: 32px;
+}
+
+#logoSMALL {
+	float: right;
+	padding: 20px;
+	font-family: 'Fredericka the Great';
+	font-size: 26px;
 }
 
 #logoSpan {
@@ -716,7 +753,7 @@ a:hover {
 
   }
 
-  #weishi_photoGraphy, #weishi_database, #weishi_mobile, #weishi_globe, #weishi_lock, #weishi_android, #weishi_linux, #weishi_bug {
+  #weishi_photoGraphy, #weishi_database, #weishi_mobile, #weishi_globe, #weishi_lock, #weishi_android, #weishi_gamepad, #weishi_laptop, #weishi_star, #weishi_research {
 	color: #8c8c8c;
 
   }
@@ -730,6 +767,11 @@ a:hover {
   #checkboxM1, #checkboxM2 {
 	position: relative;
 	margin-top: 70px;
+  }
+
+  #checkboxM1 {
+  	margin-top: 50px;
+  	font-size: 18px;
   }
 
   #searchIcon {
@@ -762,12 +804,15 @@ a:hover {
 		margin-top: 5px;
 		margin-bottom: 10px;
 	}
+
   }
 
   .displaySettingsMenu {
 	@extend #settingsMenu;
 	display: inline-block;
 	}
+
+
 
 #logInModal {
 	text-align: center;
@@ -849,16 +894,18 @@ a:hover {
 }
 
   #searchFilters {
-	padding-top: 80px;
-	height: 230px;
+	padding-top: 50px;
+	height: 220px;
 	background-image: url('../data/Triangles-Muted-Warm.png');
 	background-repeat: none;
 	background-size: cover;
 	background-attachment: fixed;
+	overflow: hidden;
   }
 
   #displayProject, #displayProject2 {
 	padding-top: 0px;
+	overflow: hidden;
   }
 
   @media all and (max-width: 50em) {
@@ -867,6 +914,7 @@ a:hover {
 	  height: 200px;
 	  width: 48%; /* for IE 6 */
 	  background: $dark-gray;
+	  overflow: hidden;
 
 	  margin-top: 10px;
 	  margin-left: 0.66%;
@@ -882,6 +930,7 @@ a:hover {
 	  height: 200px;
 	  width: 32%; /* for IE 6 */
 	  background: $dark-gray;
+	  overflow: hidden;
 
 	  margin-top: 10px;
 	  margin-left: 0.5%;
@@ -897,6 +946,7 @@ a:hover {
 	  height: 200px;
 	  width: 24%; /* for IE 6 */
 	  background: $dark-gray;
+	  overflow: hidden;
 
 	  margin-top: 10px;
 
@@ -1303,7 +1353,7 @@ li {
 	width: 200px;
 	color: white;
 	padding: 50px;
-	float: right;
+	/*float: right;*/
 	border-radius: 10px;
 	cursor: pointer;
 }

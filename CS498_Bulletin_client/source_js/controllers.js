@@ -225,36 +225,6 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
         $scope.joinedProjectX = data.data;
         $scope.joinedProjectsInfo.push($scope.joinedProjectX);
 
-        //console.log($scope.joinedProjectsInfo);
-
-        // Data.getUser($scope.joinedProjectX.creator).success(function(data){
-        //   $scope.creatorNameToPush = data.data.name;
-          // console.log($scope.creatorNameToPush);
-
-          // $scope.joinedProjectXUpdated = {
-          //   name: $scope.joinedProjectX.name,
-          //   creator: $scope.creatorNameToPush,
-          //   deadline: $scope.joinedProjectX.deadline,
-          //   _id: $scope.joinedProjectX._id,
-          //   description: $scope.joinedProjectX.description,
-          //   imageURL: $scope.joinedProjectX.imageURL,
-          //   dateCreated: $scope.joinedProjectX.dateCreated,
-          //   approvedMembers: $scope.joinedProjectX.approvedMembers,
-          //   pendingMembers: $scope.joinedProjectX.pendingMembers,
-          //   tags: $scope.joinedProjectX.tags,
-          //   categories: $scope.joinedProjectX.categories,
-          //   skills: $scope.joinedProjectX.skills,
-          //   visible: $scope.joinedProjectX.visible
-          // }
-
-          // console.log($scope.joinedProjectXUpdated);
-          // //$scope.joinedProjectX.creator = $scope.creatorNameToPush;
-          //  $scope.joinedProjectsInfo.push($scope.joinedProjectXUpdated);
-          //   console.log($scope.joinedProjectsInfo);
-
-          //$scope.projectCreatorNames.push($scope.creatorNameToPush);
-          //$scope.creatorName = $scope.projectCreatorNames[i];
-        // }).error(function(data){console.log('Error: '+data)});
       }).error(function(data){console.log('Error: '+data)});
     }
 
@@ -277,32 +247,12 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
       }).success(function(data){
         $scope.projects = data.data;
 
-        // var inMyProjects = false;
-        // for(var j=0; j<$scope.projects.length; j++){
-        //   if($scope.projects[i]._id==$scope.myProjects[i]){
-        //     inMyProjects = true;
-        //   }
-        // }
-        // if (inMyProjects == false){
-
-        // }
-
-        // for (var i=0; i < $scope.projects.length; i++){
-        //  Data.getUser($scope.projects[i].creator).success(function(data){
-        //     $scope.creatorName = data.data.name;
-        //   }).error(function(data){console.log('Error: ' + data)});
-        // }
-
       }).error(function(data){console.log('Error: '+data)});
 
       $http({
           url: 'http://localhost:4000/api/projects?where={"approvedMembers":"'+$scope.userid+'"}',
           method: 'GET'
-      // }).success(function(data){
-        // Data.getProjectsWithQuery({
-        //   where: {
-        //     approvedMembers: $scope.userid
-        //   }
+
         }).success(function(data){
         $scope.joinedProjectsAM = data.data;
         console.log($scope.joinedProjectsAll);
@@ -351,21 +301,6 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
 
       }).error(function(data){console.log('Error: '+data)});
 
-
-      // $scope.joinedProjectsInfo = [];
-      // for(var i=0; i<$scope.joinedProjects.length; i++){
-      //   Data.getProject($scope.joinedProjects[i]).success(function(data){
-      //     console.log('Got joined projects');
-      //     $scope.joinedProjectX = data.data;
-      //     $scope.joinedProjectsInfo.push($scope.joinedProjectX);
-
-      //     console.log($scope.joinedProjectsInfo)
-      //   }).error(function(data){console.log('Error: '+data)});
-      // }
-
-    //get all skills and put them into an array
-    //filter that array based on skill typing input
-    //on selection of skill - 
     $scope.allSkillsNames = [];
     Data.getSkills().success(function(data){
       $scope.allSkills = data.data;
@@ -389,10 +324,6 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
       $scope.projectY = data.data;
     }).error(function(data){console.log('Error: '+data)});
   }
-
-  //NEED TO:
-  //get Count of Projects
-  //get limited selection of projects - limit 3, offset whatever
 
   $scope.nextPage = function(){
       $scope.low = $scope.high;
@@ -423,8 +354,6 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
       $scope.highJP += 3;
       $scope.startOfJPList = false;
       console.log("Count: " + $scope.countJP + " Low, High: " + $scope.lowJP + ", " + $scope.highJP);
-
-  //get next JP from array
 
         if($scope.highJP >= $scope.countJP) {
           $scope.highJP = $scope.countJP;
@@ -462,9 +391,6 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
       $scope.endOfJPList = false;
       console.log($scope.lowJP + ", " + $scope.highJP);
 
-      //get previous items from array
-
-
         if($scope.lowJP <= 0) {
           $scope.startOfJPList = true;
         } else {
@@ -473,26 +399,25 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
 
     };
 
-    //$scope.loggedInUser = $routeParams.userLoggedIn;
     $scope.sendSearch = function(value) {
-      $rootScope.basicQuery = value; //allow access to search value using $rootScope variable
-      window.location.href = '#/Search'; //redirect to Search page
+      $rootScope.basicQuery = value; 
+      window.location.href = '#/Search'; 
     };
 
     $scope.leaveProject = function(id) {
 
       var projectIDtoDelete = id; 
 
-      for(var i=0; i<$scope.joinedProjects.length; i++){
-        if($scope.joinedProjects[i] == projectIDtoDelete){
-          $scope.joinedProjects.splice(i,1);
+      for(var i=0; i<$scope.userX.joinedProjects.length; i++){
+        if($scope.userX.joinedProjects[i] == projectIDtoDelete){
+          $scope.userX.joinedProjects.splice(i,1);
           break;
         }
       }
 
-      for(var i=0; $scope.pendingProjects.length; i++){
-        if($scope.pendingProjects[i] == projectIDtoDelete){
-          $scope.pendingProjects.splice(i,1);
+      for(var i=0; i < $scope.userX.pendingProjects.length; i++){
+        if($scope.userX.pendingProjects[i] == projectIDtoDelete){
+          $scope.userX.pendingProjects.splice(i,1);
           break;
         }
       }
@@ -538,8 +463,9 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
             method: 'PUT'
           }).success(function(data){
             console.log('Project updated');
-
-            location.reload();
+            Data.editUser($scope.userX._id, $scope.userX).success(function(data){
+              location.reload();
+            });
           }).error(function(data){console.log('Error: '+data)});
 
 
@@ -560,8 +486,6 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
         $scope.skillX = data.data[0];
         $scope.skillID = data.data[0]._id;
         console.log($scope.skillID);
-
-        // Data.deleteSkill($scope.skillID).success(function(data){
 
           for(var i=0; i<$scope.skills.length; i++){
             if($scope.skills[i] == $scope.skillID){
@@ -593,12 +517,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
             console.log('User updated');
           }).error(function(data){console.log('Error: '+data)});
 
-        //}).error(function(data){console.log('Error: '+data)});
       }).error(function(data){console.log('Error: '+data)});
-      //get skill by name 
-      //delete skill with that ID
-      //splice skill from user's skill array
-      //push changes to user
     };
 
     $scope.inList = false;
@@ -612,7 +531,6 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
       $scope.enteredSkill = skill;
 
       for(var i=0; i<$scope.skills.length; i++){
-        // console.log("I'm removing null skills");
         if($scope.skills[i]==null | $scope.skills[i]==undefined){
           $scope.skills.splice(i, 1);
           console.log($scope.skills);
@@ -621,13 +539,11 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
       }
 
       for (var i=0; i<$scope.skillNames.length; i++){
-        // console.log("I'm in the checking for skills in your list area");
-        // console.log(flag);
+
         if($scope.skillNames[i] == null | $scope.skillNames[i] == undefined){
           $scope.skillNames.splice(i, 1);
         }
-        if($scope.enteredSkill == $scope.skillNames[i]){ //if skill already exists in user skill array
-              //alert here 
+        if($scope.enteredSkill == $scope.skillNames[i]){ 
               console.log('already in your list!');
               $scope.inList = true;
               skillIsNew = false;
@@ -636,12 +552,11 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
       }
 
       for (var i=0; i<$scope.allSkillsNames.length; i++){
-        // console.log("I'm in the checking the whole database area");
-        // console.log(flag);
+
         if($scope.allSkillsNames[i] == null | $scope.allSkillsNames[i] == undefined){
           $scope.allSkillsNames.splice(i, 1);
         }
-        if(($scope.enteredSkill == $scope.allSkillsNames[i]) && flag == false ){ //if skill exists in database
+        if(($scope.enteredSkill == $scope.allSkillsNames[i]) && flag == false ){ 
                 flag = true; 
                 skillIsNew = false;                                    
                 $http({
@@ -682,9 +597,6 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
         } 
       }
 
-      //if skill is already in database, just add to user skill array and update 
-      //if skill matches skill already in array, do nothing
-      //if skill is not already in the database - do everything below
 
       if (flag == false && skillIsNew == true){
       console.log("I'm in the new skill area");
@@ -728,9 +640,6 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
           }).error(function(data){console.log('Error: '+data)});
 
         }).error(function(data){console.log("Error: "+data)});
-        //post new skill to skills
-        //push to skill array
-        //put changes to user
 
       };
        
@@ -750,10 +659,9 @@ BulletinControllers.controller('ProfileController', ['$scope' , '$rootScope', '$
 
   $(document).foundation();
   $rootScope.searchValue = '';
-  //$scope.loggedIn = true;
 
-  $scope.low = 0; //pagination low value
-  $scope.high = 3; //pagination high value
+  $scope.low = 0; 
+  $scope.high = 3; 
   $scope.lowJP = 0;
   $scope.highJP = 3;
   $scope.startOfList = true;
@@ -771,6 +679,10 @@ BulletinControllers.controller('ProfileController', ['$scope' , '$rootScope', '$
 
   $scope.showSettingsMenu = function(){
        $("#settingsMenu").toggle();
+  };
+
+  $scope.showSettingsMenuMED = function(){
+    $("#settingsMenuMED").toggle();
   };
 
   $scope.logOut = function() {
@@ -805,7 +717,6 @@ BulletinControllers.controller('ProfileController', ['$scope' , '$rootScope', '$
     }
 
     $scope.joinedProjectsInfo = [];
-    //$scope.projectCreatorNames = [];
     for(var i=0; i<$scope.joinedProjects.length; i++){
       Data.getProject($scope.joinedProjects[i]).success(function(data){
         console.log('Got joined projects: ' + data.data);
@@ -889,21 +800,6 @@ BulletinControllers.controller('ProfileController', ['$scope' , '$rootScope', '$
 
     }).error(function(data){console.log('Error: '+data)});
 
-
-    // $scope.joinedProjectsInfo = [];
-    // for(var i=0; i<$scope.joinedProjects.length; i++){
-    //   Data.getProject($scope.joinedProjects[i]).success(function(data){
-    //     console.log('Got joined projects');
-    //     $scope.joinedProjectX = data.data;
-    //     $scope.joinedProjectsInfo.push($scope.joinedProjectX);
-
-    //     console.log($scope.joinedProjectsInfo)
-    //   }).error(function(data){console.log('Error: '+data)});
-    // }
-
-  //get all skills and put them into an array
-  //filter that array based on skill typing input
-  //on selection of skill - 
   $scope.allSkillsNames = [];
   Data.getSkills().success(function(data){
     $scope.allSkills = data.data;
@@ -928,10 +824,6 @@ $scope.loadDetails = function(id) {
   }).error(function(data){console.log('Error: '+data)});
 }
 
-//NEED TO:
-//get Count of Projects
-//get limited selection of projects - limit 3, offset whatever
-
 $scope.nextPage = function(){
     $scope.low = $scope.high;
     $scope.high += 3;
@@ -943,7 +835,6 @@ $scope.nextPage = function(){
       method: 'GET'
     }).success(function(data){
       $scope.projects = data.data;
-      //$route.reload();
 
       if($scope.high >= $scope.count) {
         $scope.high = $scope.count;
@@ -961,8 +852,6 @@ $scope.nextPageJP = function(){
     $scope.highJP += 3;
     $scope.startOfJPList = false;
     console.log("Count: " + $scope.countJP + " Low, High: " + $scope.lowJP + ", " + $scope.highJP);
-
-//get next JP from array
 
       if($scope.highJP >= $scope.countJP) {
         $scope.highJP = $scope.countJP;
@@ -1000,8 +889,6 @@ $scope.nextPageJP = function(){
     $scope.endOfJPList = false;
     console.log($scope.lowJP + ", " + $scope.highJP);
 
-    //get previous items from array
-
 
       if($scope.lowJP <= 0) {
         $scope.startOfJPList = true;
@@ -1012,14 +899,12 @@ $scope.nextPageJP = function(){
   };
 
   $scope.sendSearch = function(value) {
-    $rootScope.searchValue = value; //allow access to search value using $rootScope variable
-    window.location.href = '#/Search'; //redirect to Search page
+    $rootScope.searchValue = value; 
+    window.location.href = '#/Search'; 
   };
 
 
   $scope.joinProject = function(id) {
-
-    //if not logged in, prompt log in
     Data.getProfile().success(function(data){
       if (data.data != null) {
         var projectIDtoJoin = id; 
@@ -1045,7 +930,6 @@ $scope.nextPageJP = function(){
             $scope.projectToUpdate2 = data.data;
             $scope.pendingMembersToUpdate2 = data.data.pendingMembers;
             Data.getProfile().success(function(data) {
-              // Adding project to logged in user's pendingProjects
               $scope.currentUser = data.data;
               $scope.currentUser.pendingProjects.push($scope.projectToUpdate2._id);
               Data.editUser($scope.currentUser._id, $scope.currentUser);
@@ -1086,13 +970,8 @@ $scope.nextPageJP = function(){
         console.log("NOT LOGGED IN!");
       }
       
-    });
-
-    
-
+    });  
   };
-
-
 }]);
 
 BulletinControllers.controller('SearchController', [
@@ -1118,17 +997,13 @@ BulletinControllers.controller('SearchController', [
 
         $scope.thisUserSkills=data.data.skills;
           for (var i=0;i<$scope.thisUserSkills.length;i++){
-            $scope.thisUserSkills[i]="'"+$scope.thisUserSkills[i]+"'";
+            // $scope.thisUserSkills[i]="'"+$scope.thisUserSkills[i]+"'";
 
           }
 
           $scope.whereQuery="{}";
         $scope.matchSkillOption=false;
       }
-      
-
-    
-
 
     $scope.logOut = function() {
       $http.get('http://localhost:4000/api/logout').success(function(data) {
@@ -1141,12 +1016,6 @@ BulletinControllers.controller('SearchController', [
     var counter = 0;
     $scope.showM = [];
     $scope.joinM = [];
-    // if ($scope.advFilter.length>0){
-    //   $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]},visible:true}";
-    // }else{
-    //   $scope.whereQuery="{visible:true}";
-    // }
-
 
     Data.getProjects({
 
@@ -1165,20 +1034,17 @@ BulletinControllers.controller('SearchController', [
 
     }).success(function (data) {
 
-
-
       $scope.projects = data.data;
       console.log($scope.projects.length);
       counter = $scope.projects.length;
 
 
-      for (var i = 0; i < counter; i++) {
-        Data.getUser($scope.projects[i].creator).success(function (data) {
-          $scope.usernames.push(data.data.name);
-        })
+      // for (var i = 0; i < counter; i++) {
+      //   Data.getUser($scope.projects[i].creator).success(function (data) {
+      //     $scope.usernames.push(data.data.name);
+      //   })
 
-      }
-
+      // }
 
       //model controllers
       for (var i = 0; i < counter; i++) {
@@ -1186,15 +1052,13 @@ BulletinControllers.controller('SearchController', [
         $scope.joinM.push(-1);
 
       }
+
       $scope.showModal = function (index) {
         $scope.thisSkills=[];
         for (var i = 0; i < $scope.projects[index].skills.length; i++){
           Data.getSkill($scope.projects[index].skills[i]).success(function (data) {
             $scope.thisSkills.push(data.data.name);
             console.log($scope.thisSkills);
-
-
-
           })
         }
 
@@ -1227,10 +1091,6 @@ BulletinControllers.controller('SearchController', [
             $scope.joinInfo="You need to sign in to join this project!";
           }
         });
-
-        
-
-
 
       };
       $scope.removeJoinModal = function (index) {
@@ -1273,20 +1133,6 @@ BulletinControllers.controller('SearchController', [
           }
           getProjects();
         }
-
-
-        // if ($("#" + id).css("background-color")!=="rgb(204, 204, 204)"){
-        //   $("#" + id).css("background-color", "rgb(204, 204, 204)");
-
-        //   $scope.advFilter.push("'"+id+"'");
-
-        //   getProjects();
-        // }
-        // else {
-        //   $("#" + id).css("background-color", "rgb(43, 43, 43)");
-        //   $scope.advFilter=$scope.remove($scope.advFilter,"'"+id+"'");
-        //   getProjects();
-        // }
       }
 
 
@@ -1299,7 +1145,10 @@ BulletinControllers.controller('SearchController', [
               $scope.whereQuery = "{";
             }
             $scope.whereQuery += "skills: { $elemMatch: { $in: [";
-            $scope.whereQuery += $scope.thisUserSkills;
+            //$scope.whereQuery += $scope.thisUserSkills;
+            for (var i = 0; i < $scope.thisUserSkills.length; i++){
+              $scope.whereQuery += "'"+$scope.thisUserSkills[i]+"'"+",";
+            }
             $scope.whereQuery += "]} }}"
             console.log($scope.whereQuery);
             getProjects();
@@ -1323,455 +1172,13 @@ BulletinControllers.controller('SearchController', [
        $("#settingsMenu").toggle();
   };
 
-
+  $scope.showSettingsMenuMED = function(){
+    $("#settingsMenuMED").toggle();
+  };
 
   }
-
 ]);
 
-// BulletinControllers.controller('SearchController', [
-//   '$scope',
-//   '$routeParams',
-//   '$http',
-//   '$window',
-//   'Data',
-//   function($scope, $routeParams, $http, $window,Data) {
-//     $window.sessionStorage.baseUrl = "http://localhost:4000";
-//     $scope.advFilter=[];
-//     Data.getUser($routeParams.id).success(function (data) {
-//       $scope.thisUser=data.data;
-//     $scope.thisUserSkills=data.data.skills;
-//       for (var i=0;i<$scope.thisUserSkills.length;i++){
-//         $scope.thisUserSkills[i]="'"+$scope.thisUserSkills[i]+"'";
-
-//       }
-
-//       $scope.whereQuery="{}";
-//     $scope.matchSkillOption=false;
-
-
-
-//   function getProjects() {
-//     $scope.usernames=[];
-//     var counter = 0;
-//     $scope.showM = [];
-//     $scope.joinM = [];
-
-
-
-
-
-//     Data.getProjects({
-
-//       where: $scope.whereQuery,
-//       //where:{skills: { $elemMatch: { $in: $scope.thisUserSkills  } }},
-//       select: {
-//         _id: 1,
-//         name: 1,
-//         creator: 1,
-//         dateCreated: 1,
-//         description: 1,
-//         deadline: 1,
-//         categories: 1,
-//         skills: 1,
-//         pendingMembers:1,
-//         approvedMembers:1
-//       },
-
-//     }).success(function (data) {
-
-
-
-//       $scope.projects = data.data;
-//       console.log($scope.projects.length);
-//       counter = $scope.projects.length;
-
-
-//       for (var i = 0; i < counter; i++) {
-//         Data.getUser($scope.projects[i].creator).success(function (data) {
-//           $scope.usernames.push(data.data.name);
-//         })
-
-//       }
-
-
-//       //model controllers
-//       for (var i = 0; i < counter; i++) {
-//         $scope.showM.push(-1);
-//         $scope.joinM.push(-1);
-
-//       }
-//       $scope.showModal = function (index) {
-//         $scope.thisSkills=[];
-//         for (var i = 0; i < $scope.projects[index].skills.length; i++){
-//           Data.getSkill($scope.projects[index].skills[i]).success(function (data) {
-//             $scope.thisSkills.push(data.data.name);
-//             console.log($scope.thisSkills);
-
-
-
-//           })
-//         }
-
-//         $scope.showM[index] = 1;
-//       };
-//       $scope.removeModal = function (index) {
-//         $scope.showM[index] = -1;
-//       };
-//       $scope.joinThis = function (index) {
-//         $scope.showM[index] = -1;
-//         $scope.joinM[index] = 1;
-
-//         if ($scope.projects[index].pendingMembers.indexOf($routeParams.id)<0) {
-//           $scope.projects[index].pendingMembers.push($routeParams.id);
-//           Data.editProject($scope.projects[index]._id, $scope.projects[index]);
-
-//           $scope.thisUser.pendingProjects.push($scope.projects[index]._id);
-//           Data.editUser($routeParams.id, $scope.thisUser);
-//           $scope.joinInfo="We have added you to the waitingList";
-//         }else{
-//           $scope.joinInfo="You are already in the pendingList!";
-//         }
-
-
-
-//       };
-//       $scope.removeJoinModal = function (index) {
-//         $scope.joinM[index] = -1;
-//       };
-
-//     })
-//   }
-//     getProjects();
-
-//       //filterControllers
-//       $scope.remove = function(ary, elem) {
-//         var i = ary.indexOf(elem);
-//         if (i >= 0) ary.splice(i, 1);
-//         return ary;
-//       }
-
-//       $scope.addFilter=function(id){
-
-//         if ($("#" + id).css("background-color")!=="rgb(26, 255, 140)"){
-//           $("#" + id).css("background-color", "rgb(26, 255, 140)");
-
-//           $scope.advFilter.push("'"+id+"'");
-//           if ($scope.advFilter.length>0){
-//             $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]}}";
-//           }else{
-//             $scope.whereQuery="{}";
-//           }
-
-//           getProjects();
-//         }
-//         else {
-//           $("#" + id).css("background-color", "rgb(43, 43, 43)");
-//           $scope.advFilter=$scope.remove($scope.advFilter,"'"+id+"'");
-
-//           if ($scope.advFilter.length>0){
-//             $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]}}";
-//           }else{
-//             $scope.whereQuery="{}";
-//           }
-//           getProjects();
-//         }
-//       }
-
-//       $scope.$watch('matchSkillOption', function(oldVal, newVal) {
-//         if (newVal !== oldVal) {
-//           if ($scope.matchSkillOption) {
-//             if ($scope.advFilter.length > 0) {
-//               $scope.whereQuery = "{categories: { $all:[ " + $scope.advFilter + "]},";
-//             } else {
-//               $scope.whereQuery = "{";
-//             }
-//             $scope.whereQuery += "skills: { $elemMatch: { $in: [";
-//             $scope.whereQuery += $scope.thisUserSkills;
-//             $scope.whereQuery += "]} }}"
-//             console.log($scope.whereQuery);
-//             getProjects();
-
-//           }else{
-//             if ($scope.advFilter.length > 0) {
-//               $scope.whereQuery = "{categories: { $all:[ " + $scope.advFilter + "]}}";
-//             } else {
-//               $scope.whereQuery = "{}";
-//             }
-//             getProjects();
-
-//           }
-//         }
-
-//       });
-
-
-//     })
-
-//     //{skills: { $elemMatch: { $in: $scope.thisUserSkills  } }}
-
-
-
-
-
-//   }
-// ]);
-//mp4Controllers.controller('TaskListController', [
-//  '$scope',
-//  '$http',
-//  '$window',
-//  'Users',
-//  'Tasks',
-//  'Alert',
-//  function($scope, $http, $window, Users, Tasks, Alert) {
-//    if ($window.sessionStorage.baseUrl) {
-//      $scope.currentPage = 0;
-//      $scope.perPage = 10;
-//      $scope.whereFilters = [
-//        { label: 'Pending'  , value: { completed: false, assignedUserName: { $ne: 'unassigned' } } },
-//        { label: 'Completed', value: { completed: true } },
-//        { label: 'All'      , value: {} },
-//        { label: 'Unassigned', value: {assignedUserName: 'unassigned'} }
-//      ];
-//      $scope.sort = 1;
-//      $scope.sortElements = [
-//        { label: 'taskName'  , value: { name: $scope.sort} },
-//        { label: 'assignedUserName'  , value: { assignedUserName: $scope.sort} },
-//        { label: 'dateCreated'  , value: { dateCreated: $scope.sort} },
-//        { label: 'deadline'  , value: { deadline: $scope.sort} }
-//
-//
-//      ];
-//      $scope.sortElement= $scope.sortElements[0];
-//      $scope.filter = $scope.whereFilters[0];
-//
-//
-//      $scope.$watch('filter', function(newVal, oldVal) {
-//        if (newVal !== oldVal) {
-//          $scope.currentPage = 0;
-//          getTasks();
-//        }
-//      });
-//
-//      $scope.$watch('sort', function(newVal, oldVal) {
-//        if (newVal !== oldVal) {
-//          $scope.currentPage = 0;
-//          getTasks();
-//        }
-//      });
-//
-//      $scope.$watch('sortElement', function(newVal, oldVal) {
-//        if (newVal !== oldVal) {
-//          $scope.currentPage = 0;
-//          getTasks();
-//        }
-//      });
-//
-//
-//
-//      function getTasks() {
-//        Tasks.get({
-//          where: $scope.filter.value,
-//          count: true
-//        }).success(function(data) {
-//          $scope.maxPage = Math.ceil(data.data / $scope.perPage);
-//
-//          Tasks.get({
-//            where: $scope.filter.value,
-//            select: {
-//              _id: 1,
-//              name: 1,
-//              completed: 1,
-//              assignedUser: 1,
-//              assignedUserName: 1,
-//              dateCreated: 1,
-//              deadline: 1
-//            },
-//            sort: $scope.sortElement.value,
-//            skip: $scope.perPage * $scope.currentPage,
-//            limit: $scope.perPage
-//          }).success(function(data) {
-//            Alert.alert('success', data.message);
-//            $scope.tasks = data.data;
-//          }).error(Alert.error);
-//        }).error(Alert.error);
-//      }
-//      getTasks();
-//
-//      $scope.nextPage = function() {
-//        $scope.currentPage = ($scope.currentPage + 1) % $scope.maxPage;
-//        getTasks();
-//      };
-//
-//      $scope.prevPage = function() {
-//        $scope.currentPage = ($scope.currentPage + $scope.maxPage - 1) % $scope.maxPage;
-//        getTasks();
-//      };
-//
-//      $scope.deleteTask = function(id, userId) {
-//        Tasks.delete(id).success(function(data) {
-//          Alert.alert('success', data.message);
-//          if (userId) {
-//            Users.getOne(userId).success(function(data) {
-//              Alert.alert('success', data.message);
-//              var userData = data.data;
-//              var index = userData.pendingTasks.indexOf(id);
-//              if (index > -1) {
-//                userData.pendingTasks.splice(index, 1);
-//
-//                Users.update(userId, userData).success(function(data) {
-//                  Alert.alert('success', data.message);
-//                  getTasks();
-//                }).error(Alert.error);
-//              }
-//            }).error(Alert.error);
-//          }
-//          getTasks();
-//
-//        }).error(Alert.error);
-//      };
-//    } else {
-//      Alert.alert('alert', 'The URL for the API has not been set yet!');
-//    }
-//
-//    $scope.$on('$locationChangeStart', function(event) {
-//      Alert.reset();
-//    });
-//  }
-//]);
-
-/*BulletinControllers.controller('SearchWithoutLogInController', [
-  '$scope',
-  '$routeParams',
-  '$rootScope',
-  '$http',
-  '$window',
-  'Data',
-  function($scope, $routeParams, $rootScope, $http, $window,Data) {
-    $window.sessionStorage.baseUrl = "http://localhost:4000";
-      $(document).foundation();
-
-    if($rootScope.basicQuery != null && $rootScope.basicQuery != ''){
-      $scope.basicQuery = $rootScope.basicQuery;
-    }
-    $scope.advFilter=[];
-
-    // a b c ok  a b not ok    filter a c  filter in actual
-
-      function getProjects() {
-        $scope.usernames=[];
-        var counter = 0;
-        $scope.showM = [];
-        $scope.joinM = [];
-        if ($scope.advFilter.length>0){
-          $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]},visible:true}";
-        }else{
-          $scope.whereQuery="{visible:true}";
-        }
-        console.log($scope.whereQuery);
-        Data.getProjects({
-          where: $scope.whereQuery,
-
-          //categories: { $all: graphics}
-          select: {
-            _id: 1,
-            name: 1,
-            creator: 1,
-            dateCreated:1,
-            description: 1,
-            deadline: 1,
-            categories: 1,
-            skills: 1,
-            pendingMembers:1
-          }
-
-        }).success(function (data) {
-
-
-
-          $scope.projects = data.data;
-
-          counter = $scope.projects.length;
-          for (var i = 0; i < counter; i++) {
-            Data.getUser($scope.projects[i].creator).success(function (data) {
-              $scope.usernames.push(data.data.name);
-            })
-
-          }
-
-
-          //model controllers
-          for (var i = 0; i < counter; i++) {
-            $scope.showM.push(-1);
-            $scope.joinM.push(-1);
-
-          }
-          $scope.showModal = function (index) {
-            $scope.thisSkills=[];
-            for (var i = 0; i < $scope.projects[index].skills.length; i++){
-              Data.getSkill($scope.projects[index].skills[i]).success(function (data) {
-                $scope.thisSkills.push(data.data.name);
-
-
-
-              })
-            }
-
-            $scope.showM[index] = 1;
-          };
-          $scope.removeModal = function (index) {
-            $scope.showM[index] = -1;
-          };
-          $scope.joinThis = function (index) {
-            $scope.showM[index] = -1;
-            $scope.joinM[index] = 1;
-
-
-              $scope.joinInfo="You need to sign in to join this project!";
-
-
-
-
-          };
-          $scope.removeJoinModal = function (index) {
-            $scope.joinM[index] = -1;
-          };
-
-        })
-      }
-      getProjects();
-
-      //filterControllers
-      $scope.remove = function(ary, elem) {
-        var i = ary.indexOf(elem);
-        if (i >= 0) ary.splice(i, 1);
-        return ary;
-      }
-
-      $scope.addFilter=function(id){
-
-        if ($("#" + id).css("background-color")!=="rgb(204, 204, 204)"){
-          $("#" + id).css("background-color", "rgb(204, 204, 204)");
-          $scope.advFilter.push("'"+id+"'");
-
-          getProjects();
-
-        }
-        else {
-          $("#" + id).css("background-color", "rgb(43, 43, 43)");
-          $scope.advFilter=$scope.remove($scope.advFilter,"'"+id+"'");
-          getProjects();
-
-        }
-      }
-
-
-
-
-
-
-  }
-]);*/
 
 BulletinControllers.controller('EditProjectController', ['$scope', '$http', '$window', 'Data', '$routeParams', function($scope, $http, $window, Data, $routeParams) {
   $scope.projectId = $routeParams.projectid;

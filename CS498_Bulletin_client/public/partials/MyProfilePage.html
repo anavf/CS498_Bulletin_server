@@ -1,25 +1,53 @@
 <div class="AVF">
 <div> 
  <nav class="row text-center" class="partialNav">
-        <div class="small-3 large-2 columns">
+        <div class="small-3 large-2 columns show-for-large">
             <a href="#/HomePageLoggedIn"><p id="logo">Bulletin</p></a>
+        </div>
+
+        <div class="medium-2 columns show-for-medium-only">
+            <a href="#/HomePage"><p id="logoMED">Bulletin</p></a>
+        </div>
+
+        <div class="small-4 columns show-for-small-only">
+            <a href="#/HomePage"><p id="logoSMALL">Bulletin</p></a>
         </div>
 <!--         <div class="large-1 columns">
             <i class="fa fa-search" aria-hidden="true"></i>
         </div> -->
-        <div class="large-4 columns">
-            <a ng-click="sendSearch(searchInput)"><i class="fa fa-search" aria-hidden="true" id="searchLogo"></i></a>
+        <div class="medium-5 columns show-for-large">
             <div id="searchBox"><input type="text" id="right-label" placeholder="Search" href="#/Search" ng-model="searchInput"></div>
+            <a ng-click="sendSearch(searchInput)"><i class="fa fa-search" aria-hidden="true" id="searchLogo"></i></a>
         </div>
-        <div class="small-3 large-2 large-offset-2 column">
+
+        <div class="medium-6 columns show-for-medium-only">
+            <div id="searchBox"><input type="text" id="right-label" placeholder="Search" href="#/Search" ng-model="searchInput"></div>
+            <a ng-click="sendSearch(searchInput)"><i class="fa fa-search" aria-hidden="true" id="searchLogo"></i></a>
+        </div>
+
+
+        <div class="small-3 medium-2 medium-offset-1 column show-for-large">
             <a><p id="navName">Hello, {{username}}!</p></a>
         </div>
-        <div class="small-4 large-2 column">
+
+        <div class="small-3 medium-3 column show-for-medium-only">
+              <a><p id="navName">Hello, {{username}}!</p></a>
+          </div>
+
+            <div class="small-5 small-offset-2 column show-for-small-only">
+              <a><p id="navName" style="padding-top: 30px;">Hello, {{username}}!</p></a>
+          </div>
+        <div class="small-4 large-2 column show-for-large">
            <a ng-click="showSettingsMenu()"><i class="fa fa-cog fa-3x" id="gear"></i></a>
        </div>
 </nav>
 
-<div id="settingsMenu">
+<div class="row show-for-small-only" style="height: 40px; width: 100%; padding-top: 80px;">
+    <input class="small-3 small-offset-1 columns" type="text" id="right-label" placeholder="Search" href="#/Search" ng-model="basicQuery" style="width: 80%;">
+    <a ng-click="sendSearch(searchInput)" class="small-2 columns"><i class="fa fa-search" aria-hidden="true" id="searchLogo"></i></a>
+</div>
+
+<div id="settingsMenu"  class="show-for-large">
     <p style="padding-top: 20px;"><a href="#/AccountSettings">Account Settings</a></p>
     <div class="line3"></div>
     <p><a href="#/MyProfilePage">Profile</a></p>
@@ -27,17 +55,48 @@
     <p id="LogOut"><a ng-click = "logOut()">Log Out</a></p>
 </div>
 
+<div id="settingsMenuSMALL" class="row show-for-medium-only" style="background-color: $dark-gray; padding-top: 80px;">
+    <p class="small-6 columns" style="font-size: 14px;"><a href="#/AccountSettings"> ~ ACCOUNT SETTINGS ~ </a></p>
+    <p class="small-6 columns" id="LogOut" style="font-size: 14px;"><a ng-click = "logOut()"> ~ LOG OUT ~ </a></p>
+</div>
+
+
+<div id="settingsMenuSMALL" class="row show-for-small-only" style="background-color: $dark-gray;">
+    <p class="small-6 columns" style="font-size: 14px;"><a href="#/AccountSettings"> ~ ACCOUNT SETTINGS ~ </a></p>
+    <p class="small-6 columns" id="LogOut" style="font-size: 14px;"><a ng-click = "logOut()"> ~ LOG OUT ~ </a></p>
+</div>
+
 <div class="row" id="profileBar">
 
-    <div class="large-2 columns">
+    <div class="large-2 small-2 columns show-for-medium">
         <div class="circle"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
     </div>
 
-    <div class="large-3 columns">
+     <div class="large-3 columns show-for-large">
         <h2>{{username}}</h2>
     </div>
 
-    <div class="large-3 large-offset-4 columns">
+    <div class="large-3 small-4 small-offset-2 medium-4 columns show-for-medium-only">
+        <h2>{{username}}</h2>
+    </div>
+
+    <div class="small-4 columns text-center show-for-small-only" style="margin: 0 auto;">
+        <h2 style="font-size: 36px; margin-top: 0px; padding-top: 0px;">{{username}}</h2>
+    </div>
+
+    <div class="large-3 large-offset-4 columns show-for-large">
+        <a data-open="skillsModal"><div id="skillsButton">
+            <p>Edit Skills</p>
+        </div></a>
+    </div>
+
+    <div class="large-3 large-offset-4 medium-3 medium-offset-1 columns show-for-medium-only">
+        <a data-open="skillsModal"><div id="skillsButton">
+            <p>Edit Skills</p>
+        </div></a>
+    </div>
+
+    <div class="small-5 columns show-for-small-only" style="margin-top: 0px;">
         <a data-open="skillsModal"><div id="skillsButton">
             <p>Edit Skills</p>
         </div></a>
@@ -45,7 +104,8 @@
 
 </div>
 
-<div class="row projectSection">
+
+<div class="row projectSection show-for-large">
     <div class="large-3 columns">
         <h3>My Projects</h3>
     </div>
@@ -56,9 +116,93 @@
     </div>
 </div>
 
-<div class="row"><div class="line"></div></div>
+<div class="row show-for-small-only text-center" style="background-color: #333333;">
+    <h3 style="font-size: 26px; padding: 22px; color: #f2f2f2;">My Projects</h3>
+</div>
 
-<div class="row projectList" id="myProjects">
+<div class="row show-for-medium-only text-center" style="background-color: #333333;">
+    <h3 style="font-size: 26px; padding: 22px; color: #f2f2f2;">My Projects</h3>
+</div>
+
+<div class="row show-for-small-only text-center">
+    <div style="background-color: gray; height: 1px; width: 100%;"></div>
+</div>
+
+<div class="row show-for-medium-only text-center">
+    <div style="background-color: gray; height: 1px; width: 100%;"></div>
+</div>
+
+<div class="row show-for-small-only text-center" style="background-color: #333333;">
+    <h5 style="font-size: 26px; padding: 22px; font-size: 20px; font-weight: 300;"><a href="#/CreateProject" style="color: #73e600;">CREATE PROJECT</a></h5>
+</div>
+
+<div class="row show-for-medium-only text-center" style="background-color: #333333;">
+    <h5 style="font-size: 26px; padding: 22px; font-size: 20px; font-weight: 300;"><a href="#/CreateProject" style="color: #73e600;">CREATE PROJECT</a></h5>
+</div>
+
+<div class="row show-for-small-only text-center">
+    <div style="background-color: gray; height: 1px; width: 100%;"></div>
+</div>
+
+<div class="row show-for-medium-only text-center">
+    <div style="background-color: gray; height: 1px; width: 100%;"></div>
+</div>
+
+<div class="row show-for-small-only text-center" style="background-image: url('../data/Triangles-Soft-Peach.png'); background-repeat: none; background-size: cover; background-attachment: fixed;">
+    <div ng-repeat="project in projects" style="padding: 5px;">
+        <p style="display: inline-block;">{{project.name}} | </p>
+        <h6 style="display: inline-block;"><a href="#/EditProject/{{project._id}}" style="color: gray; font-family: 'Source Sans Pro';">EDIT</a></h6>
+    </div>
+</div>
+
+<div class="row show-for-medium-only text-center" style="background-image: url('../data/Triangles-Soft-Peach.png'); background-repeat: none; background-size: cover; background-attachment: fixed;">
+    <div ng-repeat="project in projects" style="padding: 5px;">
+        <p style="display: inline-block;">{{project.name}} | </p>
+        <h6 style="display: inline-block;"><a href="#/EditProject/{{project._id}}" style="color: gray; font-family: 'Source Sans Pro';">EDIT</a></h6>
+    </div>
+</div>
+
+<div class="row show-for-small-only text-center">
+    <div style="background-color: gray; height: 1px; width: 100%;"></div>
+</div>
+
+<div class="row show-for-medium-only text-center">
+    <div style="background-color: gray; height: 1px; width: 100%;"></div>
+</div>
+
+<div class="row show-for-small-only text-center" style="background-color: #333333;">
+    <h3 style="font-size: 26px; padding: 22px; color: #f2f2f2;">Joined Projects</h3>
+</div>
+
+<div class="row show-for-medium-only text-center" style="background-color: #333333;">
+    <h3 style="font-size: 26px; padding: 22px; color: #f2f2f2;">Joined Projects</h3>
+</div>
+
+<div class="row show-for-small-only text-center">
+    <div style="background-color: gray; height: 1px; width: 100%;"></div>
+</div>
+
+<div class="row show-for-medium-only text-center">
+    <div style="background-color: gray; height: 1px; width: 100%;"></div>
+</div>
+
+<div class="row show-for-small-only text-center" style="background-image: url('../data/Triangles-Soft-Peach.png'); background-repeat: none; background-size: cover; background-attachment: fixed;">
+    <div ng-repeat="data in repeatData" style="padding: 5px;">
+        <p>{{data.data.name}} by {{data.data.creatorName}} <br> Deadline: {{data.data.deadline | date:'yyyy-MM-dd'}}<br> "{{data.data.description}}"</p>
+        <h6><a style="color: gray; font-family: 'Source Sans Pro';" ng-click="leaveProject(data.data._id)">LEAVE PROJECT</a></h6>
+    </div>
+</div>
+
+<div class="row show-for-medium-only text-center" style="background-image: url('../data/Triangles-Soft-Peach.png'); background-repeat: none; background-size: cover; background-attachment: fixed;">
+    <div ng-repeat="data in repeatData" style="padding: 5px;">
+        <p>{{data.data.name}} by {{data.data.creatorName}} <br> Deadline: {{data.data.deadline | date:'yyyy-MM-dd'}}<br> "{{data.data.description}}"</p>
+        <h6><a style="color: gray; font-family: 'Source Sans Pro';" ng-click="leaveProject(data.data._id)">LEAVE PROJECT</a></h6>
+    </div>
+</div>
+
+<div class="row show-for-large"><div class="line"></div></div>
+
+<div class="row projectList show-for-large" id="myProjects">
     <div class="large-1 column">
         <a ng-click="prevPage()" ng-hide="startOfList"><i class="fa fa-angle-left fa-3x darkIcon" aria-hidden="true"></i></a>
         <i ng-show="startOfList" class="fa fa-angle-left fa-3x darkIcon" aria-hidden="true" style="color: #d9d9d9
@@ -105,20 +249,21 @@
     </div>
 </div>
 
-<div class="row projectSection">
+<div class="row projectSection show-for-large">
     <h3 style="padding-left: 20px;">Joined Projects</h3>
 </div>
 
-<div class="row"><div class="line"></div></div>
+<div class="row show-for-large"><div class="line"></div></div>
 
-<div class="row projectList" id="joinedProjects">
+<div class="row projectList show-for-large" id="joinedProjects">
     <div class="large-1 column">
         <a ng-click="prevPageJP()" ng-hide="startOfJPList"><i class="fa fa-angle-left fa-3x darkIcon" aria-hidden="true"></i></a>
         <i ng-show="startOfJPList" class="fa fa-angle-left fa-3x darkIcon" aria-hidden="true" style="color: #d9d9d9;"></i></div>
 
      <div class="large-3 column myProjectA" ng-repeat="data in repeatData | startFrom: lowJP | limitTo: shown" >
         <h4>{{data.data.name}}</h4>
-        <p>by <a>{{data.data.creatorName}}</a></p>
+<!--         <div style="background-color:  #4d9900; height: 1px; width: 220px;"></div>
+ -->        <p>by <a>{{data.data.creatorName}}</a></p>
         <div class="joinedProjectStatus {{data.value}}">
             <p>{{data.value}}</p>
         </div>
@@ -185,7 +330,7 @@ ng-repeat="joinedProject in joinedProjectsAll"
     <p style="color: #ff4d4d; font-family: 'Source Sans Pro';" ng-show="inList">That skill is already in your list!</p>
 
     <div id="AVFskillsSearch">
-        <p ng-repeat="oneSkillName in allSkillsNames | filter:newSkill"><a ng-click="setSkillInput(oneSkillName)">{{oneSkillName}}</a></p>
+        <p ng-repeat="oneSkillName in allSkillsNames | filter:newSkill" ng-show="newSkill != ''"><a ng-click="setSkillInput(oneSkillName)">{{oneSkillName}}</a></p>
     </div>
 
   <button class="button OK" ng-click="updateSkills(newSkill)">Save</button>

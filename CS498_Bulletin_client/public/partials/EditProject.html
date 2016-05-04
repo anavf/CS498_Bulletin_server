@@ -1,9 +1,25 @@
-<div class = "SUpage-title row text-center">
+<div class = "SUpage-title row text-center show-for-large">
 	<h2 style="float: left; padding-left: 120px;">EDIT PROJECT</h2>
 	<div class = "SUdelete-project-container">
 		<a ng-click="showDeleteModal()" id = "SUdelete-button-editproject" class = "button alert" style="margin-right: 120px;">Delete Project</a>
 	</div>
 </div>
+
+<div class = "SUpage-title row text-center show-for-medium-only">
+	<h2 style="float: left; padding-left: 120px; display: inline-block;" >EDIT PROJECT</h2>
+	<div class = "SUdelete-project-container" style="display: inline-block;">
+		<a ng-click="showDeleteModal()" id = "SUdelete-button-editproject" class = "button alert" style="margin-right: 120px;">Delete Project</a>
+	</div>
+</div>
+
+<div class = "SUpage-title row text-center show-for-small-only">
+	<h2  class="small-4 column"  style="float: left; padding-left: 120px; display: inline-block;">EDIT PROJECT</h2>
+	<div class = "SUdelete-project-container small-5 small-offset-1 column" style="display: inline-block;">
+		<a ng-click="showDeleteModal()" id = "SUdelete-button-editproject" class = "button alert" style="margin-right: 120px;">Delete Project</a>
+	</div>
+</div>
+
+
 <div class="SUmodal" id = "SUdeletemodal">
   <h5 class = "text-center" style="font-family: 'Source Sans Pro'; font-weight: 300;">Are you sure?</h5>
   <div class = "SUyesnocontainer text-center">
@@ -34,24 +50,24 @@
 <div class="SU-HR"></div>
 
 <div class = "row SUsectionone-wrapper">
-	<div class = "large-3 columns SUsectionone">
+<!-- 	<div class = "large-3 columns SUsectionone">
 		<div class = "SUproject-image" style="text-align: center;">
 			<i class="fa fa-picture-o fa-2x" aria-hidden="true" style="color: #f2f2f2; padding-top: 20px;"></i>
 			<p class = "text-center"> ADD IMAGE </p>
 			<img class = "SUplus-image" src = "">
 		</div>
-	</div>
-	<div class = "large-9 columns">
+	</div> -->
+	<div class = "medium-12 columns SUcategories-section">
 		<div class = "row">
-			<div class = "large-12 columns">
+			<div class = "large-10 large-offset-1 columns">
 				<p class = "text-center SUcategory-title"> CATEGORY <br> (You can pick more than one)</p>
 			</div>
 		</div>
 		<br>
-		<ul class = "SUcategoriesProject">
-			<li ng-repeat="category in categories" ng-click = "addCategory(category.name)" class = "SUcategory large-3 columns" id = "SU{{category.name}}category">
+		<ul class = "SUcategoriesProject large-10 large-offset-1 columns" style="float: none;">
+			<li ng-repeat="category in categories" ng-click = "addCategory(category.name)" class = "SUcategory large-2 columns" id = "SU{{category.name}}category" style="margin: 5px; border: 2px solid  #262626; float: left;">
 <!-- 				<img class = "SUcategory-icon" src = "">
- -->				<p class = "text-center">{{category.name}}</p>
+ -->				<p class = "text-center" style="font-family: 'Source Sans Pro'; padding-top: 18px;">{{category.name}}</p>
 			</div>
 			
 		</ul>
@@ -61,11 +77,11 @@
 <br>
 
 <div class = "row">
-	<div class = "large-5 columns">
+	<div class = "large-10 large-offset-1 columns">
 		<p class = "text-center SUdescription-title">PROJECT DESCRIPTION</p>
-		<textarea ng-model = "thisProject.description" rows = "7" placeholder = "Enter a brief description of your project... "></textarea>
+		<textarea ng-model = "thisProject.description" rows = "7" placeholder = "Enter a brief description of your project... " style="font-family: 'Source Sans Pro';"></textarea>
 	</div>
-	<div class = "large-offset-1 large-5 columns">
+<!-- 	<div class = "large-offset-1 large-10 columns">
 		<p class = "text-center SUskills-title">LOOKING FOR THESE SKILLS</p>
 		<ul class = "inline-list SUskillswrapperbox "> 
 			<li ng-repeat="skill in lookingFor">
@@ -82,13 +98,34 @@
 				</li>
 			</ul>
 		</form>
+	</div> -->
+</div>
+
+<div class="row">
+		<div class = "large-offset-1 large-10 columns">
+		<p class = "text-center SUskills-title">LOOKING FOR THESE SKILLS</p>
+		<ul class = "inline-list SUskillswrapperbox "> 
+			<li ng-repeat="skill in lookingFor" style="font-family: 'Source Sans Pro';">
+				{{skill.name}}
+				<a><span ng-click= "removeSkill(skill)">&times;</span></a>
+			</li>
+		</ul>
+		<form class = "SUskillsearch">
+			<input ng-model = "filter" type="search" placeholder = "Search" id = "SUskillsInput" autocomplete="off"></input><input type = "submit" id="SUskillssubmit" ng-click = "addNewSkill({name: filter})" style="font-family: 'Source Sans Pro';">
+			<ul class = "SUskillsresults">
+				<li ng-click="addSkill(skill)" ng-repeat="skill in skills | filter: filter">
+					<hr class = "SUsearchresultsbar">
+					<p class = "text-center">{{skill.name}}</p>
+				</li>
+			</ul>
+		</form>
 	</div>
 </div>
 
 <br>
 
 <div class = "row">
-	<div class = "large-12 columns">
+	<div class = "large-10 large-offset-1 columns">
 		<p class = "SUform-title SUtag-title text-center">TAGS</p>
 		<input ng-model = "tags" class = "SUform-data SUtag-data" type = "text" placeholder = "Enter your own tags here, separated by commas">
 	</div>

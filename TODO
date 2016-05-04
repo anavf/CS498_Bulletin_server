@@ -5,3 +5,13 @@ TODO:
 	a) HomePage  -- DONE
 	b) Search Page -- DONE
 3) Fix profilepage.html join functionality -- DONE
+
+
+------------
+a) log in modal not working on search
+b) private setting for project not working
+c) change colors for filters not working (not a huge issue)
+d) only made search and profile pages responsive, mainly
+e) some projects/users are bad and we should delete
+f) plan a strategy for video
+g) search page not displaying creatorName
