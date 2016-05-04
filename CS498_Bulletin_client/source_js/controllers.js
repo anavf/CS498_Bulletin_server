@@ -991,7 +991,6 @@ BulletinControllers.controller('SearchController', [
     $scope.advFilter=[];
     $scope.isLoggedIn = false;
 
-    $scope.whereQuery="{visible:true}";
     Data.getProfile().success(function (data) {
       if (data.data != null) {
         $scope.thisUser=data.data;
@@ -1007,7 +1006,7 @@ BulletinControllers.controller('SearchController', [
 
           }
 
-          $scope.whereQuery="{visible:true}";
+          $scope.whereQuery="{}";
         $scope.matchSkillOption=false;
       }
 
@@ -1016,7 +1015,6 @@ BulletinControllers.controller('SearchController', [
         location.reload();
       });
     }
-
 
   function getProjects() {
     $scope.usernames=[];
@@ -1031,14 +1029,12 @@ BulletinControllers.controller('SearchController', [
         _id: 1,
         name: 1,
         creator: 1,
-        creatorName: 1,
         dateCreated: 1,
         description: 1,
         deadline: 1,
         categories: 1,
         skills: 1,
-        pendingMembers:1,
-        approvedMembers:1
+        pendingMembers:1
       },
 
     }).success(function (data) {
@@ -1124,9 +1120,9 @@ BulletinControllers.controller('SearchController', [
 
           $scope.advFilter.push("'"+id+"'");
           if ($scope.advFilter.length>0){
-            $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]},visible:true}";
+            $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]}}";
           }else{
-            $scope.whereQuery="{visible:true}";
+            $scope.whereQuery="{}";
           }
 
           getProjects();
@@ -1136,9 +1132,9 @@ BulletinControllers.controller('SearchController', [
           $scope.advFilter=$scope.remove($scope.advFilter,"'"+id+"'");
 
           if ($scope.advFilter.length>0){
-            $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]},visible:true}";
+            $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]}}";
           }else{
-            $scope.whereQuery="{visible:true}";
+            $scope.whereQuery="{}";
           }
           getProjects();
         }
@@ -1158,15 +1154,15 @@ BulletinControllers.controller('SearchController', [
             for (var i = 0; i < $scope.thisUserSkills.length; i++){
               $scope.whereQuery += "'"+$scope.thisUserSkills[i]+"'"+",";
             }
-            $scope.whereQuery += "]} },visible:true}"
+            $scope.whereQuery += "]} }}"
             console.log($scope.whereQuery);
             getProjects();
 
           }else{
             if ($scope.advFilter.length > 0) {
-              $scope.whereQuery = "{categories: { $all:[ " + $scope.advFilter + "]},visible:true}";
+              $scope.whereQuery = "{categories: { $all:[ " + $scope.advFilter + "]}}";
             } else {
-              $scope.whereQuery = "{visible:true}";
+              $scope.whereQuery = "{}";
             }
             getProjects();
 

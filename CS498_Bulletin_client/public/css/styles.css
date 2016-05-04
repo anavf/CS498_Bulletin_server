@@ -4161,17 +4161,25 @@ table.hover tr:nth-of-type(even):hover {
   float: right; }
 
 /* line 1, ../../source_sass/_base.scss */
+badge {
+  -ms-transform: scale(1.2, 1.2);
+  /* IE 9 */
+  -webkit-transform: scale(1.2, 1.2);
+  /* Safari */
+  transform: scale(1.2, 1.2); }
+
+/* line 7, ../../source_sass/_base.scss */
 #settingsMenuMED, #settingsMenuSMALL {
   background-color: #333333;
   text-align: center; }
-  /* line 4, ../../source_sass/_base.scss */
+  /* line 10, ../../source_sass/_base.scss */
   #settingsMenuMED p, #settingsMenuSMALL p {
     padding: 20px;
     color: #f2f2f2;
     font-family: 'Source Sans Pro';
     font-weight: 300; }
 
-/* line 16, ../../source_sass/_base.scss */
+/* line 22, ../../source_sass/_base.scss */
 #RCbackground, #RC-AS-background {
   background-image: url("../data/Triangles-Muted-Warm.png");
   background-repeat: none;
@@ -4179,56 +4187,56 @@ table.hover tr:nth-of-type(even):hover {
   background-attachment: fixed;
   overflow: hidden; }
 
-/* line 24, ../../source_sass/_base.scss */
+/* line 30, ../../source_sass/_base.scss */
 #RC-AS-background {
   height: 3000px;
   width: 100%;
   background-image: url("../data/Triangles-Blue-Sea.png"); }
 
-/* line 31, ../../source_sass/_base.scss */
+/* line 37, ../../source_sass/_base.scss */
 #RC-ul {
   background-color: #f2f2f2; }
 
-/* line 35, ../../source_sass/_base.scss */
+/* line 41, ../../source_sass/_base.scss */
 #RC_loginBanner {
   background-color: black;
   color: white;
   font-weight: bold;
   height: 45px; }
 
-/* line 42, ../../source_sass/_base.scss */
+/* line 48, ../../source_sass/_base.scss */
 #RC_loginDetails {
   float: right;
   margin: 10px 20px 0px 0px; }
-  /* line 45, ../../source_sass/_base.scss */
+  /* line 51, ../../source_sass/_base.scss */
   #RC_loginDetails a {
     color: white; }
 
-/* line 50, ../../source_sass/_base.scss */
+/* line 56, ../../source_sass/_base.scss */
 #RC_h1 {
   text-align: center;
   font-family: 'Source Sans Pro';
   color: #f2f2f2;
   font-weight: 300; }
 
-/* line 57, ../../source_sass/_base.scss */
+/* line 63, ../../source_sass/_base.scss */
 .RC-h6 {
   font-family: 'Source Sans Pro';
   color: #f2f2f2; }
 
-/* line 62, ../../source_sass/_base.scss */
+/* line 68, ../../source_sass/_base.scss */
 #RC_accountInfo, #RC_signUp {
   margin-left: 35%;
   width: 30%; }
 
-/* line 67, ../../source_sass/_base.scss */
+/* line 73, ../../source_sass/_base.scss */
 #RC_accountInfoImage, #RC_signUpImage {
   display: inline-block;
   background: #1a1a1a;
   margin: 0% 25% 0% 25%;
   position: relative; }
 
-/* line 74, ../../source_sass/_base.scss */
+/* line 80, ../../source_sass/_base.scss */
 #RC_accountInfoImage i, #RC_signUpImage i {
   color: white;
   position: absolute;
@@ -4236,7 +4244,7 @@ table.hover tr:nth-of-type(even):hover {
   transform: translate(0, -50%);
   margin-left: 40%; }
 
-/* line 82, ../../source_sass/_base.scss */
+/* line 88, ../../source_sass/_base.scss */
 #RC_accountInfoImage img, #RC_signUpImage img {
   display: block;
   width: 200px;
@@ -4248,18 +4256,18 @@ table.hover tr:nth-of-type(even):hover {
   -o-transition: all 0.5s linear;
   transition: all 0.5s linear; }
 
-/* line 94, ../../source_sass/_base.scss */
+/* line 100, ../../source_sass/_base.scss */
 #RC_accountInfoImage img:hover, #RC_signUpImage img:hover {
   opacity: 0.7;
   cursor: pointer; }
 
-/* line 99, ../../source_sass/_base.scss */
+/* line 105, ../../source_sass/_base.scss */
 #RC_accountInfoButtons, #RC_signUpButtons {
   float: right;
   margin: 20px;
   font-family: 'Source Sans Pro'; }
 
-/* line 105, ../../source_sass/_base.scss */
+/* line 111, ../../source_sass/_base.scss */
 #RC_accountInfo ul, #RC_signUp ul {
   list-style-type: none;
   background-color: #f2f2f2;
@@ -4267,14 +4275,14 @@ table.hover tr:nth-of-type(even):hover {
   overflow: auto;
   padding: 4px; }
 
-/* line 113, ../../source_sass/_base.scss */
+/* line 119, ../../source_sass/_base.scss */
 #RC_accountInfo ul li, #RC_signUp ul li .SKILL {
   display: inline;
   float: left;
   margin: 5px;
   font-family: 'Source Sans Pro'; }
 
-/* line 120, ../../source_sass/_base.scss */
+/* line 126, ../../source_sass/_base.scss */
 .RC_modal-bg {
   background: black;
   opacity: 0.7;
@@ -4287,7 +4295,7 @@ table.hover tr:nth-of-type(even):hover {
   left: 0;
   top: 0; }
 
-/* line 133, ../../source_sass/_base.scss */
+/* line 139, ../../source_sass/_base.scss */
 .RC_modal {
   background-color: white;
   display: none;
@@ -4299,26 +4307,26 @@ table.hover tr:nth-of-type(even):hover {
   z-index: 2;
   top: 145px; }
 
-/* line 146, ../../source_sass/_base.scss */
+/* line 152, ../../source_sass/_base.scss */
 .RC_modal a {
   float: right; }
 
-/* line 150, ../../source_sass/_base.scss */
+/* line 156, ../../source_sass/_base.scss */
 .RC_close-modal:hover {
   cursor: pointer; }
 
-/* line 158, ../../source_sass/_base.scss */
+/* line 164, ../../source_sass/_base.scss */
 .AVF .background {
   height: 100%;
   width: 100%; }
-/* line 164, ../../source_sass/_base.scss */
+/* line 170, ../../source_sass/_base.scss */
 .AVF h3 {
   font-weight: 300; }
-/* line 168, ../../source_sass/_base.scss */
+/* line 174, ../../source_sass/_base.scss */
 .AVF row {
   width: 100%;
   max-width: 100%; }
-/* line 173, ../../source_sass/_base.scss */
+/* line 179, ../../source_sass/_base.scss */
 .AVF .line {
   height: 1px;
   width: 80%;
@@ -4326,7 +4334,7 @@ table.hover tr:nth-of-type(even):hover {
   background-color: #333333;
   margin: 10px;
   margin-left: 150px; }
-/* line 182, ../../source_sass/_base.scss */
+/* line 188, ../../source_sass/_base.scss */
 .AVF #grad {
   position: absolute;
   top: 0;
@@ -4336,7 +4344,7 @@ table.hover tr:nth-of-type(even):hover {
   background-size: cover;
   background-attachment: fixed;
   overflow: hidden; }
-/* line 195, ../../source_sass/_base.scss */
+/* line 201, ../../source_sass/_base.scss */
 .AVF nav {
   z-index: 10;
   height: 80px;
@@ -4345,110 +4353,110 @@ table.hover tr:nth-of-type(even):hover {
   background-color: #333333;
   position: fixed;
   overflow: hidden; }
-  /* line 204, ../../source_sass/_base.scss */
+  /* line 210, ../../source_sass/_base.scss */
   .AVF nav p {
     color: white;
     padding: 3px; }
-  /* line 209, ../../source_sass/_base.scss */
+  /* line 215, ../../source_sass/_base.scss */
   .AVF nav #logIn {
     margin-top: 15px;
     padding: 10px;
     border: 1px solid #00ff99; }
-  /* line 215, ../../source_sass/_base.scss */
+  /* line 221, ../../source_sass/_base.scss */
   .AVF nav #logIn:hover, .AVF nav #logInMED:hover {
     transition: all 0.3s ease-in-out;
     background-color: #00b359; }
-  /* line 220, ../../source_sass/_base.scss */
+  /* line 226, ../../source_sass/_base.scss */
   .AVF nav #logInMED {
     margin-top: 25px;
     padding: 5px;
     font-size: 11px;
     border: 1px solid #00ff99; }
-/* line 229, ../../source_sass/_base.scss */
+/* line 235, ../../source_sass/_base.scss */
 .AVF i {
   color: white; }
-/* line 233, ../../source_sass/_base.scss */
+/* line 239, ../../source_sass/_base.scss */
 .AVF .darkIcon {
   color: #333333;
   padding-top: 180px; }
-/* line 238, ../../source_sass/_base.scss */
+/* line 244, ../../source_sass/_base.scss */
 .AVF .buttonStyle {
   margin-top: 15px;
   padding: 10px;
   border: 1px solid #00ff99; }
-/* line 244, ../../source_sass/_base.scss */
+/* line 250, ../../source_sass/_base.scss */
 .AVF #gear {
   color: #8c8c8c;
   float: left;
   padding-top: 15px; }
-/* line 250, ../../source_sass/_base.scss */
+/* line 256, ../../source_sass/_base.scss */
 .AVF #gearSettings {
   position: relative; }
-/* line 254, ../../source_sass/_base.scss */
+/* line 260, ../../source_sass/_base.scss */
 .AVF #searchBox {
   width: 90%;
   display: inline-block;
   padding-top: 20px; }
-/* line 260, ../../source_sass/_base.scss */
+/* line 266, ../../source_sass/_base.scss */
 .AVF #searchLogo {
   color: #f2f2f2;
   display: inline-block;
   padding: 8px; }
-/* line 266, ../../source_sass/_base.scss */
+/* line 272, ../../source_sass/_base.scss */
 .AVF #right-label {
   background-color: #f2f2f2; }
-/* line 270, ../../source_sass/_base.scss */
+/* line 276, ../../source_sass/_base.scss */
 .AVF #logo {
   float: right;
   padding-top: 12px;
   font-family: 'Fredericka the Great';
   font-size: 32px; }
-/* line 277, ../../source_sass/_base.scss */
+/* line 283, ../../source_sass/_base.scss */
 .AVF #logoMED {
   float: right;
   padding-top: 12px;
   font-family: 'Fredericka the Great';
   font-size: 32px; }
-/* line 284, ../../source_sass/_base.scss */
+/* line 290, ../../source_sass/_base.scss */
 .AVF #logoSMALL {
   float: right;
   padding: 20px;
   font-family: 'Fredericka the Great';
   font-size: 26px; }
-/* line 291, ../../source_sass/_base.scss */
+/* line 297, ../../source_sass/_base.scss */
 .AVF #logoSpan {
   font-family: 'Fredericka the Great';
   font-size: 60px;
   color: white; }
-/* line 297, ../../source_sass/_base.scss */
+/* line 303, ../../source_sass/_base.scss */
 .AVF .signUp, .AVF #navName {
   padding-top: 28px;
   float: left;
   font-size: 13px;
   color: #00ff99; }
-/* line 304, ../../source_sass/_base.scss */
+/* line 310, ../../source_sass/_base.scss */
 .AVF #navName {
   float: right; }
-/* line 309, ../../source_sass/_base.scss */
+/* line 315, ../../source_sass/_base.scss */
 .AVF a:hover {
   transition: all 0.3s ease-in-out;
   color: #f2f2f2 !important; }
-/* line 314, ../../source_sass/_base.scss */
+/* line 320, ../../source_sass/_base.scss */
 .AVF #HomePageContent {
   padding-top: 200px; }
-  /* line 317, ../../source_sass/_base.scss */
+  /* line 323, ../../source_sass/_base.scss */
   .AVF #HomePageContent h1 {
     color: white;
     font-family: 'Source Sans Pro';
     font-weight: 300;
     font-size: 60px; }
-/* line 325, ../../source_sass/_base.scss */
+/* line 331, ../../source_sass/_base.scss */
 .AVF #searchHomeBox {
   float: right; }
-/* line 329, ../../source_sass/_base.scss */
+/* line 335, ../../source_sass/_base.scss */
 .AVF #createHomeBox {
   float: left; }
-/* line 333, ../../source_sass/_base.scss */
+/* line 339, ../../source_sass/_base.scss */
 .AVF .grayBox {
   overflow: hidden;
   height: 350px;
@@ -4456,11 +4464,11 @@ table.hover tr:nth-of-type(even):hover {
   background-color: rgba(0, 26, 13, 0.6);
   border: 2px solid #333333;
   text-align: center; }
-/* line 344, ../../source_sass/_base.scss */
+/* line 350, ../../source_sass/_base.scss */
 .AVF .grayBox:hover {
   transition: all 0.3s ease-in-out;
   background-color: rgba(0, 26, 13, 0.8); }
-/* line 349, ../../source_sass/_base.scss */
+/* line 355, ../../source_sass/_base.scss */
 .AVF h2 {
   font-family: 'Source Sans Pro';
   font-weight: 300;
@@ -4468,7 +4476,7 @@ table.hover tr:nth-of-type(even):hover {
   color: white;
   opacity: 1;
   margin: 0 auto; }
-/* line 358, ../../source_sass/_base.scss */
+/* line 364, ../../source_sass/_base.scss */
 .AVF #profileBar {
   width: 100%;
   max-width: 100%;
@@ -4479,42 +4487,42 @@ table.hover tr:nth-of-type(even):hover {
   background-size: cover;
   background-attachment: fixed;
   overflow: hidden; }
-  /* line 369, ../../source_sass/_base.scss */
+  /* line 375, ../../source_sass/_base.scss */
   .AVF #profileBar h2 {
     color: white;
     font-weight: 300;
     padding-top: 40px;
     float: left; }
-  /* line 376, ../../source_sass/_base.scss */
+  /* line 382, ../../source_sass/_base.scss */
   .AVF #profileBar button {
     margin-top: 50px; }
-  /* line 380, ../../source_sass/_base.scss */
+  /* line 386, ../../source_sass/_base.scss */
   .AVF #profileBar #skillsButton {
     margin-top: 45px;
     padding: 10px;
     height: 50px;
     width: 130px;
     background-color: #00b359; }
-    /* line 387, ../../source_sass/_base.scss */
+    /* line 393, ../../source_sass/_base.scss */
     .AVF #profileBar #skillsButton p {
       padding-left: 15px;
       padding-top: 2px;
       color: white; }
-  /* line 395, ../../source_sass/_base.scss */
+  /* line 401, ../../source_sass/_base.scss */
   .AVF #profileBar #skillsButton:hover {
     transition: all 0.3s ease-in-out;
     background-color: #00994d; }
-/* line 402, ../../source_sass/_base.scss */
+/* line 408, ../../source_sass/_base.scss */
 .AVF .projectSection {
   padding-top: 50px;
   width: 80%;
   max-width: 80%; }
-/* line 408, ../../source_sass/_base.scss */
+/* line 414, ../../source_sass/_base.scss */
 .AVF .projectList {
   height: 400px;
   width: 80%;
   max-width: 80%; }
-/* line 414, ../../source_sass/_base.scss */
+/* line 420, ../../source_sass/_base.scss */
 .AVF .circle {
   float: right;
   margin-top: 35px;
@@ -4523,11 +4531,11 @@ table.hover tr:nth-of-type(even):hover {
   height: 70px;
   width: 70px;
   text-align: center; }
-  /* line 423, ../../source_sass/_base.scss */
+  /* line 429, ../../source_sass/_base.scss */
   .AVF .circle i {
     padding-top: 18px;
     color: #333333; }
-/* line 429, ../../source_sass/_base.scss */
+/* line 435, ../../source_sass/_base.scss */
 .AVF #createButton {
   margin-right: 35px;
   float: right;
@@ -4535,26 +4543,26 @@ table.hover tr:nth-of-type(even):hover {
   height: 50px;
   width: 170px;
   background-color: #00b359; }
-  /* line 437, ../../source_sass/_base.scss */
+  /* line 443, ../../source_sass/_base.scss */
   .AVF #createButton p {
     padding-left: 15px;
     padding-top: 2px;
     color: white; }
-/* line 445, ../../source_sass/_base.scss */
+/* line 451, ../../source_sass/_base.scss */
 .AVF #createButton:hover {
   transition: all 0.3s ease-in-out;
   background-color: #00994d; }
-/* line 450, ../../source_sass/_base.scss */
+/* line 456, ../../source_sass/_base.scss */
 .AVF #logInModal, .AVF .WEI #logInModal4, .WEI .AVF #logInModal4 {
   text-align: center;
   background-color: #333333; }
-  /* line 454, ../../source_sass/_base.scss */
+  /* line 460, ../../source_sass/_base.scss */
   .AVF #logInModal h3, .AVF .WEI #logInModal4 h3, .WEI .AVF #logInModal4 h3 {
     color: #f2f2f2; }
-  /* line 458, ../../source_sass/_base.scss */
+  /* line 464, ../../source_sass/_base.scss */
   .AVF #logInModal label, .AVF .WEI #logInModal4 label, .WEI .AVF #logInModal4 label {
     color: #f2f2f2; }
-  /* line 462, ../../source_sass/_base.scss */
+  /* line 468, ../../source_sass/_base.scss */
   .AVF #logInModal .OK, .AVF .WEI #logInModal4 .OK, .WEI .AVF #logInModal4 .OK, .AVF #logInModal #detailedProjectModal .EDIT, .AVF #detailedProjectModal #logInModal .EDIT, .AVF #detailedProjectModal .WEI #logInModal4 .EDIT, .WEI .AVF #detailedProjectModal #logInModal4 .EDIT, .AVF #logInModal #detailedJoinedProjectModal .EDIT, .AVF #detailedJoinedProjectModal #logInModal .EDIT, .AVF #detailedJoinedProjectModal .WEI #logInModal4 .EDIT, .WEI .AVF #detailedJoinedProjectModal #logInModal4 .EDIT, .AVF #logInModal #detailedProjectModal2 .EDIT, .AVF #detailedProjectModal2 #logInModal .EDIT, .AVF #detailedProjectModal2 .WEI #logInModal4 .EDIT,
   .AVF #logInModal #detailedJoinedProjectModal2 .EDIT,
   .AVF #detailedJoinedProjectModal2 #logInModal .EDIT,
@@ -4564,7 +4572,7 @@ table.hover tr:nth-of-type(even):hover {
   .AVF .WEI #logInModal4 #detailedJoinedProjectModal2 .EDIT,
   .AVF .WEI #detailedJoinedProjectModal2 #logInModal4 .EDIT, .WEI #detailedJoinedProjectModal .AVF #logInModal .EDIT, .AVF .WEI #logInModal4 #detailedJoinedProjectModal .EDIT, .AVF .WEI #detailedJoinedProjectModal #logInModal4 .EDIT, .WEI .AVF #logInModal4 #detailedJoinedProjectModal .EDIT, .WEI #detailedJoinedProjectModal .AVF #logInModal4 .EDIT {
     border: 1px solid #00ff99; }
-/* line 467, ../../source_sass/_base.scss */
+/* line 473, ../../source_sass/_base.scss */
 .AVF .myProjectA {
   margin-left: 9px;
   margin-right: 74px;
@@ -4574,20 +4582,20 @@ table.hover tr:nth-of-type(even):hover {
   height: 250px;
   width: 250px;
   background-color: #333333; }
-  /* line 477, ../../source_sass/_base.scss */
+  /* line 483, ../../source_sass/_base.scss */
   .AVF .myProjectA h4 {
     padding-top: 30px;
     font-family: 'Source Sans Pro';
     color: #f2f2f2;
     font-weight: 300; }
-  /* line 484, ../../source_sass/_base.scss */
+  /* line 490, ../../source_sass/_base.scss */
   .AVF .myProjectA p {
     padding-top: 10px;
     color: #f2f2f2; }
-  /* line 489, ../../source_sass/_base.scss */
+  /* line 495, ../../source_sass/_base.scss */
   .AVF .myProjectA i {
     color: #f2f2f2; }
-  /* line 493, ../../source_sass/_base.scss */
+  /* line 499, ../../source_sass/_base.scss */
   .AVF .myProjectA .editProject, .AVF .myProjectA .joinedProjectStatus {
     position: absolute;
     background-color: #262626;
@@ -4599,7 +4607,7 @@ table.hover tr:nth-of-type(even):hover {
     height: 80px;
     padding-top: 22px;
     border: 1px solid #8c8c8c; }
-  /* line 506, ../../source_sass/_base.scss */
+  /* line 512, ../../source_sass/_base.scss */
   .AVF .myProjectA .viewProject {
     position: absolute;
     background-color: #262626;
@@ -4611,23 +4619,23 @@ table.hover tr:nth-of-type(even):hover {
     height: 80px;
     padding-top: 22px;
     border: 1px solid #8c8c8c; }
-  /* line 519, ../../source_sass/_base.scss */
+  /* line 525, ../../source_sass/_base.scss */
   .AVF .myProjectA .joinedProjectStatus {
     padding-top: 16px; }
-  /* line 525, ../../source_sass/_base.scss */
+  /* line 531, ../../source_sass/_base.scss */
   .AVF .myProjectA .Accepted p {
     color: #1aff8c; }
-  /* line 529, ../../source_sass/_base.scss */
+  /* line 535, ../../source_sass/_base.scss */
   .AVF .myProjectA .Pending p {
     color: #999999; }
-  /* line 533, ../../source_sass/_base.scss */
+  /* line 539, ../../source_sass/_base.scss */
   .AVF .myProjectA .Declined p {
     color: #ff4d4d; }
-  /* line 536, ../../source_sass/_base.scss */
+  /* line 542, ../../source_sass/_base.scss */
   .AVF .myProjectA .editProject:hover, .AVF .myProjectA .joinedProjectStatus:hover, .AVF .myProjectA .viewProject:hover, .AVF .myProjectA .joinedProjectStatus:hover {
     transition: all 0.3s ease-in-out;
     background-color: #1a1a1a; }
-/* line 543, ../../source_sass/_base.scss */
+/* line 549, ../../source_sass/_base.scss */
 .AVF #settingsMenu, .AVF .displaySettingsMenu, .AVF .WEI .displaySettingsMenu, .WEI .AVF .displaySettingsMenu {
   transition: all 0.3s ease-in-out;
   display: none;
@@ -4639,72 +4647,72 @@ table.hover tr:nth-of-type(even):hover {
   z-index: 20;
   height: 215px;
   width: 200px; }
-  /* line 555, ../../source_sass/_base.scss */
+  /* line 561, ../../source_sass/_base.scss */
   .AVF #settingsMenu p, .AVF .displaySettingsMenu p, .AVF .WEI .displaySettingsMenu p, .WEI .AVF .displaySettingsMenu p {
     font-family: 'Source Sans Pro';
     padding: 10px;
     color: #f2f2f2; }
-  /* line 561, ../../source_sass/_base.scss */
+  /* line 567, ../../source_sass/_base.scss */
   .AVF #settingsMenu .line3, .AVF .displaySettingsMenu .line3, .AVF .WEI .displaySettingsMenu .line3, .WEI .AVF .displaySettingsMenu .line3 {
     background-color: #cccccc;
     height: 1px;
     margin-top: 5px;
     margin-bottom: 10px; }
-/* line 570, ../../source_sass/_base.scss */
+/* line 576, ../../source_sass/_base.scss */
 .AVF #LogOut {
   color: #ff4d4d; }
-  /* line 573, ../../source_sass/_base.scss */
+  /* line 579, ../../source_sass/_base.scss */
   .AVF #LogOut a {
     color: #ff4d4d; }
-/* line 576, ../../source_sass/_base.scss */
+/* line 582, ../../source_sass/_base.scss */
 .AVF .displaySettingsMenu {
   display: inline-block; }
-/* line 581, ../../source_sass/_base.scss */
+/* line 587, ../../source_sass/_base.scss */
 .AVF #skillsModal, .AVF #skillsModal2 {
   text-align: center;
   background-color: #333333; }
-  /* line 585, ../../source_sass/_base.scss */
+  /* line 591, ../../source_sass/_base.scss */
   .AVF #skillsModal h3, .AVF #skillsModal2 h3 {
     color: #f2f2f2; }
-  /* line 589, ../../source_sass/_base.scss */
+  /* line 595, ../../source_sass/_base.scss */
   .AVF #skillsModal p, .AVF #skillsModal2 p, .AVF #skillsModal label, .AVF #skillsModal2 label {
     color: #f2f2f2; }
-  /* line 593, ../../source_sass/_base.scss */
+  /* line 599, ../../source_sass/_base.scss */
   .AVF #skillsModal label, .AVF #skillsModal2 label {
     font-family: 'Source Sans Pro';
     font-weight: 300;
     font-size: 31px; }
-  /* line 599, ../../source_sass/_base.scss */
+  /* line 605, ../../source_sass/_base.scss */
   .AVF #skillsModal .OK, .AVF #skillsModal2 .OK, .AVF #skillsModal #detailedProjectModal .EDIT, .AVF #detailedProjectModal #skillsModal .EDIT, .AVF #skillsModal2 #detailedProjectModal .EDIT, .AVF #detailedProjectModal #skillsModal2 .EDIT, .AVF #skillsModal #detailedJoinedProjectModal .EDIT, .AVF #detailedJoinedProjectModal #skillsModal .EDIT, .AVF #skillsModal2 #detailedJoinedProjectModal .EDIT, .AVF #detailedJoinedProjectModal #skillsModal2 .EDIT, .AVF #skillsModal #detailedProjectModal2 .EDIT, .AVF #detailedProjectModal2 #skillsModal .EDIT, .AVF #skillsModal2 #detailedProjectModal2 .EDIT, .AVF #detailedProjectModal2 #skillsModal2 .EDIT,
   .AVF #skillsModal #detailedJoinedProjectModal2 .EDIT,
   .AVF #detailedJoinedProjectModal2 #skillsModal .EDIT,
   .AVF #skillsModal2 #detailedJoinedProjectModal2 .EDIT,
   .AVF #detailedJoinedProjectModal2 #skillsModal2 .EDIT, .WEI #detailedProjectModal .AVF #skillsModal .EDIT, .WEI #detailedProjectModal .AVF #skillsModal2 .EDIT, .WEI #detailedJoinedProjectModal .AVF #skillsModal .EDIT, .WEI #detailedJoinedProjectModal .AVF #skillsModal2 .EDIT {
     border: 1px solid #00ff99; }
-/* line 608, ../../source_sass/_base.scss */
+/* line 614, ../../source_sass/_base.scss */
 .AVF #detailedProjectModal, .AVF #detailedJoinedProjectModal, .AVF #detailedProjectModal2,
 .AVF #detailedJoinedProjectModal2 {
   background-color: #333333; }
-  /* line 611, ../../source_sass/_base.scss */
+  /* line 617, ../../source_sass/_base.scss */
   .AVF #detailedProjectModal h3, .AVF #detailedJoinedProjectModal h3, .AVF #detailedProjectModal2 h3,
   .AVF #detailedJoinedProjectModal2 h3 {
     color: white; }
-  /* line 615, ../../source_sass/_base.scss */
+  /* line 621, ../../source_sass/_base.scss */
   .AVF #detailedProjectModal h6, .AVF #detailedJoinedProjectModal h6, .AVF #detailedProjectModal2 h6,
   .AVF #detailedJoinedProjectModal2 h6 {
     color: #8c8c8c; }
-  /* line 619, ../../source_sass/_base.scss */
+  /* line 625, ../../source_sass/_base.scss */
   .AVF #detailedProjectModal p, .AVF #detailedJoinedProjectModal p, .AVF #detailedProjectModal2 p,
   .AVF #detailedJoinedProjectModal2 p, .AVF #detailedProjectModal label, .AVF #detailedJoinedProjectModal label, .AVF #detailedProjectModal2 label,
   .AVF #detailedJoinedProjectModal2 label {
     color: #f2f2f2; }
-  /* line 624, ../../source_sass/_base.scss */
+  /* line 630, ../../source_sass/_base.scss */
   .AVF #detailedProjectModal .EDIT, .AVF #detailedJoinedProjectModal .EDIT, .AVF #detailedProjectModal2 .EDIT,
   .AVF #detailedJoinedProjectModal2 .EDIT {
     margin-top: 120px;
     border: 1px solid #00ff99;
     float: right; }
-  /* line 631, ../../source_sass/_base.scss */
+  /* line 637, ../../source_sass/_base.scss */
   .AVF #detailedProjectModal #projectImage, .AVF #detailedJoinedProjectModal #projectImage, .AVF #detailedProjectModal2 #projectImage,
   .AVF #detailedJoinedProjectModal2 #projectImage {
     padding: 40px;
@@ -4714,7 +4722,7 @@ table.hover tr:nth-of-type(even):hover {
     background-image: url("../data/Triangles-soft-with-sunburst.png");
     background-repeat: none;
     background-size: cover; }
-  /* line 642, ../../source_sass/_base.scss */
+  /* line 648, ../../source_sass/_base.scss */
   .AVF #detailedProjectModal .line2, .AVF #detailedJoinedProjectModal .line2, .AVF #detailedProjectModal2 .line2,
   .AVF #detailedJoinedProjectModal2 .line2 {
     height: 1px;
@@ -4723,28 +4731,28 @@ table.hover tr:nth-of-type(even):hover {
     margin-bottom: 7px;
     margin-left: 0px;
     width: 90%; }
-  /* line 651, ../../source_sass/_base.scss */
+  /* line 657, ../../source_sass/_base.scss */
   .AVF #detailedProjectModal h3 span, .AVF #detailedJoinedProjectModal h3 span, .AVF #detailedProjectModal2 h3 span,
   .AVF #detailedJoinedProjectModal2 h3 span {
     font-family: 'Source Sans Pro';
     font-weight: 300;
     font-size: 22px;
     color: #c4ff4d; }
-  /* line 658, ../../source_sass/_base.scss */
+  /* line 664, ../../source_sass/_base.scss */
   .AVF #detailedProjectModal .AVFgreen, .AVF #detailedJoinedProjectModal .AVFgreen, .AVF #detailedProjectModal2 .AVFgreen,
   .AVF #detailedJoinedProjectModal2 .AVFgreen {
     font-family: 'Source Sans Pro';
     color: #c4ff4d;
     font-size: 18px; }
-/* line 676, ../../source_sass/_base.scss */
+/* line 682, ../../source_sass/_base.scss */
 .AVF #AVFskillsSearch p {
   font-family: 'Source Sans Pro';
   font-size: 14px; }
-/* line 681, ../../source_sass/_base.scss */
+/* line 687, ../../source_sass/_base.scss */
 .AVF #AVFskillsSearch a:hover {
   color: white; }
 
-/* line 690, ../../source_sass/_base.scss */
+/* line 696, ../../source_sass/_base.scss */
 .WEI {
   /*.WSline{
   	width: 100%;
@@ -4758,37 +4766,37 @@ table.hover tr:nth-of-type(even):hover {
   /* Modal Content (image) */
   /* Add Animation */
   /* The Close Button */ }
-  /* line 692, ../../source_sass/_base.scss */
+  /* line 698, ../../source_sass/_base.scss */
   .WEI i {
     color: white; }
-  /* line 696, ../../source_sass/_base.scss */
+  /* line 702, ../../source_sass/_base.scss */
   .WEI .buttonStyle {
     margin-top: 15px;
     padding: 10px;
     border: 1px solid #00ff99; }
-  /* line 702, ../../source_sass/_base.scss */
+  /* line 708, ../../source_sass/_base.scss */
   .WEI #gear {
     color: #8c8c8c;
     float: left;
     padding-top: 15px; }
-  /* line 708, ../../source_sass/_base.scss */
+  /* line 714, ../../source_sass/_base.scss */
   .WEI #gearSettings {
     position: relative; }
-  /* line 712, ../../source_sass/_base.scss */
+  /* line 718, ../../source_sass/_base.scss */
   .WEI #searchBox {
     padding-top: 20px; }
-  /* line 716, ../../source_sass/_base.scss */
+  /* line 722, ../../source_sass/_base.scss */
   .WEI #logo {
     float: right;
     padding-top: 12px;
     font-family: 'Fredericka the Great';
     font-size: 32px; }
-  /* line 723, ../../source_sass/_base.scss */
+  /* line 729, ../../source_sass/_base.scss */
   .WEI span {
     font-family: 'Fredericka the Great';
     font-size: 60px;
     color: white; }
-  /* line 729, ../../source_sass/_base.scss */
+  /* line 735, ../../source_sass/_base.scss */
   .WEI nav {
     z-index: 10;
     height: 80px;
@@ -4797,40 +4805,40 @@ table.hover tr:nth-of-type(even):hover {
     background-color: #333333;
     position: fixed;
     overflow: hidden; }
-    /* line 738, ../../source_sass/_base.scss */
+    /* line 744, ../../source_sass/_base.scss */
     .WEI nav p {
       color: white;
       padding: 3px; }
-    /* line 743, ../../source_sass/_base.scss */
+    /* line 749, ../../source_sass/_base.scss */
     .WEI nav #logIn {
       margin-top: 15px;
       padding: 10px;
       border: 1px solid #00ff99; }
-    /* line 749, ../../source_sass/_base.scss */
+    /* line 755, ../../source_sass/_base.scss */
     .WEI nav #logIn:hover {
       transition: all 0.3s ease-in-out;
       background-color: #00b359; }
-  /* line 756, ../../source_sass/_base.scss */
+  /* line 762, ../../source_sass/_base.scss */
   .WEI #weishi_photoGraphy, .WEI #weishi_database, .WEI #weishi_mobile, .WEI #weishi_globe, .WEI #weishi_lock, .WEI #weishi_android, .WEI #weishi_gamepad, .WEI #weishi_laptop, .WEI #weishi_star, .WEI #weishi_research {
     color: #8c8c8c; }
-  /* line 761, ../../source_sass/_base.scss */
+  /* line 767, ../../source_sass/_base.scss */
   .WEI #Graphics, .WEI #Database, .WEI #IOS, .WEI #Network, .WEI #Security, .WEI #Android, .WEI #Linux, .WEI #Debug {
     position: relative;
     float: top; }
-  /* line 767, ../../source_sass/_base.scss */
+  /* line 773, ../../source_sass/_base.scss */
   .WEI #checkboxM1, .WEI #checkboxM2 {
     position: relative;
     margin-top: 70px; }
-  /* line 772, ../../source_sass/_base.scss */
+  /* line 778, ../../source_sass/_base.scss */
   .WEI #checkboxM1 {
     margin-top: 50px;
     font-size: 18px; }
-  /* line 777, ../../source_sass/_base.scss */
+  /* line 783, ../../source_sass/_base.scss */
   .WEI #searchIcon {
     float: right;
     position: relative;
     padding-top: 15px; }
-  /* line 783, ../../source_sass/_base.scss */
+  /* line 789, ../../source_sass/_base.scss */
   .WEI #settingsMenu, .WEI .AVF .displaySettingsMenu, .AVF .WEI .displaySettingsMenu, .WEI .displaySettingsMenu {
     transition: all 0.3s ease-in-out;
     display: none;
@@ -4842,31 +4850,31 @@ table.hover tr:nth-of-type(even):hover {
     z-index: 20;
     height: 215px;
     width: 200px; }
-    /* line 795, ../../source_sass/_base.scss */
+    /* line 801, ../../source_sass/_base.scss */
     .WEI #settingsMenu p, .WEI .AVF .displaySettingsMenu p, .AVF .WEI .displaySettingsMenu p, .WEI .displaySettingsMenu p {
       font-family: 'Source Sans Pro';
       padding: 10px;
       color: #f2f2f2; }
-    /* line 801, ../../source_sass/_base.scss */
+    /* line 807, ../../source_sass/_base.scss */
     .WEI #settingsMenu .line3, .WEI .AVF .displaySettingsMenu .line3, .AVF .WEI .displaySettingsMenu .line3, .WEI .displaySettingsMenu .line3 {
       height: 1px;
       background-color: #cccccc;
       margin-top: 5px;
       margin-bottom: 10px; }
-  /* line 810, ../../source_sass/_base.scss */
+  /* line 816, ../../source_sass/_base.scss */
   .WEI .displaySettingsMenu {
     display: inline-block; }
-  /* line 817, ../../source_sass/_base.scss */
+  /* line 823, ../../source_sass/_base.scss */
   .WEI #logInModal, .WEI #logInModal4 {
     text-align: center;
     background-color: #333333; }
-    /* line 821, ../../source_sass/_base.scss */
+    /* line 827, ../../source_sass/_base.scss */
     .WEI #logInModal h3, .WEI #logInModal4 h3 {
       color: #f2f2f2; }
-    /* line 825, ../../source_sass/_base.scss */
+    /* line 831, ../../source_sass/_base.scss */
     .WEI #logInModal label, .WEI #logInModal4 label {
       color: #f2f2f2; }
-    /* line 829, ../../source_sass/_base.scss */
+    /* line 835, ../../source_sass/_base.scss */
     .WEI #logInModal .OK, .WEI #logInModal4 .OK, .AVF #detailedProjectModal .WEI #logInModal .EDIT, .AVF #detailedProjectModal .WEI #logInModal4 .EDIT, .AVF #detailedJoinedProjectModal .WEI #logInModal .EDIT, .AVF #detailedJoinedProjectModal .WEI #logInModal4 .EDIT, .AVF #detailedProjectModal2 .WEI #logInModal .EDIT, .AVF #detailedProjectModal2 .WEI #logInModal4 .EDIT,
     .AVF #detailedJoinedProjectModal2 .WEI #logInModal .EDIT,
     .AVF #detailedJoinedProjectModal2 .WEI #logInModal4 .EDIT, .WEI #logInModal #detailedProjectModal .EDIT, .WEI #detailedProjectModal #logInModal .EDIT, .WEI #logInModal4 #detailedProjectModal .EDIT, .WEI #detailedProjectModal #logInModal4 .EDIT, .WEI #logInModal .AVF #detailedProjectModal2 .EDIT, .WEI .AVF #detailedProjectModal2 #logInModal .EDIT, .WEI #logInModal4 .AVF #detailedProjectModal2 .EDIT, .WEI .AVF #detailedProjectModal2 #logInModal4 .EDIT, .AVF .WEI #logInModal #detailedProjectModal2 .EDIT, .AVF .WEI #detailedProjectModal2 #logInModal .EDIT, .AVF .WEI #logInModal4 #detailedProjectModal2 .EDIT, .AVF .WEI #detailedProjectModal2 #logInModal4 .EDIT,
@@ -4879,36 +4887,36 @@ table.hover tr:nth-of-type(even):hover {
     .AVF .WEI #logInModal4 #detailedJoinedProjectModal2 .EDIT,
     .AVF .WEI #detailedJoinedProjectModal2 #logInModal4 .EDIT, .WEI #logInModal #detailedJoinedProjectModal .EDIT, .WEI #detailedJoinedProjectModal #logInModal .EDIT, .WEI #logInModal4 #detailedJoinedProjectModal .EDIT, .WEI #detailedJoinedProjectModal #logInModal4 .EDIT {
       border: 1px solid #00ff99; }
-  /* line 838, ../../source_sass/_base.scss */
+  /* line 844, ../../source_sass/_base.scss */
   .WEI #detailedProjectModal, .WEI .AVF #detailedProjectModal2, .AVF .WEI #detailedProjectModal2,
   .WEI .AVF #detailedJoinedProjectModal2,
   .AVF .WEI #detailedJoinedProjectModal2, .WEI #detailedJoinedProjectModal {
     background-color: #333333; }
-    /* line 841, ../../source_sass/_base.scss */
+    /* line 847, ../../source_sass/_base.scss */
     .WEI #detailedProjectModal h3, .WEI .AVF #detailedProjectModal2 h3, .AVF .WEI #detailedProjectModal2 h3,
     .WEI .AVF #detailedJoinedProjectModal2 h3,
     .AVF .WEI #detailedJoinedProjectModal2 h3, .WEI #detailedJoinedProjectModal h3 {
       color: white; }
-    /* line 845, ../../source_sass/_base.scss */
+    /* line 851, ../../source_sass/_base.scss */
     .WEI #detailedProjectModal h6, .WEI .AVF #detailedProjectModal2 h6, .AVF .WEI #detailedProjectModal2 h6,
     .WEI .AVF #detailedJoinedProjectModal2 h6,
     .AVF .WEI #detailedJoinedProjectModal2 h6, .WEI #detailedJoinedProjectModal h6 {
       color: #8c8c8c; }
-    /* line 849, ../../source_sass/_base.scss */
+    /* line 855, ../../source_sass/_base.scss */
     .WEI #detailedProjectModal p, .WEI .AVF #detailedProjectModal2 p, .AVF .WEI #detailedProjectModal2 p,
     .WEI .AVF #detailedJoinedProjectModal2 p,
     .AVF .WEI #detailedJoinedProjectModal2 p, .WEI #detailedJoinedProjectModal p, .WEI #detailedProjectModal label, .WEI .AVF #detailedProjectModal2 label, .AVF .WEI #detailedProjectModal2 label,
     .WEI .AVF #detailedJoinedProjectModal2 label,
     .AVF .WEI #detailedJoinedProjectModal2 label, .WEI #detailedJoinedProjectModal label {
       color: #f2f2f2; }
-    /* line 854, ../../source_sass/_base.scss */
+    /* line 860, ../../source_sass/_base.scss */
     .WEI #detailedProjectModal .EDIT, .WEI .AVF #detailedProjectModal2 .EDIT, .AVF .WEI #detailedProjectModal2 .EDIT,
     .WEI .AVF #detailedJoinedProjectModal2 .EDIT,
     .AVF .WEI #detailedJoinedProjectModal2 .EDIT, .WEI #detailedJoinedProjectModal .EDIT {
       margin-top: 120px;
       border: 1px solid #00ff99;
       float: right; }
-    /* line 861, ../../source_sass/_base.scss */
+    /* line 867, ../../source_sass/_base.scss */
     .WEI #detailedProjectModal #projectImage, .WEI .AVF #detailedProjectModal2 #projectImage, .AVF .WEI #detailedProjectModal2 #projectImage,
     .WEI .AVF #detailedJoinedProjectModal2 #projectImage,
     .AVF .WEI #detailedJoinedProjectModal2 #projectImage, .WEI #detailedJoinedProjectModal #projectImage {
@@ -4919,14 +4927,14 @@ table.hover tr:nth-of-type(even):hover {
       background-image: url("../data/Triangles-soft-with-sunburst.png");
       background-repeat: none;
       background-size: cover; }
-    /* line 872, ../../source_sass/_base.scss */
+    /* line 878, ../../source_sass/_base.scss */
     .WEI #detailedProjectModal .line, .WEI .AVF #detailedProjectModal2 .line, .AVF .WEI #detailedProjectModal2 .line,
     .WEI .AVF #detailedJoinedProjectModal2 .line,
     .AVF .WEI #detailedJoinedProjectModal2 .line, .WEI #detailedJoinedProjectModal .line {
       height: 1px;
       background-color: #737373;
       width: 90%; }
-    /* line 878, ../../source_sass/_base.scss */
+    /* line 884, ../../source_sass/_base.scss */
     .WEI #detailedProjectModal h3 span, .WEI .AVF #detailedProjectModal2 h3 span, .AVF .WEI #detailedProjectModal2 h3 span,
     .WEI .AVF #detailedJoinedProjectModal2 h3 span,
     .AVF .WEI #detailedJoinedProjectModal2 h3 span, .WEI #detailedJoinedProjectModal h3 span {
@@ -4934,14 +4942,14 @@ table.hover tr:nth-of-type(even):hover {
       font-weight: 300;
       font-size: 22px;
       color: #c4ff4d; }
-    /* line 885, ../../source_sass/_base.scss */
+    /* line 891, ../../source_sass/_base.scss */
     .WEI #detailedProjectModal .AVFgreen, .WEI .AVF #detailedProjectModal2 .AVFgreen, .AVF .WEI #detailedProjectModal2 .AVFgreen,
     .WEI .AVF #detailedJoinedProjectModal2 .AVFgreen,
     .AVF .WEI #detailedJoinedProjectModal2 .AVFgreen, .WEI #detailedJoinedProjectModal .AVFgreen {
       font-family: 'Source Sans Pro';
       color: #c4ff4d;
       font-size: 18px; }
-  /* line 896, ../../source_sass/_base.scss */
+  /* line 902, ../../source_sass/_base.scss */
   .WEI #searchFilters {
     padding-top: 50px;
     height: 220px;
@@ -4950,12 +4958,12 @@ table.hover tr:nth-of-type(even):hover {
     background-size: cover;
     background-attachment: fixed;
     overflow: hidden; }
-  /* line 906, ../../source_sass/_base.scss */
+  /* line 912, ../../source_sass/_base.scss */
   .WEI #displayProject, .WEI #displayProject2 {
     padding-top: 0px;
     overflow: hidden; }
   @media all and (max-width: 50em) {
-    /* line 912, ../../source_sass/_base.scss */
+    /* line 918, ../../source_sass/_base.scss */
     .WEI #card {
       position: relative;
       height: 200px;
@@ -4969,7 +4977,7 @@ table.hover tr:nth-of-type(even):hover {
       cursor: pointer;
       transition: 0.3s; } }
   @media all and (min-width: 50em) and (max-width: 60em) {
-    /* line 928, ../../source_sass/_base.scss */
+    /* line 934, ../../source_sass/_base.scss */
     .WEI #card {
       position: relative;
       height: 200px;
@@ -4983,7 +4991,7 @@ table.hover tr:nth-of-type(even):hover {
       cursor: pointer;
       transition: 0.3s; } }
   @media all and (min-width: 60em) {
-    /* line 944, ../../source_sass/_base.scss */
+    /* line 950, ../../source_sass/_base.scss */
     .WEI #card {
       position: relative;
       height: 200px;
@@ -4996,7 +5004,7 @@ table.hover tr:nth-of-type(even):hover {
       margin-right: 0.5%;
       cursor: pointer;
       transition: 0.3s; } }
-  /* line 960, ../../source_sass/_base.scss */
+  /* line 966, ../../source_sass/_base.scss */
   .WEI h4 {
     /*position: absolute;
     font-family: 'Source Sans Pro';
@@ -5010,30 +5018,30 @@ table.hover tr:nth-of-type(even):hover {
     font-weight: 300;
     padding-top: 25px;
     padding-left: 20px; }
-  /* line 976, ../../source_sass/_base.scss */
+  /* line 982, ../../source_sass/_base.scss */
   .WEI h3 {
     font-family: 'Source Sans Pro';
     font-weight: 300;
     padding-top: 50px; }
-  /* line 982, ../../source_sass/_base.scss */
+  /* line 988, ../../source_sass/_base.scss */
   .WEI .FiltNav {
     margin-top: 30px; }
-  /* line 986, ../../source_sass/_base.scss */
+  /* line 992, ../../source_sass/_base.scss */
   .WEI #WS-byline {
     /*position: absolute;
     bottom: 25%;
     left: 10%;*/
     color: gray;
     padding-left: 20px; }
-  /* line 994, ../../source_sass/_base.scss */
+  /* line 1000, ../../source_sass/_base.scss */
   .WEI #card:hover {
     opacity: 0.7; }
-  /* line 997, ../../source_sass/_base.scss */
+  /* line 1003, ../../source_sass/_base.scss */
   .WEI #checkboxMM1 {
     position: relative;
     margin-top: 50px;
     font-family: 'Source Sans Pro'; }
-  /* line 1003, ../../source_sass/_base.scss */
+  /* line 1009, ../../source_sass/_base.scss */
   .WEI .modalViewProject {
     display: block;
     /* Hidden by default */
@@ -5053,23 +5061,23 @@ table.hover tr:nth-of-type(even):hover {
     background-color: #262626;
     /* Black w/ opacity */
     border: 1px solid #black; }
-  /* line 1018, ../../source_sass/_base.scss */
+  /* line 1024, ../../source_sass/_base.scss */
   .WEI #green {
     color: #c4ff4d;
     font-family: 'Source Sans Pro';
     font-weight: 300;
     font-size: 22px; }
-  /* line 1031, ../../source_sass/_base.scss */
+  /* line 1037, ../../source_sass/_base.scss */
   .WEI .AVFgreen {
     font-family: 'Source Sans Pro';
     color: #c4ff4d;
     font-size: 18px; }
-  /* line 1038, ../../source_sass/_base.scss */
+  /* line 1044, ../../source_sass/_base.scss */
   .WEI .modalViewProject-content {
     margin: auto;
     display: block;
     width: 80%; }
-  /* line 1046, ../../source_sass/_base.scss */
+  /* line 1052, ../../source_sass/_base.scss */
   .WEI .modalViewProject-content {
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
@@ -5085,7 +5093,7 @@ table.hover tr:nth-of-type(even):hover {
     transform: scale(0); }
   to {
     transform: scale(1); } }
-  /* line 1072, ../../source_sass/_base.scss */
+  /* line 1078, ../../source_sass/_base.scss */
   .WEI .closeModalViewProject {
     position: absolute;
     top: 15px;
@@ -5094,35 +5102,35 @@ table.hover tr:nth-of-type(even):hover {
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s; }
-  /* line 1082, ../../source_sass/_base.scss */
+  /* line 1088, ../../source_sass/_base.scss */
   .WEI .closeModalViewProject:hover,
   .WEI .closeModalViewProject:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer; }
   @media only screen and (max-width: 700px) {
-    /* line 1091, ../../source_sass/_base.scss */
+    /* line 1097, ../../source_sass/_base.scss */
     .WEI .modalViewProject-content {
       width: 100%; } }
-  /* line 1096, ../../source_sass/_base.scss */
+  /* line 1102, ../../source_sass/_base.scss */
   .WEI h5 {
     text-align: center;
     color: lightgrey;
     font-size: 200%;
     margin-top: 5%; }
-  /* line 1103, ../../source_sass/_base.scss */
+  /* line 1109, ../../source_sass/_base.scss */
   .WEI HR {
     width: 100%;
     color: #4d4d4d;
     background: #4d4d4d;
     border-color: #4d4d4d; }
-  /* line 1111, ../../source_sass/_base.scss */
+  /* line 1117, ../../source_sass/_base.scss */
   .WEI .modalDescription {
     text-align: left;
     color: lightgrey;
     font-size: 100%;
     margin-top: 1%; }
-  /* line 1119, ../../source_sass/_base.scss */
+  /* line 1125, ../../source_sass/_base.scss */
   .WEI #joinButton {
     position: relative;
     color: #f2f2f2;
@@ -5134,13 +5142,13 @@ table.hover tr:nth-of-type(even):hover {
     font-size: 100%;
     font-family: 'Source Sans Pro';
     padding: 10px 20px 10px 20px; }
-  /* line 1136, ../../source_sass/_base.scss */
+  /* line 1142, ../../source_sass/_base.scss */
   .WEI #joinButton:hover,
   .WEI #joinButton:focus {
     background-color: #1a1a1a;
     text-decoration: none;
     cursor: pointer; }
-  /* line 1143, ../../source_sass/_base.scss */
+  /* line 1149, ../../source_sass/_base.scss */
   .WEI .modalJoin {
     display: block;
     /* Hidden by default */
@@ -5160,7 +5168,7 @@ table.hover tr:nth-of-type(even):hover {
     background-color: #262626;
     /* Black w/ opacity */
     border: 1px solid black; }
-  /* line 1159, ../../source_sass/_base.scss */
+  /* line 1165, ../../source_sass/_base.scss */
   .WEI .modalJoin-content {
     margin: auto;
     display: block;
@@ -5168,7 +5176,7 @@ table.hover tr:nth-of-type(even):hover {
     font-family: 'Source Sans Pro';
     font-weight: 300;
     font-size: 24px; }
-  /* line 1170, ../../source_sass/_base.scss */
+  /* line 1176, ../../source_sass/_base.scss */
   .WEI .modalJoin-content {
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
@@ -5184,7 +5192,7 @@ table.hover tr:nth-of-type(even):hover {
     transform: scale(0); }
   to {
     transform: scale(1); } }
-  /* line 1196, ../../source_sass/_base.scss */
+  /* line 1202, ../../source_sass/_base.scss */
   .WEI .closeModalJoin {
     position: absolute;
     top: 15px;
@@ -5194,18 +5202,18 @@ table.hover tr:nth-of-type(even):hover {
     font-weight: bold;
     transition: 0.3s;
     cursor: pointer; }
-  /* line 1207, ../../source_sass/_base.scss */
+  /* line 1213, ../../source_sass/_base.scss */
   .WEI .closeModalViewProject:hover,
   .WEI .closeModalViewProject:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer; }
-  /* line 1213, ../../source_sass/_base.scss */
+  /* line 1219, ../../source_sass/_base.scss */
   .WEI .modalJoin > h5 {
     margin-top: 10%; }
 
 /*SAKETH's CSS*/
-/* line 1223, ../../source_sass/_base.scss */
+/* line 1229, ../../source_sass/_base.scss */
 .SUpage-title {
   background-image: url("../data/Triangles-Muted-Warm.png");
   background-repeat: none;
@@ -5216,67 +5224,67 @@ table.hover tr:nth-of-type(even):hover {
   overflow: hidden;
   position: relative;
   text-align: center; }
-  /* line 1234, ../../source_sass/_base.scss */
+  /* line 1240, ../../source_sass/_base.scss */
   .SUpage-title h2 {
     color: #f2f2f2;
     font-family: 'Source Sans Pro';
     font-weight: 300;
     padding-top: 40px; }
 
-/* line 1242, ../../source_sass/_base.scss */
+/* line 1248, ../../source_sass/_base.scss */
 .SUtitle-title {
   margin-top: 6px;
   font-family: 'Source Sans Pro';
   width: 10%; }
 
-/* line 1247, ../../source_sass/_base.scss */
+/* line 1253, ../../source_sass/_base.scss */
 .SUtitle-data {
   width: 90%; }
 
-/* line 1250, ../../source_sass/_base.scss */
+/* line 1256, ../../source_sass/_base.scss */
 .SUsectionone-wrapper {
   position: relative; }
 
-/* line 1253, ../../source_sass/_base.scss */
+/* line 1259, ../../source_sass/_base.scss */
 .SUsectionone {
   position: absolute;
   top: 50%;
   transform: translateY(-50%); }
 
-/* line 1258, ../../source_sass/_base.scss */
+/* line 1264, ../../source_sass/_base.scss */
 .row {
   max-width: 100%; }
 
-/* line 1261, ../../source_sass/_base.scss */
+/* line 1267, ../../source_sass/_base.scss */
 ul {
   margin: 0px; }
 
-/* line 1264, ../../source_sass/_base.scss */
+/* line 1270, ../../source_sass/_base.scss */
 li {
   list-style-type: none; }
 
-/* line 1267, ../../source_sass/_base.scss */
+/* line 1273, ../../source_sass/_base.scss */
 .SUdelete-project-container {
   position: absolute;
   right: 15px;
   top: 50%;
   transform: translateY(-50%); }
-  /* line 1272, ../../source_sass/_base.scss */
+  /* line 1278, ../../source_sass/_base.scss */
   .SUdelete-project-container a {
     margin: 0px; }
 
-/* line 1276, ../../source_sass/_base.scss */
+/* line 1282, ../../source_sass/_base.scss */
 #SUcloseSubmitModalError,
 #SUcloseDeleteModalError {
   float: right;
   cursor: pointer; }
 
-/* line 1283, ../../source_sass/_base.scss */
+/* line 1289, ../../source_sass/_base.scss */
 #SUsubmitModalError p,
 #SUdeleteModalError p {
   float: left; }
 
-/* line 1287, ../../source_sass/_base.scss */
+/* line 1293, ../../source_sass/_base.scss */
 .SUmodal {
   background-color: #333333;
   display: none;
@@ -5290,67 +5298,67 @@ li {
   left: 50%;
   transform: translateX(-50%);
   border: 1px solid black; }
-  /* line 1300, ../../source_sass/_base.scss */
+  /* line 1306, ../../source_sass/_base.scss */
   .SUmodal h5 {
     margin-top: 50px;
     color: #f2f2f2; }
 
-/* line 1305, ../../source_sass/_base.scss */
+/* line 1311, ../../source_sass/_base.scss */
 .SUyesnocontainer {
   width: 50%;
   margin: 0 auto; }
 
-/* line 1309, ../../source_sass/_base.scss */
+/* line 1315, ../../source_sass/_base.scss */
 #SU-top-section {
   background-color: #f2f2f2;
   padding-top: 25px;
   padding-bottom: 25px; }
 
-/* line 1315, ../../source_sass/_base.scss */
+/* line 1321, ../../source_sass/_base.scss */
 .SU-HR {
   height: 1px;
   background-color: #d9d9d9;
   width: 100%; }
 
-/* line 1321, ../../source_sass/_base.scss */
+/* line 1327, ../../source_sass/_base.scss */
 .SUform-title,
 .SUform-data {
   font-family: 'Source Sans Pro';
   float: left; }
 
-/* line 1326, ../../source_sass/_base.scss */
+/* line 1332, ../../source_sass/_base.scss */
 .SUcategory-title, .SUimage-title, .SUdescription-title, .SUskills-title, .SU-PC, .SU-AC {
   font-family: 'Source Sans Pro'; }
 
-/* line 1329, ../../source_sass/_base.scss */
+/* line 1335, ../../source_sass/_base.scss */
 .SUcategory-title {
   padding-top: 30px; }
 
-/* line 1332, ../../source_sass/_base.scss */
+/* line 1338, ../../source_sass/_base.scss */
 .SUtag-title {
   width: 10%;
   font-family: 'Source Sans Pro';
   margin-top: 6px; }
 
-/* line 1337, ../../source_sass/_base.scss */
+/* line 1343, ../../source_sass/_base.scss */
 .SUtag-data {
   width: 90%; }
 
-/* line 1340, ../../source_sass/_base.scss */
+/* line 1346, ../../source_sass/_base.scss */
 .SUdeadline-title {
   width: 25%;
   font-family: 'Source Sans Pro';
   margin-top: 6px; }
 
-/* line 1345, ../../source_sass/_base.scss */
+/* line 1351, ../../source_sass/_base.scss */
 .SUdeadline-data {
   width: 75%; }
 
-/* line 1348, ../../source_sass/_base.scss */
+/* line 1354, ../../source_sass/_base.scss */
 .SUpublic-data {
   margin-top: 12px; }
 
-/* line 1351, ../../source_sass/_base.scss */
+/* line 1357, ../../source_sass/_base.scss */
 .SUproject-image {
   background-color: #333333;
   height: 200px;
@@ -5361,28 +5369,28 @@ li {
   border-radius: 10px;
   cursor: pointer; }
 
-/* line 1361, ../../source_sass/_base.scss */
+/* line 1367, ../../source_sass/_base.scss */
 .SUcategory {
   cursor: pointer; }
 
-/* line 1364, ../../source_sass/_base.scss */
+/* line 1370, ../../source_sass/_base.scss */
 .SUcategory:hover {
   transition: all 0.3s ease-in-out;
   background-color: #f2f2f2;
   color: #595959; }
 
-/* line 1369, ../../source_sass/_base.scss */
+/* line 1375, ../../source_sass/_base.scss */
 .SUcategoriesProject {
   overflow: auto; }
 
-/* line 1372, ../../source_sass/_base.scss */
+/* line 1378, ../../source_sass/_base.scss */
 .SUskillswrapperbox {
   height: 148px;
   padding: 10px;
   border: 1px solid #cacaca;
   border-bottom: none;
   overflow: scroll; }
-  /* line 1378, ../../source_sass/_base.scss */
+  /* line 1384, ../../source_sass/_base.scss */
   .SUskillswrapperbox li {
     float: left;
     border: 1px solid black;
@@ -5390,25 +5398,25 @@ li {
     margin-right: 5px;
     margin-bottom: 5px; }
 
-/* line 1386, ../../source_sass/_base.scss */
+/* line 1392, ../../source_sass/_base.scss */
 .SUcategory-icon {
   width: 70px;
   display: block;
   margin: 0 auto; }
 
-/* line 1391, ../../source_sass/_base.scss */
+/* line 1397, ../../source_sass/_base.scss */
 .SUskillsearch {
   position: relative; }
 
-/* line 1394, ../../source_sass/_base.scss */
+/* line 1400, ../../source_sass/_base.scss */
 #SUskillsInput {
   float: left; }
 
-/* line 1397, ../../source_sass/_base.scss */
+/* line 1403, ../../source_sass/_base.scss */
 .SUsearchresultsbar {
   margin-top: 0px; }
 
-/* line 1400, ../../source_sass/_base.scss */
+/* line 1406, ../../source_sass/_base.scss */
 .SUskillsresults {
   display: none;
   position: absolute;
@@ -5419,11 +5427,11 @@ li {
   width: 100%;
   border: 1px solid black;
   border-top: white; }
-  /* line 1410, ../../source_sass/_base.scss */
+  /* line 1416, ../../source_sass/_base.scss */
   .SUskillsresults li {
     cursor: pointer; }
 
-/* line 1414, ../../source_sass/_base.scss */
+/* line 1420, ../../source_sass/_base.scss */
 #SUskillssubmit {
   width: 100px;
   height: 38px;
@@ -5433,40 +5441,40 @@ li {
   border: 0;
   margin-left: -101px; }
 
-/* line 1423, ../../source_sass/_base.scss */
+/* line 1429, ../../source_sass/_base.scss */
 .SUpublish-button {
   font-family: 'Source Sans Pro';
   background-color: #00995c;
   margin-top: 60px;
   float: right; }
 
-/* line 1429, ../../source_sass/_base.scss */
+/* line 1435, ../../source_sass/_base.scss */
 .SUpublish-button:hover {
   font-family: 'Source Sans Pro';
   background-color: #00663d;
   margin-top: 60px;
   float: right; }
 
-/* line 1435, ../../source_sass/_base.scss */
+/* line 1441, ../../source_sass/_base.scss */
 .SUcancel-button {
   font-family: 'Source Sans Pro';
   margin-top: 60px;
   float: right; }
 
-/* line 1440, ../../source_sass/_base.scss */
+/* line 1446, ../../source_sass/_base.scss */
 .SUconfirm-create {
   background-color: #f2f2f2;
   height: 200px;
   width: 100%; }
 
-/* line 1446, ../../source_sass/_base.scss */
+/* line 1452, ../../source_sass/_base.scss */
 .SU-PC-area a {
   color: #333333; }
-/* line 1449, ../../source_sass/_base.scss */
+/* line 1455, ../../source_sass/_base.scss */
 .SU-PC-area #SU-decline {
   color: red; }
 
-/* line 1453, ../../source_sass/_base.scss */
+/* line 1459, ../../source_sass/_base.scss */
 .modalJoinProfile {
   background-color: black;
   color: white;
