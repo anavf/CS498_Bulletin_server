@@ -319,9 +319,13 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
       $scope.newSkill = name;
     }
 
-  $scope.loadDetails = function(id) {
+  $scope.loadDetails = function(id, value) {
     Data.getProject(id).success(function(data){
       $scope.projectY = data.data;
+	  $scope.value = value;
+	  Data.getUser(data.data.creator).success(function(data) {
+		  $scope.creatorEmail = data.data.local.email;
+	  });
     }).error(function(data){console.log('Error: '+data)});
   }
 
