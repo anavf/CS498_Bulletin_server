@@ -903,6 +903,9 @@ $scope.nextPageJP = function(){
     window.location.href = '#/Search'; 
   };
 
+  $scope.removeJoinModal = function() {
+    $('.modalJoinProfile').fadeOut(500);
+  }
 
   $scope.joinProject = function(id) {
     Data.getProfile().success(function(data){
@@ -968,6 +971,8 @@ $scope.nextPageJP = function(){
       }
       else {
         console.log("NOT LOGGED IN!");
+        $scope.joinInfo = "You must be logged in to join a project!";
+        $('.modalJoinProfile').fadeIn(500);
       }
       
     });  

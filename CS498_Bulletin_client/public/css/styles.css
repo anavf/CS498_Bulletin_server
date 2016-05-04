@@ -5192,19 +5192,20 @@ table.hover tr:nth-of-type(even):hover {
     color: #f1f1f1;
     font-size: 40px;
     font-weight: bold;
-    transition: 0.3s; }
-  /* line 1206, ../../source_sass/_base.scss */
+    transition: 0.3s;
+    cursor: pointer; }
+  /* line 1207, ../../source_sass/_base.scss */
   .WEI .closeModalViewProject:hover,
   .WEI .closeModalViewProject:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer; }
-  /* line 1212, ../../source_sass/_base.scss */
+  /* line 1213, ../../source_sass/_base.scss */
   .WEI .modalJoin > h5 {
     margin-top: 10%; }
 
 /*SAKETH's CSS*/
-/* line 1222, ../../source_sass/_base.scss */
+/* line 1223, ../../source_sass/_base.scss */
 .SUpage-title {
   background-image: url("../data/Triangles-Muted-Warm.png");
   background-repeat: none;
@@ -5215,67 +5216,67 @@ table.hover tr:nth-of-type(even):hover {
   overflow: hidden;
   position: relative;
   text-align: center; }
-  /* line 1233, ../../source_sass/_base.scss */
+  /* line 1234, ../../source_sass/_base.scss */
   .SUpage-title h2 {
     color: #f2f2f2;
     font-family: 'Source Sans Pro';
     font-weight: 300;
     padding-top: 40px; }
 
-/* line 1241, ../../source_sass/_base.scss */
+/* line 1242, ../../source_sass/_base.scss */
 .SUtitle-title {
   margin-top: 6px;
   font-family: 'Source Sans Pro';
   width: 10%; }
 
-/* line 1246, ../../source_sass/_base.scss */
+/* line 1247, ../../source_sass/_base.scss */
 .SUtitle-data {
   width: 90%; }
 
-/* line 1249, ../../source_sass/_base.scss */
+/* line 1250, ../../source_sass/_base.scss */
 .SUsectionone-wrapper {
   position: relative; }
 
-/* line 1252, ../../source_sass/_base.scss */
+/* line 1253, ../../source_sass/_base.scss */
 .SUsectionone {
   position: absolute;
   top: 50%;
   transform: translateY(-50%); }
 
-/* line 1257, ../../source_sass/_base.scss */
+/* line 1258, ../../source_sass/_base.scss */
 .row {
   max-width: 100%; }
 
-/* line 1260, ../../source_sass/_base.scss */
+/* line 1261, ../../source_sass/_base.scss */
 ul {
   margin: 0px; }
 
-/* line 1263, ../../source_sass/_base.scss */
+/* line 1264, ../../source_sass/_base.scss */
 li {
   list-style-type: none; }
 
-/* line 1266, ../../source_sass/_base.scss */
+/* line 1267, ../../source_sass/_base.scss */
 .SUdelete-project-container {
   position: absolute;
   right: 15px;
   top: 50%;
   transform: translateY(-50%); }
-  /* line 1271, ../../source_sass/_base.scss */
+  /* line 1272, ../../source_sass/_base.scss */
   .SUdelete-project-container a {
     margin: 0px; }
 
-/* line 1275, ../../source_sass/_base.scss */
+/* line 1276, ../../source_sass/_base.scss */
 #SUcloseSubmitModalError,
 #SUcloseDeleteModalError {
   float: right;
   cursor: pointer; }
 
-/* line 1282, ../../source_sass/_base.scss */
+/* line 1283, ../../source_sass/_base.scss */
 #SUsubmitModalError p,
 #SUdeleteModalError p {
   float: left; }
 
-/* line 1286, ../../source_sass/_base.scss */
+/* line 1287, ../../source_sass/_base.scss */
 .SUmodal {
   background-color: #333333;
   display: none;
@@ -5289,67 +5290,67 @@ li {
   left: 50%;
   transform: translateX(-50%);
   border: 1px solid black; }
-  /* line 1299, ../../source_sass/_base.scss */
+  /* line 1300, ../../source_sass/_base.scss */
   .SUmodal h5 {
     margin-top: 50px;
     color: #f2f2f2; }
 
-/* line 1304, ../../source_sass/_base.scss */
+/* line 1305, ../../source_sass/_base.scss */
 .SUyesnocontainer {
   width: 50%;
   margin: 0 auto; }
 
-/* line 1308, ../../source_sass/_base.scss */
+/* line 1309, ../../source_sass/_base.scss */
 #SU-top-section {
   background-color: #f2f2f2;
   padding-top: 25px;
   padding-bottom: 25px; }
 
-/* line 1314, ../../source_sass/_base.scss */
+/* line 1315, ../../source_sass/_base.scss */
 .SU-HR {
   height: 1px;
   background-color: #d9d9d9;
   width: 100%; }
 
-/* line 1320, ../../source_sass/_base.scss */
+/* line 1321, ../../source_sass/_base.scss */
 .SUform-title,
 .SUform-data {
   font-family: 'Source Sans Pro';
   float: left; }
 
-/* line 1325, ../../source_sass/_base.scss */
+/* line 1326, ../../source_sass/_base.scss */
 .SUcategory-title, .SUimage-title, .SUdescription-title, .SUskills-title, .SU-PC, .SU-AC {
   font-family: 'Source Sans Pro'; }
 
-/* line 1328, ../../source_sass/_base.scss */
+/* line 1329, ../../source_sass/_base.scss */
 .SUcategory-title {
   padding-top: 30px; }
 
-/* line 1331, ../../source_sass/_base.scss */
+/* line 1332, ../../source_sass/_base.scss */
 .SUtag-title {
   width: 10%;
   font-family: 'Source Sans Pro';
   margin-top: 6px; }
 
-/* line 1336, ../../source_sass/_base.scss */
+/* line 1337, ../../source_sass/_base.scss */
 .SUtag-data {
   width: 90%; }
 
-/* line 1339, ../../source_sass/_base.scss */
+/* line 1340, ../../source_sass/_base.scss */
 .SUdeadline-title {
   width: 25%;
   font-family: 'Source Sans Pro';
   margin-top: 6px; }
 
-/* line 1344, ../../source_sass/_base.scss */
+/* line 1345, ../../source_sass/_base.scss */
 .SUdeadline-data {
   width: 75%; }
 
-/* line 1347, ../../source_sass/_base.scss */
+/* line 1348, ../../source_sass/_base.scss */
 .SUpublic-data {
   margin-top: 12px; }
 
-/* line 1350, ../../source_sass/_base.scss */
+/* line 1351, ../../source_sass/_base.scss */
 .SUproject-image {
   background-color: #333333;
   height: 200px;
@@ -5360,28 +5361,28 @@ li {
   border-radius: 10px;
   cursor: pointer; }
 
-/* line 1360, ../../source_sass/_base.scss */
+/* line 1361, ../../source_sass/_base.scss */
 .SUcategory {
   cursor: pointer; }
 
-/* line 1363, ../../source_sass/_base.scss */
+/* line 1364, ../../source_sass/_base.scss */
 .SUcategory:hover {
   transition: all 0.3s ease-in-out;
   background-color: #f2f2f2;
   color: #595959; }
 
-/* line 1368, ../../source_sass/_base.scss */
+/* line 1369, ../../source_sass/_base.scss */
 .SUcategoriesProject {
   overflow: auto; }
 
-/* line 1371, ../../source_sass/_base.scss */
+/* line 1372, ../../source_sass/_base.scss */
 .SUskillswrapperbox {
   height: 148px;
   padding: 10px;
   border: 1px solid #cacaca;
   border-bottom: none;
   overflow: scroll; }
-  /* line 1377, ../../source_sass/_base.scss */
+  /* line 1378, ../../source_sass/_base.scss */
   .SUskillswrapperbox li {
     float: left;
     border: 1px solid black;
@@ -5389,25 +5390,25 @@ li {
     margin-right: 5px;
     margin-bottom: 5px; }
 
-/* line 1385, ../../source_sass/_base.scss */
+/* line 1386, ../../source_sass/_base.scss */
 .SUcategory-icon {
   width: 70px;
   display: block;
   margin: 0 auto; }
 
-/* line 1390, ../../source_sass/_base.scss */
+/* line 1391, ../../source_sass/_base.scss */
 .SUskillsearch {
   position: relative; }
 
-/* line 1393, ../../source_sass/_base.scss */
+/* line 1394, ../../source_sass/_base.scss */
 #SUskillsInput {
   float: left; }
 
-/* line 1396, ../../source_sass/_base.scss */
+/* line 1397, ../../source_sass/_base.scss */
 .SUsearchresultsbar {
   margin-top: 0px; }
 
-/* line 1399, ../../source_sass/_base.scss */
+/* line 1400, ../../source_sass/_base.scss */
 .SUskillsresults {
   display: none;
   position: absolute;
@@ -5418,11 +5419,11 @@ li {
   width: 100%;
   border: 1px solid black;
   border-top: white; }
-  /* line 1409, ../../source_sass/_base.scss */
+  /* line 1410, ../../source_sass/_base.scss */
   .SUskillsresults li {
     cursor: pointer; }
 
-/* line 1413, ../../source_sass/_base.scss */
+/* line 1414, ../../source_sass/_base.scss */
 #SUskillssubmit {
   width: 100px;
   height: 38px;
@@ -5432,38 +5433,48 @@ li {
   border: 0;
   margin-left: -101px; }
 
-/* line 1422, ../../source_sass/_base.scss */
+/* line 1423, ../../source_sass/_base.scss */
 .SUpublish-button {
   font-family: 'Source Sans Pro';
   background-color: #00995c;
   margin-top: 60px;
   float: right; }
 
-/* line 1428, ../../source_sass/_base.scss */
+/* line 1429, ../../source_sass/_base.scss */
 .SUpublish-button:hover {
   font-family: 'Source Sans Pro';
   background-color: #00663d;
   margin-top: 60px;
   float: right; }
 
-/* line 1434, ../../source_sass/_base.scss */
+/* line 1435, ../../source_sass/_base.scss */
 .SUcancel-button {
   font-family: 'Source Sans Pro';
   margin-top: 60px;
   float: right; }
 
-/* line 1439, ../../source_sass/_base.scss */
+/* line 1440, ../../source_sass/_base.scss */
 .SUconfirm-create {
   background-color: #f2f2f2;
   height: 200px;
   width: 100%; }
 
-/* line 1445, ../../source_sass/_base.scss */
+/* line 1446, ../../source_sass/_base.scss */
 .SU-PC-area a {
   color: #333333; }
-/* line 1448, ../../source_sass/_base.scss */
+/* line 1449, ../../source_sass/_base.scss */
 .SU-PC-area #SU-decline {
   color: red; }
+
+/* line 1453, ../../source_sass/_base.scss */
+.modalJoinProfile {
+  background-color: black;
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50; }
 
 /*
   NOTE: Do not touch this file. Write the bulk of your custom styles
