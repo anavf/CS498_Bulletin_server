@@ -1,3 +1,9 @@
+badge {
+	-ms-transform: scale(1.2, 1.2); /* IE 9 */
+   	-webkit-transform: scale(1.2, 1.2); /* Safari */
+    	transform: scale(1.2, 1.2);
+}
+
 #settingsMenuMED {
 	background-color: $dark-gray;
 	text-align: center;

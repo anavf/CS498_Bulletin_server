@@ -1031,6 +1031,7 @@ BulletinControllers.controller('SearchController', [
         _id: 1,
         name: 1,
         creator: 1,
+        creatorName: 1,
         dateCreated: 1,
         description: 1,
         deadline: 1,
