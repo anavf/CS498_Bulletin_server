@@ -1006,9 +1006,10 @@ BulletinControllers.controller('SearchController', [
 
           }
 
-          $scope.whereQuery="{}";
+          
         $scope.matchSkillOption=false;
       }
+    $scope.whereQuery="{visible: true}";
 
     $scope.logOut = function() {
       $http.get('http://localhost:4000/api/logout').success(function(data) {
@@ -1120,9 +1121,9 @@ BulletinControllers.controller('SearchController', [
 
           $scope.advFilter.push("'"+id+"'");
           if ($scope.advFilter.length>0){
-            $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]}}";
+            $scope.whereQuery="{visible: true, categories: { $all:[ "+$scope.advFilter+"]}}";
           }else{
-            $scope.whereQuery="{}";
+            $scope.whereQuery="{visible: true}";
           }
 
           getProjects();
@@ -1132,9 +1133,9 @@ BulletinControllers.controller('SearchController', [
           $scope.advFilter=$scope.remove($scope.advFilter,"'"+id+"'");
 
           if ($scope.advFilter.length>0){
-            $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]}}";
+            $scope.whereQuery="{visible: true, categories: { $all:[ "+$scope.advFilter+"]}}";
           }else{
-            $scope.whereQuery="{}";
+            $scope.whereQuery="{visible: true}";
           }
           getProjects();
         }
@@ -1145,7 +1146,7 @@ BulletinControllers.controller('SearchController', [
         if (newVal !== oldVal) {
           if ($scope.matchSkillOption) {
             if ($scope.advFilter.length > 0) {
-              $scope.whereQuery = "{categories: { $all:[ " + $scope.advFilter + "]},";
+              $scope.whereQuery = "{visible: true, categories: { $all:[ " + $scope.advFilter + "]},";
             } else {
               $scope.whereQuery = "{";
             }
@@ -1160,9 +1161,9 @@ BulletinControllers.controller('SearchController', [
 
           }else{
             if ($scope.advFilter.length > 0) {
-              $scope.whereQuery = "{categories: { $all:[ " + $scope.advFilter + "]}}";
+              $scope.whereQuery = "{visible: true, categories: { $all:[ " + $scope.advFilter + "]}}";
             } else {
-              $scope.whereQuery = "{}";
+              $scope.whereQuery = "{visible: true}";
             }
             getProjects();
 
