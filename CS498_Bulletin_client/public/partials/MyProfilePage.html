@@ -213,7 +213,7 @@
         <h4>{{project.name}}</h4>
         <p>by you</p>
         <div class="editProject">
-            <a href="#/EditProject/{{project._id}}"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+            <a href="#/EditProject/{{project._id}}"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i><span class="badge" ng-show="project.pendingMembers.length>0" ng-hide="project.pendingMembers.length==0" style="background-color: #e62e00;">{{project.pendingMembers.length}}</span></a>
         </div>
         <div class="viewProject">
             <a data-open="detailedProjectModal" ng-click="loadDetails(project._id)"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></a>
