@@ -1034,7 +1034,8 @@ BulletinControllers.controller('SearchController', [
         deadline: 1,
         categories: 1,
         skills: 1,
-        pendingMembers:1
+        pendingMembers:1,
+        approvedMembers:1
       },
 
     }).success(function (data) {
