@@ -268,7 +268,7 @@
             <p>{{data.value}}</p>
         </div>
         <div class="viewProject">
-            <a data-open="detailedJoinedProjectModal" ng-click="loadDetails(data.data._id)"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></a>
+            <a data-open="detailedJoinedProjectModal" ng-click="loadDetails(data.data._id, data.value)"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></a>
         </div>
     </div>
 
@@ -369,6 +369,7 @@ ng-repeat="joinedProject in joinedProjectsAll"
   <div class="large-6 columns">
     <h3>{{projectY.name}} <span>by <a style="color: #c4ff4d">{{projectY.creatorName}}</a></span></h3>
     <div class="line2"></div>
+	<p ng-if="value == 'Accepted'"><span class="AVFgreen">CONTACT:</span> {{creatorEmail}}</p>
     <p><span class="AVFgreen">DEADLINE:</span> {{projectY.deadline | date:'yyyy-MM-dd'}}</p>
     <p><span class="AVFgreen">DESCRIPTION:</span> {{projectY.description}}</p>
   </div>
