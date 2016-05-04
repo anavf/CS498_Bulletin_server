@@ -31,21 +31,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchPage.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SearchPage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/partials/SearchPage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46232876">
+            <state vertical-scroll-proportion="-187.5">
               <caret line="319" column="134" selection-start-line="319" selection-start-column="134" selection-end-line="319" selection-end-column="134" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source_js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.7777777">
-              <caret line="1011" column="0" selection-start-line="1011" selection-start-column="0" selection-end-line="1011" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.7924188">
+              <caret line="1167" column="48" selection-start-line="1167" selection-start-column="48" selection-end-line="1167" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -72,8 +72,8 @@
         <option value="$PROJECT_DIR$/public/partials/ProfilePage.html" />
         <option value="$PROJECT_DIR$/source_sass/_base.scss" />
         <option value="$PROJECT_DIR$/public/partials/SearchPageWithoutLogIn.html" />
-        <option value="$PROJECT_DIR$/source_js/controllers.js" />
         <option value="$PROJECT_DIR$/public/partials/SearchPage.html" />
+        <option value="$PROJECT_DIR$/source_js/controllers.js" />
       </list>
     </option>
   </component>
@@ -199,7 +199,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mp4_client" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
@@ -387,18 +387,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source_js/controllers.js">
+    <entry file="file://$PROJECT_DIR$/public/partials/SearchPage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7777777">
-          <caret line="1011" column="0" selection-start-line="1011" selection-start-column="0" selection-end-line="1011" selection-end-column="0" />
+        <state vertical-scroll-proportion="-187.5">
+          <caret line="319" column="134" selection-start-line="319" selection-start-column="134" selection-end-line="319" selection-end-column="134" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/partials/SearchPage.html">
+    <entry file="file://$PROJECT_DIR$/source_js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46232876">
-          <caret line="319" column="134" selection-start-line="319" selection-start-column="134" selection-end-line="319" selection-end-column="134" />
+        <state vertical-scroll-proportion="0.7924188">
+          <caret line="1167" column="48" selection-start-line="1167" selection-start-column="48" selection-end-line="1167" selection-end-column="48" />
           <folding />
         </state>
       </provider>

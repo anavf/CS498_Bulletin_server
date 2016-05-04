@@ -991,6 +991,7 @@ BulletinControllers.controller('SearchController', [
     $scope.advFilter=[];
     $scope.isLoggedIn = false;
 
+    $scope.whereQuery="{visible:true}";
     Data.getProfile().success(function (data) {
       if (data.data != null) {
         $scope.thisUser=data.data;
@@ -1006,7 +1007,7 @@ BulletinControllers.controller('SearchController', [
 
           }
 
-          $scope.whereQuery="{}";
+          $scope.whereQuery="{visible:true}";
         $scope.matchSkillOption=false;
       }
 
@@ -1015,6 +1016,7 @@ BulletinControllers.controller('SearchController', [
         location.reload();
       });
     }
+
 
   function getProjects() {
     $scope.usernames=[];
@@ -1121,9 +1123,9 @@ BulletinControllers.controller('SearchController', [
 
           $scope.advFilter.push("'"+id+"'");
           if ($scope.advFilter.length>0){
-            $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]}}";
+            $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]},visible:true}";
           }else{
-            $scope.whereQuery="{}";
+            $scope.whereQuery="{visible:true}";
           }
 
           getProjects();
@@ -1133,9 +1135,9 @@ BulletinControllers.controller('SearchController', [
           $scope.advFilter=$scope.remove($scope.advFilter,"'"+id+"'");
 
           if ($scope.advFilter.length>0){
-            $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]}}";
+            $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]},visible:true}";
           }else{
-            $scope.whereQuery="{}";
+            $scope.whereQuery="{visible:true}";
           }
           getProjects();
         }
@@ -1155,15 +1157,15 @@ BulletinControllers.controller('SearchController', [
             for (var i = 0; i < $scope.thisUserSkills.length; i++){
               $scope.whereQuery += "'"+$scope.thisUserSkills[i]+"'"+",";
             }
-            $scope.whereQuery += "]} }}"
+            $scope.whereQuery += "]} },visible:true}"
             console.log($scope.whereQuery);
             getProjects();
 
           }else{
             if ($scope.advFilter.length > 0) {
-              $scope.whereQuery = "{categories: { $all:[ " + $scope.advFilter + "]}}";
+              $scope.whereQuery = "{categories: { $all:[ " + $scope.advFilter + "]},visible:true}";
             } else {
-              $scope.whereQuery = "{}";
+              $scope.whereQuery = "{visible:true}";
             }
             getProjects();
 
