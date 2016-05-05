@@ -1099,17 +1099,15 @@ BulletinControllers.controller('SearchController', [
                 Data.getProject(index).success(function(data){
 
                   $scope.temp=data.data;
-                  if (($scope.temp.pendingMembers.indexOf($scope.thisUserId)<0) && ($scope.temp.creator != $scope.thisUserId)) {
+                  if ($scope.temp.pendingMembers.indexOf($scope.thisUserId)<0) {
                     $scope.temp.pendingMembers.push($scope.thisUserId);
                     Data.editProject($scope.temp._id, $scope.temp);
 
                     $scope.thisUser.pendingProjects.push($scope.temp._id);
                     Data.editUser($scope.thisUserId, $scope.thisUser);
                     $scope.joinInfo="We have added you to the waiting list!";
-                  }else if ($scope.temp.pendingMembers.indexOf($scope.thisUserId) >=0 ){
+                  }else {
                     $scope.joinInfo="You are already in the pending list!";
-                  } else if ($scope.temp.creator == $scope.thisUserId) {
-                    $scope.joinInfo = "This if your own project!";
                   }
 
 
