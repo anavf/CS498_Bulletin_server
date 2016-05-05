@@ -983,6 +983,8 @@ $scope.nextPageJP = function(){
   };
 }]);
 
+
+
 BulletinControllers.controller('SearchController', [
   '$scope',
   '$routeParams',
@@ -995,6 +997,7 @@ BulletinControllers.controller('SearchController', [
     $scope.advFilter=[];
     $scope.isLoggedIn = false;
 
+    $scope.whereQuery="{visible:true}";
     Data.getProfile().success(function (data) {
       if (data.data != null) {
         $scope.thisUser=data.data;
@@ -1005,111 +1008,129 @@ BulletinControllers.controller('SearchController', [
         }
 
         $scope.thisUserSkills=data.data.skills;
-          for (var i=0;i<$scope.thisUserSkills.length;i++){
-            // $scope.thisUserSkills[i]="'"+$scope.thisUserSkills[i]+"'";
+        for (var i=0;i<$scope.thisUserSkills.length;i++){
+          // $scope.thisUserSkills[i]="'"+$scope.thisUserSkills[i]+"'";
 
-          }
-
-          
-        $scope.matchSkillOption=false;
-      }
-    $scope.whereQuery="{visible: true}";
-
-    $scope.logOut = function() {
-      $http.get('http://localhost:4000/api/logout').success(function(data) {
-        location.reload();
-      });
-    }
-
-  function getProjects() {
-    $scope.usernames=[];
-    var counter = 0;
-    $scope.showM = [];
-    $scope.joinM = [];
-
-    Data.getProjects({
-
-      where: $scope.whereQuery,
-      select: {
-        _id: 1,
-        name: 1,
-        creator: 1,
-        dateCreated: 1,
-        description: 1,
-        deadline: 1,
-        categories: 1,
-        skills: 1,
-        pendingMembers:1
-      },
-
-    }).success(function (data) {
-
-      $scope.projects = data.data;
-      console.log($scope.projects.length);
-      counter = $scope.projects.length;
-
-
-      // for (var i = 0; i < counter; i++) {
-      //   Data.getUser($scope.projects[i].creator).success(function (data) {
-      //     $scope.usernames.push(data.data.name);
-      //   })
-
-      // }
-
-      //model controllers
-      for (var i = 0; i < counter; i++) {
-        $scope.showM.push(-1);
-        $scope.joinM.push(-1);
-
-      }
-
-      $scope.showModal = function (index) {
-        $scope.thisSkills=[];
-        for (var i = 0; i < $scope.projects[index].skills.length; i++){
-          Data.getSkill($scope.projects[index].skills[i]).success(function (data) {
-            $scope.thisSkills.push(data.data.name);
-            console.log($scope.thisSkills);
-          })
         }
 
-        $scope.showM[index] = 1;
-      };
-      $scope.removeModal = function (index) {
-        $scope.showM[index] = -1;
-      };
-      $scope.joinThis = function (index) {
-        $scope.showM[index] = -1;
-        $scope.joinM[index] = 1;
+        $scope.whereQuery="{visible:true}";
+        $scope.matchSkillOption=false;
+      }
 
-        Data.getProfile().success(function(data) {
-          // Logged in
-          if (data.data != null) {
-            if ($scope.projects[index].pendingMembers.indexOf($scope.thisUserId)<0) {
-              $scope.projects[index].pendingMembers.push($scope.thisUserId);
-              Data.editProject($scope.projects[index]._id, $scope.projects[index]);
-
-              $scope.thisUser.pendingProjects.push($scope.projects[index]._id);
-              Data.editUser($scope.thisUserId, $scope.thisUser);
-              $scope.joinInfo="We have added you to the waiting list!";
-            }else{
-              $scope.joinInfo="You are already in the pending list!";
-            }
-          }
-
-          // Not logged in
-          else {
-            $scope.joinInfo="You need to sign in to join this project!";
-          }
+      $scope.logOut = function() {
+        $http.get('http://localhost:4000/api/logout').success(function(data) {
+          location.reload();
         });
+      }
 
-      };
-      $scope.removeJoinModal = function (index) {
-        $scope.joinM[index] = -1;
-      };
 
-    })
-  }
-    getProjects();
+      function getProjects() {
+        $scope.usernames=[];
+        var counter = 0;
+        $scope.showM = [];
+        $scope.joinM = [];
+
+        Data.getProjects({
+
+          where: $scope.whereQuery,
+          select: {
+            _id: 1,
+            name: 1,
+            creator: 1,
+            creatorName: 1,
+            dateCreated: 1,
+            description: 1,
+            deadline: 1,
+            categories: 1,
+            skills: 1,
+            pendingMembers:1,
+            approvedMembers:1
+          },
+
+        }).success(function (data) {
+
+          $scope.projects = data.data;
+          console.log($scope.projects.length);
+          counter = $scope.projects.length;
+
+
+
+
+          //model controllers
+          for (var i = 0; i < $scope.projects.length; i++) {
+            $scope.showM[$scope.projects[i]._id]=-1;
+            //$scope.showM.push(-1);
+            //$scope.joinM.push(-1);
+
+          }
+
+          $scope.showModal = function (index) {
+
+
+
+
+
+
+            $scope.showM[index] = 1;
+          };
+          $scope.removeModal = function (index) {
+            $scope.showM[index] = -1;
+          };
+          $scope.joinThis = function (index) {
+            $scope.showM[index] = -1;
+            $scope.joinM[index] = 1;
+
+            Data.getProfile().success(function(data) {
+              // Logged in
+              if (data.data != null) {
+
+
+                //if ($scope.projects[index].pendingMembers.indexOf($scope.thisUserId)<0) {
+                //  $scope.projects[index].pendingMembers.push($scope.thisUserId);
+                //  Data.editProject($scope.projects[index]._id, $scope.projects[index]);
+                //
+                //  $scope.thisUser.pendingProjects.push($scope.projects[index]._id);
+                //  Data.editUser($scope.thisUserId, $scope.thisUser);
+                //  $scope.joinInfo="We have added you to the waiting list!";
+                //}else{
+                //  $scope.joinInfo="You are already in the pending list!";
+                //}
+
+                Data.getProject(index).success(function(data){
+
+                  $scope.temp=data.data;
+                  if ($scope.temp.pendingMembers.indexOf($scope.thisUserId)<0) {
+                    $scope.temp.pendingMembers.push($scope.thisUserId);
+                    Data.editProject($scope.temp._id, $scope.temp);
+
+                    $scope.thisUser.pendingProjects.push($scope.temp._id);
+                    Data.editUser($scope.thisUserId, $scope.thisUser);
+                    $scope.joinInfo="We have added you to the waiting list!";
+                  }else{
+                    $scope.joinInfo="You are already in the pending list!";
+                  }
+
+
+                })
+
+
+
+              }
+
+              // Not logged in
+              else {
+                $scope.joinInfo="You need to sign in to join this project!";
+              }
+            });
+
+          };
+          $scope.removeJoinModal = function (index) {
+            $scope.joinM[index] = -1;
+          };
+
+        })
+      }
+      getProjects();
 
       //filterControllers
       $scope.remove = function(ary, elem) {
@@ -1119,38 +1140,38 @@ BulletinControllers.controller('SearchController', [
       }
 
       $scope.addFilter=function(id){
-
-           if ($("#" + id).css("background-color")!=="rgb(204, 204, 204)"){
+        console.log($("#" + id).css("background-color"));
+        if ($("#" + id).css("background-color")!=="rgb(204, 204, 204)"){
           $("#" + id).css("background-color", "rgb(204, 204, 204)");
 
           $scope.advFilter.push("'"+id+"'");
           if ($scope.advFilter.length>0){
-            $scope.whereQuery="{visible: true, categories: { $all:[ "+$scope.advFilter+"]}}";
+            $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]},visible:true}";
           }else{
-            $scope.whereQuery="{visible: true}";
+            $scope.whereQuery="{visible:true}";
           }
 
           getProjects();
         }
         else {
-          $("#" + id).css("background-color", "rgb(43, 43, 43)");
+          $("#" + id).css("background-color", "rgb(51, 51, 51)");
           $scope.advFilter=$scope.remove($scope.advFilter,"'"+id+"'");
 
           if ($scope.advFilter.length>0){
-            $scope.whereQuery="{visible: true, categories: { $all:[ "+$scope.advFilter+"]}}";
+            $scope.whereQuery="{categories: { $all:[ "+$scope.advFilter+"]},visible:true}";
           }else{
-            $scope.whereQuery="{visible: true}";
+            $scope.whereQuery="{visible:true}";
           }
           getProjects();
         }
       }
 
 
-        $scope.$watch('matchSkillOption', function(oldVal, newVal) {
+      $scope.$watch('matchSkillOption', function(oldVal, newVal) {
         if (newVal !== oldVal) {
           if ($scope.matchSkillOption) {
             if ($scope.advFilter.length > 0) {
-              $scope.whereQuery = "{visible: true, categories: { $all:[ " + $scope.advFilter + "]},";
+              $scope.whereQuery = "{categories: { $all:[ " + $scope.advFilter + "]},";
             } else {
               $scope.whereQuery = "{";
             }
@@ -1159,35 +1180,39 @@ BulletinControllers.controller('SearchController', [
             for (var i = 0; i < $scope.thisUserSkills.length; i++){
               $scope.whereQuery += "'"+$scope.thisUserSkills[i]+"'"+",";
             }
-            $scope.whereQuery += "]} }}"
+            $scope.whereQuery += "]} },visible:true}"
             console.log($scope.whereQuery);
             getProjects();
 
           }else{
             if ($scope.advFilter.length > 0) {
-              $scope.whereQuery = "{visible: true, categories: { $all:[ " + $scope.advFilter + "]}}";
+              $scope.whereQuery = "{categories: { $all:[ " + $scope.advFilter + "]},visible:true}";
             } else {
-              $scope.whereQuery = "{visible: true}";
+              $scope.whereQuery = "{visible:true}";
             }
             getProjects();
 
           }
         }
 
-    });
+      });
 
-      })
+    })
 
-  $scope.showSettingsMenu = function(){
-       $("#settingsMenu").toggle();
-  };
+    $scope.showSettingsMenu = function(){
+      $("#settingsMenu").toggle();
+    };
 
-  $scope.showSettingsMenuMED = function(){
-    $("#settingsMenuMED").toggle();
-  };
+    $scope.showSettingsMenuMED = function(){
+      $("#settingsMenuMED").toggle();
+    };
 
   }
 ]);
+
+
+
+
 
 
 BulletinControllers.controller('EditProjectController', ['$scope', '$http', '$window', 'Data', '$routeParams', function($scope, $http, $window, Data, $routeParams) {

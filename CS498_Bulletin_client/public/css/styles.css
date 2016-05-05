@@ -4822,7 +4822,7 @@ badge {
   .WEI #weishi_photoGraphy, .WEI #weishi_database, .WEI #weishi_mobile, .WEI #weishi_globe, .WEI #weishi_lock, .WEI #weishi_android, .WEI #weishi_gamepad, .WEI #weishi_laptop, .WEI #weishi_star, .WEI #weishi_research {
     color: #8c8c8c; }
   /* line 767, ../../source_sass/_base.scss */
-  .WEI #Graphics, .WEI #Database, .WEI #IOS, .WEI #Network, .WEI #Security, .WEI #Android, .WEI #Linux, .WEI #Debug {
+  .WEI #Graphics, .WEI #Database, .WEI #Mobile, .WEI #Network, .WEI #Security, .WEI #Web, .WEI #Research, .WEI #GameDev, .WEI #BigData {
     position: relative;
     float: top; }
   /* line 773, ../../source_sass/_base.scss */
