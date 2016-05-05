@@ -439,7 +439,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
             }
           }
 
-          for(var i=0; $scope.pendingMembersToUpdate.length; i++){
+          for(var i=0; i < $scope.pendingMembersToUpdate.length; i++){
             if($scope.pendingMembersToUpdate[i] == $scope.userid){
               $scope.pendingMembersToUpdate.splice(i,1);
               break;
