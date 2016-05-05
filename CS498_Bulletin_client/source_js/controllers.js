@@ -96,7 +96,7 @@ BulletinControllers.controller('AccountSettingsController', ['$scope', '$routePa
           password: $('input[name="password1"]').val(),
           imageURL: imageURL
         };
-        $http.put('http://localhost:4000/api/AccountSettings', newUser).success(function(data) {
+        $http.put('http://162.243.18.198:4000/api/AccountSettings', newUser).success(function(data) {
           window.location.href = "#/MyProfilePage";
         });
       });
@@ -153,7 +153,7 @@ BulletinControllers.controller('HomeController', ['$scope', '$http', 'Data', '$w
   };
 
   $scope.logOut = function() {
-    $http.get('http://localhost:4000/api/logout').success(function(data) {
+    $http.get('http://162.243.18.198:4000/api/logout').success(function(data) {
       location.reload();
     });
   };
@@ -187,7 +187,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
   };
 
   $scope.logOut = function() {
-    $http.get('http://localhost:4000/api/logout').success(function(data) {
+    $http.get('http://162.243.18.198:4000/api/logout').success(function(data) {
       $window.location.href = '#/HomePage';
     });
   };
@@ -229,7 +229,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
     }
 
     $http({
-      url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&count=true',
+      url: 'http://162.243.18.198:4000/api/projects?where={"creator":"'+$scope.userid+'"}&count=true',
       method: 'GET'
     }).success(function(data){
         $scope.count = data.data;
@@ -242,7 +242,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
       }).error(function(data){console.log('Error: '+data)});
 
       $http({
-        url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
+        url: 'http://162.243.18.198:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
         method: 'GET'
       }).success(function(data){
         $scope.projects = data.data;
@@ -250,7 +250,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
       }).error(function(data){console.log('Error: '+data)});
 
       $http({
-          url: 'http://localhost:4000/api/projects?where={"approvedMembers":"'+$scope.userid+'"}',
+          url: 'http://162.243.18.198:4000/api/projects?where={"approvedMembers":"'+$scope.userid+'"}',
           method: 'GET'
 
         }).success(function(data){
@@ -264,7 +264,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
 
 
         $http({
-          url: 'http://localhost:4000/api/projects?where={"pendingMembers":"'+$scope.userid+'"}',
+          url: 'http://162.243.18.198:4000/api/projects?where={"pendingMembers":"'+$scope.userid+'"}',
           method: 'GET'
         }).success(function(data){
           $scope.joinedProjectsPM = data.data;
@@ -336,7 +336,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
       console.log("Count: " + $scope.count + " Low, High: " + $scope.low + ", " + $scope.high);
 
       $http({
-        url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
+        url: 'http://162.243.18.198:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
         method: 'GET'
       }).success(function(data){
         $scope.projects = data.data;
@@ -375,7 +375,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
       console.log($scope.low + ", " + $scope.high);
 
       $http({
-        url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
+        url: 'http://162.243.18.198:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
         method: 'GET'
       }).success(function(data){
         $scope.projects = data.data;
@@ -462,7 +462,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
           }
 
           $http({
-            url: 'http://localhost:4000/api/projects/'+projectIDtoDelete,
+            url: 'http://162.243.18.198:4000/api/projects/'+projectIDtoDelete,
             data: updatedProject,
             method: 'PUT'
           }).success(function(data){
@@ -483,7 +483,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
       $scope.skillName = name;
       console.log($scope.skillName);
       $http({
-        url: 'http://localhost:4000/api/skills?where={"name":"'+$scope.skillName+'"}',
+        url: 'http://162.243.18.198:4000/api/skills?where={"name":"'+$scope.skillName+'"}',
         method: 'GET'
       }).success(function(data){
         console.log('Made it '+data.data[0]);
@@ -514,7 +514,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
           };
 
            $http({
-            url: 'http://localhost:4000/api/users/'+$scope.userid,
+            url: 'http://162.243.18.198:4000/api/users/'+$scope.userid,
             data: updatedUser,
             method: 'PUT'
           }).success(function(data){
@@ -564,7 +564,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
                 flag = true; 
                 skillIsNew = false;                                    
                 $http({
-                  url: 'http://localhost:4000/api/skills?where={"name":"'+$scope.enteredSkill+'"}',
+                  url: 'http://162.243.18.198:4000/api/skills?where={"name":"'+$scope.enteredSkill+'"}',
                   method: 'GET'
                 }).success(function(data){
                       console.log('Made it '+data.data[0].name);
@@ -588,7 +588,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
                     console.log('Updated User: '+ updatedUser);
 
                     $http({
-                      url: 'http://localhost:4000/api/users/'+$scope.userid,
+                      url: 'http://162.243.18.198:4000/api/users/'+$scope.userid,
                       data: updatedUser,
                       method: 'PUT',
                     })
@@ -635,7 +635,7 @@ BulletinControllers.controller('MyProfileController', ['$scope' , '$rootScope', 
           console.log(updatedUser);
 
           $http({
-            url: 'http://localhost:4000/api/users/'+$scope.userid,
+            url: 'http://162.243.18.198:4000/api/users/'+$scope.userid,
             data: updatedUser,
             method: 'PUT',
           })
@@ -690,7 +690,7 @@ BulletinControllers.controller('ProfileController', ['$scope' , '$rootScope', '$
   };
 
   $scope.logOut = function() {
-    $http.get('http://localhost:4000/api/logout').success(function(data) {
+    $http.get('http://162.243.18.198:4000/api/logout').success(function(data) {
       location.reload();
     });
   }
@@ -733,7 +733,7 @@ BulletinControllers.controller('ProfileController', ['$scope' , '$rootScope', '$
   }).error(function(data){console.log('Error: '+data)});
 
   $http({
-    url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&count=true',
+    url: 'http://162.243.18.198:4000/api/projects?where={"creator":"'+$scope.userid+'"}&count=true',
     method: 'GET'
   }).success(function(data){
       $scope.count = data.data;
@@ -746,7 +746,7 @@ BulletinControllers.controller('ProfileController', ['$scope' , '$rootScope', '$
     }).error(function(data){console.log('Error: '+data)});
 
     $http({
-      url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
+      url: 'http://162.243.18.198:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
       method: 'GET'
     }).success(function(data){
       $scope.projects = data.data;
@@ -754,7 +754,7 @@ BulletinControllers.controller('ProfileController', ['$scope' , '$rootScope', '$
     }).error(function(data){console.log('Error: '+data)});
 
     $http({
-        url: 'http://localhost:4000/api/projects?where={"approvedMembers":"'+$scope.userid+'"}',
+        url: 'http://162.243.18.198:4000/api/projects?where={"approvedMembers":"'+$scope.userid+'"}',
         method: 'GET'
     }).success(function(data){
       $scope.joinedProjectsAM = data.data;
@@ -767,7 +767,7 @@ BulletinControllers.controller('ProfileController', ['$scope' , '$rootScope', '$
 
 
       $http({
-        url: 'http://localhost:4000/api/projects?where={"pendingMembers":"'+$scope.userid+'"}',
+        url: 'http://162.243.18.198:4000/api/projects?where={"pendingMembers":"'+$scope.userid+'"}',
         method: 'GET'
       }).success(function(data){
         $scope.joinedProjectsPM = data.data;
@@ -835,7 +835,7 @@ $scope.nextPage = function(){
     console.log("Count: " + $scope.count + " Low, High: " + $scope.low + ", " + $scope.high);
 
     $http({
-      url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
+      url: 'http://162.243.18.198:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
       method: 'GET'
     }).success(function(data){
       $scope.projects = data.data;
@@ -873,7 +873,7 @@ $scope.nextPageJP = function(){
     console.log($scope.low + ", " + $scope.high);
 
     $http({
-      url: 'http://localhost:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
+      url: 'http://162.243.18.198:4000/api/projects?where={"creator":"'+$scope.userid+'"}&skip='+$scope.low+'&limit=3',
       method: 'GET'
     }).success(function(data){
       $scope.projects = data.data;
@@ -960,7 +960,7 @@ $scope.nextPageJP = function(){
               }
 
               $http({
-                url: 'http://localhost:4000/api/projects/'+projectIDtoJoin,
+                url: 'http://162.243.18.198:4000/api/projects/'+projectIDtoJoin,
                 data: updatedProject,
                 method: 'PUT'
               }).success(function(data){
@@ -1018,7 +1018,7 @@ BulletinControllers.controller('SearchController', [
       }
 
       $scope.logOut = function() {
-        $http.get('http://localhost:4000/api/logout').success(function(data) {
+        $http.get('http://162.243.18.198:4000/api/logout').success(function(data) {
           location.reload();
         });
       }

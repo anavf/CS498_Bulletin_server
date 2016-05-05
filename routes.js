@@ -1,6 +1,6 @@
 module.exports = function(app, passport) {
 
-	app.post('http://localhost:4000/api/users', passport.authenticate('local-signup'), function(req, res) {
+	app.post('http://162.243.18.198:4000/api/users', passport.authenticate('local-signup'), function(req, res) {
 		res.redirect('/571a8c59893dee580c4fea12/MyProfilePage/571a8c59893dee580c4fea12');
 	});
 
