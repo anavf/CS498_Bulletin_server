@@ -1099,7 +1099,7 @@ BulletinControllers.controller('SearchController', [
                 Data.getProject(index).success(function(data){
 
                   $scope.temp=data.data;
-                  if (($scope.temp.pendingMembers.indexOf($scope.thisUserId))<0 && ($scope.temp.creator != $scope.thisUserId)) {
+                  if (($scope.temp.pendingMembers.indexOf($scope.thisUserId)<0) && ($scope.temp.creator != $scope.thisUserId)) {
                     $scope.temp.pendingMembers.push($scope.thisUserId);
                     Data.editProject($scope.temp._id, $scope.temp);
 
