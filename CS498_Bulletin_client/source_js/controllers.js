@@ -913,11 +913,12 @@ $scope.nextPageJP = function(){
 
   $scope.joinProject = function(id) {
     Data.getProfile().success(function(data){
+      $scope.currentUser = data.data;
       if (data.data != null) {
         var projectIDtoJoin = id; 
         var alreadyJoined = false;
 
-        for(var i=0; $scope.pendingProjects.length; i++){
+        for(var i=0; i < $scope.pendingProjects.length; i++){
           if($scope.pendingProjects[i] == projectIDtoJoin){
             alreadyJoined = true;
             break;
@@ -934,41 +935,48 @@ $scope.nextPageJP = function(){
 
 
           Data.getProject(projectIDtoJoin).success(function(data){
-            $scope.projectToUpdate2 = data.data;
-            $scope.pendingMembersToUpdate2 = data.data.pendingMembers;
-            Data.getProfile().success(function(data) {
-              $scope.currentUser = data.data;
-              $scope.currentUser.pendingProjects.push($scope.projectToUpdate2._id);
-              Data.editUser($scope.currentUser._id, $scope.currentUser);
+            if (data.data.creator != $scope.currentUser._id) {
+              $scope.projectToUpdate2 = data.data;
+              $scope.pendingMembersToUpdate2 = data.data.pendingMembers;
+              Data.getProfile().success(function(data) {
+                $scope.currentUser = data.data;
+                $scope.currentUser.pendingProjects.push($scope.projectToUpdate2._id);
+                Data.editUser($scope.currentUser._id, $scope.currentUser);
 
 
-              $scope.pendingMembersToUpdate2.push($scope.currentUser._id);
+                $scope.pendingMembersToUpdate2.push($scope.currentUser._id);
 
-              var updatedProject = {
-                  name: $scope.projectToUpdate2.name,
-                  description: $scope.projectToUpdate2.description,
-                  deadline: $scope.projectToUpdate2.deadline,
-                  visible: $scope.projectToUpdate2.visible,
-                  skills: $scope.projectToUpdate2.skills,
-                  categories: $scope.projectToUpdate2.categories,
-                  tags: $scope.projectToUpdate2.tags,
-                  creator: $scope.projectToUpdate2.creator,
-                  pendingMembers: $scope.pendingMembersToUpdate2,
-                  approvedMembers: $scope.projectToUpdate2.approvedMembers,
-                  dateCreated: $scope.projectToUpdate2.dateCreated,
-                  imageURL: $scope.projectToUpdate2.imageURL
-              }
+                var updatedProject = {
+                    name: $scope.projectToUpdate2.name,
+                    description: $scope.projectToUpdate2.description,
+                    deadline: $scope.projectToUpdate2.deadline,
+                    visible: $scope.projectToUpdate2.visible,
+                    skills: $scope.projectToUpdate2.skills,
+                    categories: $scope.projectToUpdate2.categories,
+                    tags: $scope.projectToUpdate2.tags,
+                    creator: $scope.projectToUpdate2.creator,
+                    pendingMembers: $scope.pendingMembersToUpdate2,
+                    approvedMembers: $scope.projectToUpdate2.approvedMembers,
+                    dateCreated: $scope.projectToUpdate2.dateCreated,
+                    imageURL: $scope.projectToUpdate2.imageURL
+                }
 
-              $http({
-                url: 'http://162.243.18.198:4000/api/projects/'+projectIDtoJoin,
-                data: updatedProject,
-                method: 'PUT'
-              }).success(function(data){
-                console.log('Project joined and updated!');
+                $http({
+                  url: 'http://162.243.18.198:4000/api/projects/'+projectIDtoJoin,
+                  data: updatedProject,
+                  method: 'PUT'
+                }).success(function(data){
+                  console.log('Project joined and updated!');
 
-                location.reload();
-              }).error(function(data){console.log('Error: '+data)});
-            });
+                  location.reload();
+                }).error(function(data){console.log('Error: '+data)});
+              });
+            }
+            else {
+              $scope.joinInfo = "You cannot join your own project!";
+              $('.modalJoinProfile').fadeIn(500);
+            }
+            
 
           }).error(function(data){console.log('Error: '+data)});
         }
@@ -1082,6 +1090,7 @@ BulletinControllers.controller('SearchController', [
 
             Data.getProfile().success(function(data) {
               // Logged in
+              $scope.currentUser = data.data;
               if (data.data != null) {
 
 
@@ -1099,15 +1108,17 @@ BulletinControllers.controller('SearchController', [
                 Data.getProject(index).success(function(data){
 
                   $scope.temp=data.data;
-                  if ($scope.temp.pendingMembers.indexOf($scope.thisUserId)<0) {
+                  if ( $scope.temp.pendingMembers.indexOf($scope.thisUserId)<0 && $scope.temp.creator != $scope.currentUser._id) {
                     $scope.temp.pendingMembers.push($scope.thisUserId);
                     Data.editProject($scope.temp._id, $scope.temp);
 
                     $scope.thisUser.pendingProjects.push($scope.temp._id);
                     Data.editUser($scope.thisUserId, $scope.thisUser);
                     $scope.joinInfo="We have added you to the waiting list!";
-                  }else {
+                  }else if ($scope.temp.pendingMembers.indexOf($scope.thisUserId)>=0) {
                     $scope.joinInfo="You are already in the pending list!";
+                  }else if ($scope.temp.creator == $scope.currentUser._id) {
+                    $scope.joinInfo = "You cannot join your own project!";
                   }
 
 

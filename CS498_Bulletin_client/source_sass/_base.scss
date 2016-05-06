@@ -472,12 +472,11 @@ a:hover {
 
 .myProjectA {
 	margin-left: 9px;
-	margin-right: 74px;
+	margin-right: 9px;
 	position: relative;
 	text-align: center;
 	margin-top: 90px;
 	height: 250px;
-	width: 250px;
 	background-color: $dark-gray;
 
 	h4{
@@ -503,9 +502,9 @@ a:hover {
 		left: 0;
 		display: inline-block;
 		float: left;
-		width: 125px;
-		height: 80px;
-		padding-top: 22px;
+		width: 50%;
+		height: 65px;
+		padding-top: 10px;
 		border: 1px solid #8c8c8c;
 	}
 
@@ -516,15 +515,15 @@ a:hover {
 		right: 0;
 		display: inline-block;
 		float: right;
-		width: 125px;
-		height: 80px;
-		padding-top: 22px;
+		width: 50%;
+		height: 65px;
+		padding-top: 15px;
 		border: 1px solid #8c8c8c;
 	}
 
 	.joinedProjectStatus {
 		@extend .editProject;
-		padding-top: 16px;
+		padding-top: 10px;
 	}
 
 		.Accepted {
